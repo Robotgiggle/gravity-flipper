@@ -45,16 +45,10 @@ TagManager:
   - 
   m_SortingLayers:
   - name: Background
-    uniqueID: 3664553919
-    locked: 0
-  - name: Spikes
-    uniqueID: 2074096473
+    uniqueID: 2781476991
     locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Walls
-    uniqueID: 2312054073
     locked: 0
   m_RenderingLayers:
   - Default
