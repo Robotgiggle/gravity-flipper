@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     Animator m_animator;
     Rigidbody2D m_body;
     Vector3 m_startPos;
-    bool[] m_grounded = new bool[4];
+    public bool[] m_grounded = new bool[4];
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
@@ -67,29 +67,18 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.CompareTag("Ceiling")) {
-            m_grounded[0] = true;
-        } else if (collision.gameObject.CompareTag("Floor")) {
-            m_grounded[1] = true;
-        } else if (collision.gameObject.CompareTag("LeftWall")) {
-            m_grounded[2] = true;
-        } else if (collision.gameObject.CompareTag("RightWall")) {
-            m_grounded[3] = true;
-        } else if (collision.gameObject.CompareTag("Spike")) {
-            Die();
-        }
+        if (collision.gameObject.CompareTag("Ceiling")) m_grounded[0] = true;
+        else if (collision.gameObject.CompareTag("Floor")) m_grounded[1] = true;
+        else if (collision.gameObject.CompareTag("LeftWall")) m_grounded[2] = true;
+        else if (collision.gameObject.CompareTag("RightWall")) m_grounded[3] = true;
+        else if (collision.gameObject.CompareTag("Spike")) Die();
     }
 
     void OnCollisionExit2D(Collision2D collision) {
-        if (collision.gameObject.CompareTag("Ceiling")) {
-            m_grounded[0] = false;
-        } else if (collision.gameObject.CompareTag("Floor")) {
-            m_grounded[1] = false;
-        } else if (collision.gameObject.CompareTag("LeftWall")) {
-            m_grounded[2] = false;
-        } else if (collision.gameObject.CompareTag("RightWall")) {
-            m_grounded[3] = false;
-        }
+        if (collision.gameObject.CompareTag("Ceiling")) m_grounded[0] = false;
+        else if (collision.gameObject.CompareTag("Floor")) m_grounded[1] = false;
+        else if (collision.gameObject.CompareTag("LeftWall")) m_grounded[2] = false;
+        else if (collision.gameObject.CompareTag("RightWall")) m_grounded[3] = false;
     }
 
     void Die() {
