@@ -23,33 +23,36 @@ public class PlayerController : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        // handle gravity changes and sprite flipping
-        Vector3 newScale = transform.localScale;
+        // handle gravity changes
         if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && CanFlip("up")) {
             m_audioSource.PlayOneShot(m_gravSound, 0.08f);
             Physics2D.gravity = new Vector2(0, 7f);
             m_body.linearVelocityX = 0;
-            newScale.y = -5;
+            m_body.rotation = 180;
+            if (m_grounded[2]) m_body.AddForceX(-10, ForceMode2D.Impulse);
+            if (m_grounded[3]) m_body.AddForceX(10, ForceMode2D.Impulse);
         } else if ((Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) && CanFlip("down")) {
             m_audioSource.PlayOneShot(m_gravSound, 0.08f);
             Physics2D.gravity = new Vector2(0, -7f);
             m_body.linearVelocityX = 0;
-            newScale.y = 5;
+            m_body.rotation = 0;
+            if (m_grounded[2]) m_body.AddForceX(-10, ForceMode2D.Impulse);
+            if (m_grounded[3]) m_body.AddForceX(10, ForceMode2D.Impulse);
         } else if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) && CanFlip("left")) {
             m_audioSource.PlayOneShot(m_gravSound, 0.08f);
             Physics2D.gravity = new Vector2(-7f, 0);
             m_body.linearVelocityY = 0;
-            newScale.x = -5;
+            m_body.rotation = -90;
+            if (m_grounded[0]) m_body.AddForceY(10, ForceMode2D.Impulse);
+            if (m_grounded[1]) m_body.AddForceY(-10, ForceMode2D.Impulse);
         } else if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) && CanFlip("right")) {
             m_audioSource.PlayOneShot(m_gravSound, 0.08f);
             Physics2D.gravity = new Vector2(7f, 0);
             m_body.linearVelocityY = 0;
-            newScale.x = 5;
+            m_body.rotation = 90;
+            if (m_grounded[0]) m_body.AddForceY(10, ForceMode2D.Impulse);
+            if (m_grounded[1]) m_body.AddForceY(-10, ForceMode2D.Impulse);
         }
-        transform.localScale = newScale;
-
-        // tell animator whether the player is moving horizontally
-        m_animator.SetFloat("Speed", Mathf.Abs(m_body.linearVelocityX));
     }
 
     // returns whether you're allowed to flip in the provided direction
@@ -92,9 +95,9 @@ public class PlayerController : MonoBehaviour
     }
 
     void ResetGravity() {
-        transform.localScale = new Vector3(5f, 5f, 5f);
         Physics2D.gravity = new Vector2(0, -7f);
         m_body.linearVelocity = Vector2.zero;
+        m_body.rotation = 0;
         for (int i = 0; i < 4; i++) m_grounded[i] = false;
     }
 }
