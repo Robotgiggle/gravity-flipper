@@ -70,11 +70,15 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.CompareTag("Ceiling")) m_grounded[0] = true;
-        else if (collision.gameObject.CompareTag("Floor")) m_grounded[1] = true;
-        else if (collision.gameObject.CompareTag("LeftWall")) m_grounded[2] = true;
-        else if (collision.gameObject.CompareTag("RightWall")) m_grounded[3] = true;
-        else if (collision.gameObject.CompareTag("Spike")) Die();
+        if (collision.gameObject.CompareTag("Spike")) {
+            Die();
+        } else {
+            ContactPoint2D point = collision.GetContact(0);
+            if (point.normal == new Vector2(0, -1)) m_grounded[0] = true;
+            else if (point.normal == new Vector2(0, 1)) m_grounded[1] = true;
+            else if (point.normal == new Vector2(1, 0)) m_grounded[2] = true;
+            else if (point.normal == new Vector2(-1, 0)) m_grounded[3] = true;
+        }
     }
 
     void OnCollisionExit2D(Collision2D collision) {
