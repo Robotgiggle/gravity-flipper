@@ -5,11 +5,11 @@ TagManager:
   serializedVersion: 3
   tags:
   - Switch
-  - Spike
   - Ceiling
   - Floor
   - LeftWall
   - RightWall
+  - Hazard
   layers:
   - Default
   - TransparentFX

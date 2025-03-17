@@ -70,8 +70,14 @@ public class PlayerController : MonoBehaviour
         return false;
     }
 
+    void OnTriggerEnter2D(Collider2D collider) {
+        if (collider.CompareTag("Hazard")) {
+            Die();
+        }
+    }
+
     void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.CompareTag("Spike")) {
+        if (collision.gameObject.CompareTag("Hazard")) {
             Die();
         } else {
             ContactPoint2D point = collision.GetContact(0);
