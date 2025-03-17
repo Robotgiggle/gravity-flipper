@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D m_body;
     Vector3 m_startPos;
     public bool[] m_grounded = new bool[4];
+    public float m_gravForce;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
@@ -25,29 +26,29 @@ public class PlayerController : MonoBehaviour
     void Update() {
         // handle gravity changes
         if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && CanFlip("up")) {
-            m_audioSource.PlayOneShot(m_gravSound, 0.08f);
-            Physics2D.gravity = new Vector2(0, 7f);
+            m_audioSource.PlayOneShot(m_gravSound, 0.06f);
+            Physics2D.gravity = new Vector2(0, m_gravForce);
             m_body.linearVelocityX = 0;
             m_body.rotation = 180;
             if (m_grounded[2]) m_body.AddForceX(-10, ForceMode2D.Impulse);
             if (m_grounded[3]) m_body.AddForceX(10, ForceMode2D.Impulse);
         } else if ((Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) && CanFlip("down")) {
-            m_audioSource.PlayOneShot(m_gravSound, 0.08f);
-            Physics2D.gravity = new Vector2(0, -7f);
+            m_audioSource.PlayOneShot(m_gravSound, 0.06f);
+            Physics2D.gravity = new Vector2(0, -m_gravForce);
             m_body.linearVelocityX = 0;
             m_body.rotation = 0;
             if (m_grounded[2]) m_body.AddForceX(-10, ForceMode2D.Impulse);
             if (m_grounded[3]) m_body.AddForceX(10, ForceMode2D.Impulse);
         } else if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) && CanFlip("left")) {
-            m_audioSource.PlayOneShot(m_gravSound, 0.08f);
-            Physics2D.gravity = new Vector2(-7f, 0);
+            m_audioSource.PlayOneShot(m_gravSound, 0.06f);
+            Physics2D.gravity = new Vector2(-m_gravForce, 0);
             m_body.linearVelocityY = 0;
             m_body.rotation = -90;
             if (m_grounded[0]) m_body.AddForceY(10, ForceMode2D.Impulse);
             if (m_grounded[1]) m_body.AddForceY(-10, ForceMode2D.Impulse);
         } else if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) && CanFlip("right")) {
-            m_audioSource.PlayOneShot(m_gravSound, 0.08f);
-            Physics2D.gravity = new Vector2(7f, 0);
+            m_audioSource.PlayOneShot(m_gravSound, 0.06f);
+            Physics2D.gravity = new Vector2(m_gravForce, 0);
             m_body.linearVelocityY = 0;
             m_body.rotation = 90;
             if (m_grounded[0]) m_body.AddForceY(10, ForceMode2D.Impulse);
@@ -91,7 +92,7 @@ public class PlayerController : MonoBehaviour
     void Die() {
         ScoreTracker.deaths++;
         Debug.Log("Total deaths: " + ScoreTracker.deaths);
-        m_audioSource.PlayOneShot(m_deathSound, 0.8f);
+        m_audioSource.PlayOneShot(m_deathSound, 0.15f);
 
         // respawn at start position
         transform.position = m_startPos;
@@ -99,7 +100,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void ResetGravity() {
-        Physics2D.gravity = new Vector2(0, -7f);
+        Physics2D.gravity = new Vector2(0, -m_gravForce);
         m_body.linearVelocity = Vector2.zero;
         m_body.rotation = 0;
         for (int i = 0; i < 4; i++) m_grounded[i] = false;
