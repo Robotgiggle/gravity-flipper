@@ -474,6 +474,57 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 208131973530473930, guid: fb6adde8d938fbd4b875623fdf6aaace, type: 3}
   m_PrefabInstance: {fileID: 990207766}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &283139057
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 283139058}
+  - component: {fileID: 283139059}
+  m_Layer: 0
+  m_Name: laserpoint4A
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &283139058
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283139057}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 19.8, y: 10, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1322212500}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &283139059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283139057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9811dcbfd82adf1439e1ec2c90f9f553, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endpointA: {fileID: 283139058}
+  endpointB: {fileID: 1845395285}
+  hitboxPrefab: {fileID: 6841585797509558305, guid: 5885790f3e87a4948a005a1c82c1017b, type: 3}
+  hitboxSpacing: 1
+  spawnInterval: 2
+  hitboxLifetime: 1
+  hitboxScale: {x: 1, y: 1, z: 1}
 --- !u!1 &289620874
 GameObject:
   m_ObjectHideFlags: 0
@@ -4408,6 +4459,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &414108904
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 414108905}
+  m_Layer: 0
+  m_Name: laserpoint2B
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &414108905
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 414108904}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.33, y: 4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1322212500}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &498290780
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4621,6 +4703,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7176001586221721578, guid: 7d9133181c3cefd479f92065913e9985, type: 3}
   m_PrefabInstance: {fileID: 528222842}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &541181338
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 541181339}
+  m_Layer: 0
+  m_Name: laserpoint1B
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &541181339
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 541181338}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -13.242392, y: 3.1652627, z: 0.018817425}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1322212500}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &551968056
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5129,6 +5242,57 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb6adde8d938fbd4b875623fdf6aaace, type: 3}
+--- !u!1 &775523205
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 775523206}
+  - component: {fileID: 775523207}
+  m_Layer: 0
+  m_Name: laserpoint2A
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &775523206
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 775523205}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5.33, y: 10, z: -0.019251823}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1322212500}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &775523207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 775523205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9811dcbfd82adf1439e1ec2c90f9f553, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endpointA: {fileID: 775523206}
+  endpointB: {fileID: 414108905}
+  hitboxPrefab: {fileID: 6841585797509558305, guid: 5885790f3e87a4948a005a1c82c1017b, type: 3}
+  hitboxSpacing: 1
+  spawnInterval: 2
+  hitboxLifetime: 1
+  hitboxScale: {x: 1, y: 1, z: 1}
 --- !u!1001 &791599555
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5325,6 +5489,57 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb6adde8d938fbd4b875623fdf6aaace, type: 3}
+--- !u!1 &873069180
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 873069181}
+  - component: {fileID: 873069182}
+  m_Layer: 0
+  m_Name: laserpoint3A
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &873069181
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873069180}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.75, y: 10, z: -0.019251823}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1322212500}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &873069182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873069180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9811dcbfd82adf1439e1ec2c90f9f553, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endpointA: {fileID: 873069181}
+  endpointB: {fileID: 951525325}
+  hitboxPrefab: {fileID: 6841585797509558305, guid: 5885790f3e87a4948a005a1c82c1017b, type: 3}
+  hitboxSpacing: 1
+  spawnInterval: 2
+  hitboxLifetime: 1
+  hitboxScale: {x: 1, y: 1, z: 1}
 --- !u!1001 &874563817
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5526,6 +5741,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 208131973530473930, guid: fb6adde8d938fbd4b875623fdf6aaace, type: 3}
   m_PrefabInstance: {fileID: 791599555}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &951525324
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 951525325}
+  m_Layer: 0
+  m_Name: laserpoint3B
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &951525325
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 951525324}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.75, y: 4, z: -0.019251823}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1322212500}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &990207766
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5949,6 +6195,149 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2033648015092648855, guid: f79886635b22aef4c958e5ce44fe0e68, type: 3}
   m_PrefabInstance: {fileID: 1203488517}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1260937204
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1260937206}
+  - component: {fileID: 1260937205}
+  m_Layer: 0
+  m_Name: laserpoint1A
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1260937205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260937204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9811dcbfd82adf1439e1ec2c90f9f553, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endpointA: {fileID: 1260937206}
+  endpointB: {fileID: 541181339}
+  hitboxPrefab: {fileID: 6841585797509558305, guid: 5885790f3e87a4948a005a1c82c1017b, type: 3}
+  hitboxSpacing: 1
+  spawnInterval: 2
+  hitboxLifetime: 1
+  hitboxScale: {x: 1, y: 1, z: 1}
+--- !u!4 &1260937206
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260937204}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -18.242392, y: 3.1652627, z: 0.018817425}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1322212500}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1265177944
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1265177945}
+  - component: {fileID: 1265177946}
+  m_Layer: 0
+  m_Name: laserpoint5A
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1265177945
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1265177944}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.25, y: 2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1322212500}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1265177946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1265177944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9811dcbfd82adf1439e1ec2c90f9f553, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endpointA: {fileID: 1265177945}
+  endpointB: {fileID: 1951579929}
+  hitboxPrefab: {fileID: 6841585797509558305, guid: 5885790f3e87a4948a005a1c82c1017b, type: 3}
+  hitboxSpacing: 1
+  spawnInterval: 2
+  hitboxLifetime: 1
+  hitboxScale: {x: 4, y: 1, z: 1}
+--- !u!1 &1322212499
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1322212500}
+  m_Layer: 0
+  m_Name: LASERS
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1322212500
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322212499}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.75760794, y: -0.16526262, z: 4.391595}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1260937206}
+  - {fileID: 541181339}
+  - {fileID: 775523206}
+  - {fileID: 414108905}
+  - {fileID: 873069181}
+  - {fileID: 951525325}
+  - {fileID: 283139058}
+  - {fileID: 1845395285}
+  - {fileID: 1265177945}
+  - {fileID: 1951579929}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1341815870 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 208131973530473930, guid: fb6adde8d938fbd4b875623fdf6aaace, type: 3}
@@ -6728,6 +7117,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7176001586221721578, guid: 7d9133181c3cefd479f92065913e9985, type: 3}
   m_PrefabInstance: {fileID: 1828341801}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1845395284
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1845395285}
+  m_Layer: 0
+  m_Name: laserpoint4B
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1845395285
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1845395284}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 19.8, y: -10, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1322212500}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1881081550 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 208131973530473930, guid: fb6adde8d938fbd4b875623fdf6aaace, type: 3}
@@ -6795,6 +7215,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2033648015092648855, guid: f79886635b22aef4c958e5ce44fe0e68, type: 3}
   m_PrefabInstance: {fileID: 1946615858}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1951579928
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1951579929}
+  m_Layer: 0
+  m_Name: laserpoint5B
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1951579929
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1951579928}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.25, y: -10, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1322212500}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2048680026
 GameObject:
   m_ObjectHideFlags: 0
@@ -7018,3 +7469,4 @@ SceneRoots:
   - {fileID: 1522208362}
   - {fileID: 1567963580}
   - {fileID: 121541203}
+  - {fileID: 1322212500}
