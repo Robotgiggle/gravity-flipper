@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 
 public class DoorController : MonoBehaviour {
     public AudioClip m_unlockSound;
@@ -29,15 +28,9 @@ public class DoorController : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D coll) {
         if (m_open && coll.CompareTag("Player")) {
             coll.gameObject.SetActive(false);
-            StartCoroutine(LevelTransition());
+            m_audioSource.PlayOneShot(m_teleportSound, 0.85f);
+            m_gameManager.LoadNextLevel(m_teleportSound.length);
         }
-    }
-
-    // play sound, change scenes once it's done
-    IEnumerator LevelTransition() {
-        m_audioSource.PlayOneShot(m_teleportSound, 0.85f);
-        yield return new WaitForSeconds(m_teleportSound.length);
-        m_gameManager.NextLevel();
     }
 
     // open the door if all the switches are active; called whenever a switch is flipped

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public struct Level {
     public string scene;
@@ -28,8 +29,8 @@ public class GameManager : MonoBehaviour {
 
     void Awake() {
         // make sure there's only ever one object
-        if (theObject == null) theObject = this.gameObject;
-        else if (theObject != this.gameObject) Destroy(this.gameObject);
+        if (theObject == null) theObject = gameObject;
+        else if (theObject != gameObject) Destroy(gameObject);
         // persist across scenes
         DontDestroyOnLoad(gameObject);
         // load level scene names
@@ -44,6 +45,13 @@ public class GameManager : MonoBehaviour {
         m_holdingBonus = false;
     }
 
+    IEnumerator LoadSceneWithDelay(string name, float delay) {
+        AsyncOperation asyncOp = SceneManager.LoadSceneAsync(name);
+        asyncOp.allowSceneActivation = false;
+        yield return new WaitForSeconds(delay);
+        asyncOp.allowSceneActivation = true;
+    }
+
     public void Reset() {
         for (int i = 0; i < 10; i++) {
             m_levels[i].deaths = 0;
@@ -56,24 +64,24 @@ public class GameManager : MonoBehaviour {
         m_levels[m_currentLevel].deaths++;
     }
 
-    public void NextLevel() {
+    public void LoadNextLevel(float delay) {
         // store finish time
         float finishTime = Time.timeSinceLevelLoad;
         if (finishTime < m_levels[m_currentLevel].time) m_levels[m_currentLevel].time = finishTime;
         // store bonus if collected
         if (m_holdingBonus) m_levels[m_currentLevel].bonus = true;
-        //load next level (TODO: change this to async)
+        //load next level
         m_currentLevel++;
-        SceneManager.LoadScene(m_levels[m_currentLevel].scene);
+        StartCoroutine(LoadSceneWithDelay(m_levels[m_currentLevel].scene, delay));
     }
 
     public void LoadLevel(int index) {
-        SceneManager.LoadSceneAsync(m_levels[index].scene);
+        LoadSceneWithDelay(m_levels[index].scene, 0);
         m_currentLevel = index;
     }
 
     public void LoadMenu() {
-        SceneManager.LoadSceneAsync("Menu");
+        LoadSceneWithDelay("Menu", 0);
         m_currentLevel = -1;
     }
 
