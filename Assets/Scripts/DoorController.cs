@@ -12,13 +12,10 @@ public class DoorController : MonoBehaviour {
     AudioSource m_audioSource;
     SpriteRenderer m_renderer;
     SwitchController[] m_switchCons;
-    GameObject resourceManager;
 
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
-        resourceManager = GameObject.Find("ResourceManager");
-
         m_audioSource = gameObject.GetComponent<AudioSource>();
         m_renderer = gameObject.GetComponent<SpriteRenderer>();
         GameObject[] switches = GameObject.FindGameObjectsWithTag("Switch");
@@ -40,8 +37,8 @@ public class DoorController : MonoBehaviour {
     IEnumerator LevelTransition() {
         m_audioSource.PlayOneShot(m_teleportSound);
         ScoreTracker.timer += Time.timeSinceLevelLoad;
+        ScoreTracker.TrySaveBonus();
         yield return new WaitForSeconds(m_teleportSound.length);
-        resourceManager.GetComponent<ResourceManager>().storeCollectableCount(SceneManager.GetActiveScene().buildIndex - 1);
         SceneManager.LoadScene(m_nextScene);
     }
 

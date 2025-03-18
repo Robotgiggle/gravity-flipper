@@ -10,6 +10,7 @@ TagManager:
   - LeftWall
   - RightWall
   - Hazard
+  - Bonus
   layers:
   - Default
   - TransparentFX

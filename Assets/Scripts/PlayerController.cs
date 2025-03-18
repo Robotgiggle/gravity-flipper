@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
         m_animator = GetComponent<Animator>();
         m_body = GetComponent<Rigidbody2D>();
         m_startPos = transform.position;
-        ResetGravity();
+        Respawn();
     }
 
     // Update is called once per frame
@@ -73,6 +73,10 @@ public class PlayerController : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collider) {
         if (collider.CompareTag("Hazard")) {
             Die();
+        } else if (collider.CompareTag("Bonus")) {
+            GameObject bonus = collider.gameObject;
+            ScoreTracker.holdingBonus = bonus.GetComponent<BonusController>().index;
+            bonus.SetActive(false);
         }
     }
 
@@ -100,12 +104,17 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Total deaths: " + ScoreTracker.deaths);
         m_audioSource.PlayOneShot(m_deathSound, 0.15f);
 
-        // respawn at start position
-        transform.position = m_startPos;
-        ResetGravity();
+        Respawn();
     }
 
-    void ResetGravity() {
+    void Respawn() {
+        // drop bonus if you were carrying it
+        ScoreTracker.holdingBonus = -1;
+
+        // move to spawn pos
+        transform.position = m_startPos;
+
+        // reset gravity
         Physics2D.gravity = new Vector2(0, -m_gravForce);
         m_body.linearVelocity = Vector2.zero;
         m_body.rotation = 0;
