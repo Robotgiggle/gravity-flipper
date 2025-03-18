@@ -106,7 +106,7 @@ public class PlayerController : MonoBehaviour
         m_gameManager.AddDeath();
         m_gameManager.m_holdingBonus = false;
         m_bonus?.SetActive(true);
-        m_audioSource.PlayOneShot(m_deathSound, 0.15f);
+        m_audioSource.PlayOneShot(m_deathSound, 0.25f);
         transform.position = m_startPos;
         ResetGravity();
     }
