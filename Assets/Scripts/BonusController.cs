@@ -3,12 +3,14 @@ using UnityEngine;
 public class BonusController : MonoBehaviour {
     public int index;
     
-    GameObject resourceManager;
+    GameManager m_gameManager;
+    SpriteRenderer m_renderer;
 
     void Start() {
-        if (ScoreTracker.bonuses[index]) {
-            // TODO: render a greyed-out version instead
-            gameObject.SetActive(false);
+        m_gameManager = GameManager.TheInstance;
+        m_renderer = gameObject.GetComponent<SpriteRenderer>();
+        if (m_gameManager.BonusCollected()) {
+            m_renderer.color = new Color(0.65f, 0.65f, 0.65f, 0.8f);
         }
     }
 }

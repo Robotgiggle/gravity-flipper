@@ -10,15 +10,19 @@ public class MenuController : MonoBehaviour
     public TMP_Text m_deathText;
     public TMP_Text m_timeText;
     public string m_firstScene;
+
+    GameManager m_gameManager;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
+        m_gameManager = GameManager.TheInstance;
+
         // only show the info if you got here by beating the game
-        if (ScoreTracker.timer != 0) {
+        if (m_gameManager.TotalTime() != 0) {
             m_startDisplay.SetActive(false);
             m_endDisplay.SetActive(true);
-            m_deathText.text = "Deaths: " + ScoreTracker.deaths;
-            m_timeText.text = "Time: " + TimeSpan.FromSeconds(ScoreTracker.timer).ToString("mm':'ss");
+            m_deathText.text = "Deaths: " + m_gameManager.TotalDeaths();
+            m_timeText.text = "Time: " + TimeSpan.FromSeconds(m_gameManager.TotalTime()).ToString("mm':'ss");
         }
     }
 
@@ -29,7 +33,7 @@ public class MenuController : MonoBehaviour
     // }
 
     public void StartGame() {
-        ScoreTracker.Reset();
+        m_gameManager.Reset();
         SceneManager.LoadScene(m_firstScene);
     }
 }

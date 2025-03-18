@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class DoorController : MonoBehaviour {
@@ -9,13 +8,14 @@ public class DoorController : MonoBehaviour {
     public string m_nextScene;
     public bool m_open = false;
 
+    GameManager m_gameManager;
     AudioSource m_audioSource;
     SpriteRenderer m_renderer;
     SwitchController[] m_switchCons;
-
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
+        m_gameManager = GameManager.TheInstance;
         m_audioSource = gameObject.GetComponent<AudioSource>();
         m_renderer = gameObject.GetComponent<SpriteRenderer>();
         GameObject[] switches = GameObject.FindGameObjectsWithTag("Switch");
@@ -27,7 +27,7 @@ public class DoorController : MonoBehaviour {
 
     // when colliding with the player, move to the next level if the door is open
     void OnTriggerEnter2D(Collider2D coll) {
-        if (m_open) {
+        if (m_open && coll.CompareTag("Player")) {
             coll.gameObject.SetActive(false);
             StartCoroutine(LevelTransition());
         }
@@ -35,11 +35,9 @@ public class DoorController : MonoBehaviour {
 
     // play sound, change scenes once it's done
     IEnumerator LevelTransition() {
-        m_audioSource.PlayOneShot(m_teleportSound);
-        ScoreTracker.timer += Time.timeSinceLevelLoad;
-        ScoreTracker.TrySaveBonus();
+        m_audioSource.PlayOneShot(m_teleportSound, 0.85f);
         yield return new WaitForSeconds(m_teleportSound.length);
-        SceneManager.LoadScene(m_nextScene);
+        m_gameManager.NextLevel();
     }
 
     // open the door if all the switches are active; called whenever a switch is flipped

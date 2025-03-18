@@ -5,21 +5,25 @@ public class PlayerController : MonoBehaviour
 {
     public AudioClip m_gravSound;
     public AudioClip m_deathSound;
+    public GameObject m_bonus;
 
+    GameManager m_gameManager;
     AudioSource m_audioSource;
     Animator m_animator;
     Rigidbody2D m_body;
     Vector3 m_startPos;
     public bool[] m_grounded = new bool[4];
     public float m_gravForce;
+    private bool m_holdingBonus;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
+        m_gameManager = GameManager.TheInstance;
         m_audioSource = GetComponent<AudioSource>();
         m_animator = GetComponent<Animator>();
         m_body = GetComponent<Rigidbody2D>();
         m_startPos = transform.position;
-        Respawn();
+        ResetGravity();
     }
 
     // Update is called once per frame
@@ -73,10 +77,9 @@ public class PlayerController : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collider) {
         if (collider.CompareTag("Hazard")) {
             Die();
-        } else if (collider.CompareTag("Bonus")) {
-            GameObject bonus = collider.gameObject;
-            ScoreTracker.holdingBonus = bonus.GetComponent<BonusController>().index;
-            bonus.SetActive(false);
+        } else if (m_bonus != null && collider.gameObject == m_bonus) {
+            m_gameManager.m_holdingBonus = true;
+            m_bonus.SetActive(false);
         }
     }
 
@@ -100,21 +103,15 @@ public class PlayerController : MonoBehaviour
     }
 
     void Die() {
-        ScoreTracker.deaths++;
-        Debug.Log("Total deaths: " + ScoreTracker.deaths);
+        m_gameManager.AddDeath();
+        m_gameManager.m_holdingBonus = false;
+        m_bonus?.SetActive(true);
         m_audioSource.PlayOneShot(m_deathSound, 0.15f);
-
-        Respawn();
+        transform.position = m_startPos;
+        ResetGravity();
     }
 
-    void Respawn() {
-        // drop bonus if you were carrying it
-        ScoreTracker.holdingBonus = -1;
-
-        // move to spawn pos
-        transform.position = m_startPos;
-
-        // reset gravity
+    void ResetGravity() {
         Physics2D.gravity = new Vector2(0, -m_gravForce);
         m_body.linearVelocity = Vector2.zero;
         m_body.rotation = 0;
