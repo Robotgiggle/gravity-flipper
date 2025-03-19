@@ -1,11 +1,14 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using System;
 
-public struct Level {
+[Serializable]
+public class Level {
     public string scene;
     public int deaths;
-    public float time;
+    public float time = 9999;
+    public bool completed;
     public bool bonus;
 }
 
@@ -33,12 +36,16 @@ public class GameManager : MonoBehaviour {
         else if (theObject != gameObject) Destroy(gameObject);
         // persist across scenes
         DontDestroyOnLoad(gameObject);
-        // load level scene names
-        for (int i = 0; i < 3; i++) {
-            m_levels[i].scene = "Level" + (i+1);
+        // fill level array
+        for (int i = 0; i < 10; i++) {
+            m_levels[i] = new Level();
+            if (i < 3) m_levels[i].scene = "Level" + (i+1);
         }
         // link scene-loaded event to method
         SceneManager.sceneLoaded += OnSceneLoaded;
+        // if starting in the editor, get the right currentLevel
+        int index = SceneManager.GetActiveScene().buildIndex;
+        if (index != 0) m_currentLevel = index - 1;
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
@@ -55,7 +62,8 @@ public class GameManager : MonoBehaviour {
     public void Reset() {
         for (int i = 0; i < 10; i++) {
             m_levels[i].deaths = 0;
-            m_levels[i].time = 0;
+            m_levels[i].time = 9999;
+            m_levels[i].completed = false;
             m_levels[i].bonus = false;
         }
     }
@@ -68,20 +76,21 @@ public class GameManager : MonoBehaviour {
         // store finish time
         float finishTime = Time.timeSinceLevelLoad;
         if (finishTime < m_levels[m_currentLevel].time) m_levels[m_currentLevel].time = finishTime;
-        // store bonus if collected
+        // store bonus and level completion status
         if (m_holdingBonus) m_levels[m_currentLevel].bonus = true;
+        m_levels[m_currentLevel].completed = true;
         //load next level
-        m_currentLevel++;
-        StartCoroutine(LoadSceneWithDelay(m_levels[m_currentLevel].scene, delay));
+        if (m_currentLevel < 2) LoadLevel(m_currentLevel+1, delay);
+        else LoadMenu(delay);
     }
 
-    public void LoadLevel(int index) {
-        LoadSceneWithDelay(m_levels[index].scene, 0);
+    public void LoadLevel(int index, float delay) {
+        StartCoroutine(LoadSceneWithDelay(m_levels[index].scene, delay));
         m_currentLevel = index;
     }
 
-    public void LoadMenu() {
-        LoadSceneWithDelay("Menu", 0);
+    public void LoadMenu(float delay) {
+        StartCoroutine(LoadSceneWithDelay("Menu", delay));
         m_currentLevel = -1;
     }
 
@@ -100,6 +109,7 @@ public class GameManager : MonoBehaviour {
     public float TotalTime() {
         float output = 0;
         foreach (Level level in m_levels) {
+            if (!level.completed) continue;
             output += level.time;
         }
         return output;
