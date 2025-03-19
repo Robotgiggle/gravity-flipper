@@ -15,11 +15,12 @@ public class SwitchController : MonoBehaviour {
         m_doorCon = GameObject.Find("ExitDoor").GetComponent<DoorController>();
     }
 
-    // when colliding with the player, activate *only* if the player is moving in the correct direction
-    // direction is indicated by the arrow on the sprite, and is the local positive X
-    void OnTriggerStay2D(Collider2D coll) {
-        Vector3 playerDir = Vector3.Normalize((Vector3) coll.attachedRigidbody.linearVelocity);
-        if (playerDir == transform.right && !m_active) {
+    // activate only if both gravity and the player are moving in the correct direction
+    // needs to account for flipping while next to a switch (hitbox enters but velocity is 0)
+    void OnTriggerEnter2D(Collider2D coll) {
+        Vector3 gravDir = Vector3.Normalize((Vector3) Physics2D.gravity);
+        Vector3 motionDir = Vector3.Normalize((Vector3) coll.attachedRigidbody.linearVelocity);
+        if (gravDir == transform.right && Vector3.Dot(gravDir, motionDir) != -1 && !m_active) {
             Activate();
         }
     }
