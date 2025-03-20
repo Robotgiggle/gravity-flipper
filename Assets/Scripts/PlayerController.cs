@@ -62,13 +62,18 @@ public class PlayerController : MonoBehaviour
 
     // returns whether you're allowed to flip in the provided direction
     bool CanFlip(string dir) {
+        Vector2 gravDir = Physics2D.gravity.normalized;
         if (dir == "up") {
+            if (gravDir == new Vector2(0, 1)) return false;
             return !m_grounded[0] && (m_grounded[1] || m_grounded[2] || m_grounded[3]);
         } else if (dir == "down") {
+            if (gravDir == new Vector2(0, -1)) return false;
             return !m_grounded[1] && (m_grounded[0] || m_grounded[2] || m_grounded[3]);
         } else if (dir == "left") {
+            if (gravDir == new Vector2(-1, 0)) return false;
             return !m_grounded[2] && (m_grounded[1] || m_grounded[0] || m_grounded[3]);
         } else if (dir == "right") {
+            if (gravDir == new Vector2(1, 0)) return false;
             return !m_grounded[3] && (m_grounded[1] || m_grounded[2] || m_grounded[0]);
         }
         return false;
