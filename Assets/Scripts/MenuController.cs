@@ -3,10 +3,7 @@ using UnityEngine.SceneManagement;
 using System;
 using TMPro;
 
-public class MenuController : MonoBehaviour
-{
-    public GameObject m_startDisplay;
-    public GameObject m_endDisplay;
+public class MenuController : MonoBehaviour {
     public TMP_Text m_deathText;
     public TMP_Text m_timeText;
     public string m_firstScene;
@@ -19,8 +16,6 @@ public class MenuController : MonoBehaviour
 
         // only show the info if you got here by beating the game
         if (m_gameManager.TotalTime() != 0) {
-            m_startDisplay.SetActive(false);
-            m_endDisplay.SetActive(true);
             m_deathText.text = "Deaths: " + m_gameManager.TotalDeaths();
             m_timeText.text = "Time: " + TimeSpan.FromSeconds(m_gameManager.TotalTime()).ToString("mm':'ss");
         }
