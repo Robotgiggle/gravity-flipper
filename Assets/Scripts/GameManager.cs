@@ -84,12 +84,12 @@ public class GameManager : MonoBehaviour {
         else LoadMenu(delay);
     }
 
-    public void LoadLevel(int index, float delay) {
+    public void LoadLevel(int index, float delay = 0) {
         StartCoroutine(LoadSceneWithDelay(m_levels[index].scene, delay));
         m_currentLevel = index;
     }
 
-    public void LoadMenu(float delay) {
+    public void LoadMenu(float delay = 0) {
         StartCoroutine(LoadSceneWithDelay("Menu", delay));
         m_currentLevel = -1;
     }
