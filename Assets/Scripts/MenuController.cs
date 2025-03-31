@@ -5,19 +5,18 @@ using System;
 using TMPro;
 
 public class MenuController : MonoBehaviour {
+    public GameObject[] m_levelButtons = new GameObject[10];
     public TMP_Text m_deathText;
     public TMP_Text m_timeText;
     public string m_firstScene;
 
     GameManager m_gameManager;
-    GameObject[] m_levelButtons = new GameObject[10];
+    Vector3 m_slideTarget;
+    bool m_sliding;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
         m_gameManager = GameManager.TheInstance;
-        for (int i = 0; i < 10; i++) {
-            m_levelButtons[i] = GameObject.Find("LevelButton" + i);
-        }
 
         // update global stats
         m_deathText.text = "Deaths: " + m_gameManager.TotalDeaths();
@@ -42,15 +41,26 @@ public class MenuController : MonoBehaviour {
         }
     }
 
-    // Update is called once per frame
-    // void Update()
-    // {
-        
-    // }
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.RightArrow)) Slide(false);
+        if (Input.GetKeyDown(KeyCode.LeftArrow)) Slide(true);
+
+        if (m_sliding) {
+            if (transform.position == m_slideTarget) m_sliding = false;
+            else transform.position = Vector2.MoveTowards(transform.position, m_slideTarget, 35*Time.deltaTime);
+        }
+    }
 
     public void StartGame() {
         m_gameManager.Reset();
         SceneManager.LoadScene(m_firstScene);
+    }
+
+    public void Slide(bool left) {
+        if (!m_sliding) {
+            m_sliding = true;
+            m_slideTarget = transform.position + new Vector3(left ? 18 : -18, 0, 0);
+        }
     }
 
     public void EnterLevel(int index) {
