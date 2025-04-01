@@ -11,6 +11,7 @@ TagManager:
   - RightWall
   - Hazard
   - Bonus
+  - TextPopUp
   layers:
   - Default
   - TransparentFX
