@@ -15,6 +15,9 @@ public class Level {
 public class GameManager : MonoBehaviour {
     public Level[] m_levels = new Level[10];
     public bool m_holdingBonus;
+    public int m_totalFlips;
+    public float m_totalDistance;
+    
     private int m_currentLevel;
     
     // static instance access
@@ -98,7 +101,7 @@ public class GameManager : MonoBehaviour {
         return m_levels[m_currentLevel].bonus;
     }
 
-    public int TotalDeaths() {
+    public int GetTotalDeaths() {
         int output = 0;
         foreach (Level level in m_levels) {
             output += level.deaths;
@@ -106,7 +109,7 @@ public class GameManager : MonoBehaviour {
         return output;
     }
 
-    public float TotalTime() {
+    public float GetTotalTime() {
         float output = 0;
         foreach (Level level in m_levels) {
             if (!level.completed) continue;

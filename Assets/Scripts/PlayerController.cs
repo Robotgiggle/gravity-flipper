@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     Animator m_animator;
     Rigidbody2D m_body;
     Vector3 m_startPos;
+    Vector3 m_lastPos;
     float m_invulTime;
     [SerializeField] bool[] m_grounded = new bool[4];
     bool m_holdingBonus;
@@ -23,7 +24,7 @@ public class PlayerController : MonoBehaviour
         m_audioSource = GetComponent<AudioSource>();
         m_animator = GetComponent<Animator>();
         m_body = GetComponent<Rigidbody2D>();
-        m_startPos = transform.position;
+        m_startPos = m_lastPos = transform.position;
         ResetGravity();
     }
 
@@ -41,6 +42,9 @@ public class PlayerController : MonoBehaviour
         }
         // handle iframes
         if (m_invulTime > 0) m_invulTime -= Time.deltaTime;
+        // track distance travelled
+        m_gameManager.m_totalDistance += Vector3.Distance(transform.position, m_lastPos);
+        m_lastPos = transform.position;
     }
 
     void OnTriggerEnter2D(Collider2D collider) {
@@ -93,6 +97,7 @@ public class PlayerController : MonoBehaviour
     // flip gravity to point in the provided direction
     void FlipGravity(string dir) {
         m_audioSource.PlayOneShot(m_gravSound, 0.06f);
+        m_gameManager.m_totalFlips++;
         // apply iframes to prevent cheap shots from hazards when rotating
         m_invulTime = 0.1f;
         // flip the gravity and rotate the player

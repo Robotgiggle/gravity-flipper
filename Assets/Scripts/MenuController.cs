@@ -8,6 +8,8 @@ public class MenuController : MonoBehaviour {
     public GameObject[] m_levelButtons = new GameObject[10];
     public TMP_Text m_deathText;
     public TMP_Text m_timeText;
+    public TMP_Text m_flipsText;
+    public TMP_Text m_distanceText;
     public string m_firstScene;
 
     GameManager m_gameManager;
@@ -19,8 +21,10 @@ public class MenuController : MonoBehaviour {
         m_gameManager = GameManager.TheInstance;
 
         // update global stats
-        m_deathText.text = "Deaths: " + m_gameManager.TotalDeaths();
-        m_timeText.text = "Time: " + TimeSpan.FromSeconds(m_gameManager.TotalTime()).ToString("mm':'ss");
+        m_deathText.text = "Total Deaths: " + m_gameManager.GetTotalDeaths();
+        m_timeText.text = "Total Playtime: " + TimeSpan.FromSeconds(m_gameManager.GetTotalTime()).ToString("mm':'ss");
+        m_flipsText.text = "Flips Performed: " + m_gameManager.m_totalFlips;
+        m_distanceText.text = "Distance Fallen: " + (int) m_gameManager.m_totalDistance + "m";
 
         // update level buttons
         for (int i = 0; i < 10; i++) {
@@ -30,13 +34,13 @@ public class MenuController : MonoBehaviour {
             if (level.completed) {
                 texts[1].text = "Deaths: " + level.deaths;
                 texts[2].text = "Time: " +TimeSpan.FromSeconds(level.time).ToString("mm':'ss");
-                Color newColor = level.bonus ? new Color(0.55f, 0.95f, 0.4f) : new Color(0.17f, 0.8f, 0.9f);
+                Color newColor = level.bonus ? new Color(0.55f, 0.95f, 0.4f, 0.7f) : new Color(0.17f, 0.8f, 0.9f, 0.7f);
                 button.GetComponent<Image>().color = newColor;
             } else if (i == 0 || m_gameManager.m_levels[i-1].completed) {
                 if (level.deaths > 0) texts[1].text = "Deaths: " + level.deaths;
-                button.GetComponent<Image>().color = new Color(0.6f, 0.9f, 1f);
+                button.GetComponent<Image>().color = new Color(0.6f, 0.9f, 1f, 0.7f);
             } else {
-                button.GetComponent<Image>().color = new Color(0.8f, 0.8f, 0.8f);
+                button.GetComponent<Image>().color = new Color(0.8f, 0.8f, 0.8f, 0.7f);
             }
         }
     }
