@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour {
     // stats
     public int m_totalFlips;
     public float m_totalDistance;
+    public float m_totalPlaytime;
     // settings
     public float m_volumeScale = 1;
     public bool m_scrollBG = true;
@@ -77,7 +78,7 @@ public class GameManager : MonoBehaviour {
             m_levels[i].completed = false;
             m_levels[i].bonus = false;
         }
-        LoadMenu();
+        LoadMenu(false);
     }
 
     public void ResetLevel() {
@@ -93,12 +94,13 @@ public class GameManager : MonoBehaviour {
         // store finish time
         float finishTime = Time.timeSinceLevelLoad;
         if (finishTime < m_levels[m_currentLevel].time) m_levels[m_currentLevel].time = finishTime;
+        m_totalPlaytime += finishTime;
         // store bonus and level completion status
         if (m_holdingBonus) m_levels[m_currentLevel].bonus = true;
         m_levels[m_currentLevel].completed = true;
         //load next level
         if (m_currentLevel < 2) LoadLevel(m_currentLevel+1, delay);
-        else LoadMenu(delay);
+        else LoadMenu(true, delay);
     }
 
     public void LoadLevel(int index, float delay = 0) {
@@ -106,7 +108,8 @@ public class GameManager : MonoBehaviour {
         m_currentLevel = index;
     }
 
-    public void LoadMenu(float delay = 0) {
+    public void LoadMenu(bool fromLevel, float delay = 0) {
+        if (fromLevel) m_totalPlaytime += Time.timeSinceLevelLoad;
         StartCoroutine(LoadSceneWithDelay("Menu", delay));
         m_currentLevel = -1;
     }
@@ -119,15 +122,6 @@ public class GameManager : MonoBehaviour {
         int output = 0;
         foreach (Level level in m_levels) {
             output += level.deaths;
-        }
-        return output;
-    }
-
-    public float GetTotalTime() {
-        float output = 0;
-        foreach (Level level in m_levels) {
-            if (!level.completed) continue;
-            output += level.time;
         }
         return output;
     }

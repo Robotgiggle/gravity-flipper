@@ -25,7 +25,8 @@ public class PlayerController : MonoBehaviour
         m_animator = GetComponent<Animator>();
         m_body = GetComponent<Rigidbody2D>();
         m_startPos = m_lastPos = transform.position;
-        ResetGravity();
+        m_gameManager.m_resetLevelEvent.AddListener(Respawn);
+        Respawn();
     }
 
     // Update is called once per frame
@@ -126,20 +127,19 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // die, drop the bonus if you have it, and respawn at startPos
+    // die, drop the bonus if you have it, and reset the level
     void Die() {
         m_gameManager.AddDeath();
         m_audioSource.PlayOneShot(m_deathSound, 0.25f * m_gameManager.m_volumeScale);
-        transform.position = m_startPos;
-        ResetGravity();
         m_gameManager.ResetLevel();
     }
 
-    // set gravity to downward, used when spawning the player
-    void ResetGravity() {
+    // set gravity to downward and reset the player's position
+    void Respawn() {
         Physics2D.gravity = Vector2.down * m_gravForce;
         m_body.linearVelocity = Vector2.zero;
         m_body.rotation = 0;
         for (int i = 0; i < 4; i++) m_grounded[i] = false;
+        transform.position = m_startPos;
     }
 }

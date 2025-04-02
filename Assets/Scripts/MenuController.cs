@@ -22,7 +22,7 @@ public class MenuController : MonoBehaviour {
 
         // update global stats
         m_deathText.text = "Total Deaths: " + m_gameManager.GetTotalDeaths();
-        m_timeText.text = "Total Playtime: " + TimeSpan.FromSeconds(m_gameManager.GetTotalTime()).ToString("mm':'ss");
+        m_timeText.text = "Total Playtime: " + TimeSpan.FromSeconds(m_gameManager.m_totalPlaytime).ToString("mm':'ss");
         m_flipsText.text = "Flips Performed: " + m_gameManager.m_totalFlips;
         m_distanceText.text = "Distance Fallen: " + (int) m_gameManager.m_totalDistance + "m";
 
@@ -42,6 +42,11 @@ public class MenuController : MonoBehaviour {
             } else {
                 button.GetComponent<Image>().color = new Color(0.8f, 0.8f, 0.8f, 0.7f);
             }
+        }
+
+        // if you're exiting from a level, start on the level-select screen
+        if (m_gameManager.m_totalPlaytime > 0) {
+            transform.position = new Vector3(-18, 0, 0);
         }
     }
 
