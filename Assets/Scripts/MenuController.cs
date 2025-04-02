@@ -51,8 +51,8 @@ public class MenuController : MonoBehaviour {
     }
 
     void Update() {
-        if (Input.GetKeyDown(KeyCode.RightArrow)) Slide(false);
-        if (Input.GetKeyDown(KeyCode.LeftArrow)) Slide(true);
+        if (Input.GetKeyDown(KeyCode.D) && Input.GetKey(KeyCode.LeftShift))
+            m_gameManager.m_debugMode = !m_gameManager.m_debugMode;
 
         if (m_sliding) {
             if (transform.position == m_slideTarget) m_sliding = false;
@@ -68,7 +68,7 @@ public class MenuController : MonoBehaviour {
     }
 
     public void EnterLevel(int index) {
-        if (index == 0 || m_gameManager.m_levels[index-1].completed) {
+        if (index == 0 || m_gameManager.m_levels[index-1].completed || m_gameManager.m_debugMode) {
             // TODO: play sound
             m_gameManager.LoadLevel(index);
         } else {

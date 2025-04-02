@@ -46,6 +46,13 @@ public class PlayerController : MonoBehaviour
         // track distance travelled
         m_gameManager.m_totalDistance += Vector3.Distance(transform.position, m_lastPos);
         m_lastPos = transform.position;
+        // debug mode
+        if (Input.GetKeyDown(KeyCode.D) && Input.GetKey(KeyCode.LeftShift))
+            m_gameManager.m_debugMode = !m_gameManager.m_debugMode;
+        if (Input.GetKeyDown(KeyCode.T) && m_gameManager.m_debugMode){
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            transform.position = new Vector2(mousePos.x, mousePos.y);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collider) {

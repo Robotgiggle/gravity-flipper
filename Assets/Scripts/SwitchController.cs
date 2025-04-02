@@ -43,8 +43,8 @@ public class SwitchController : MonoBehaviour {
         }
     }
 
-    // DEBUG PURPOSES ONLY
+    // activate on click in debug mode
     void OnMouseDown() {
-        Activate();
+        if (m_gameManager.m_debugMode) Activate();
     }
 }

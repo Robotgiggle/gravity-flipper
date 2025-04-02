@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour {
     public bool m_scrollBG = true;
     public bool m_screenShake = true;
     public bool m_hardMode = false;
+    public bool m_debugMode = false;
     
     private int m_currentLevel;
     
