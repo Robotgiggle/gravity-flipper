@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using System;
@@ -14,9 +15,16 @@ public class Level {
 
 public class GameManager : MonoBehaviour {
     public Level[] m_levels = new Level[10];
+    public UnityEvent m_resetLevelEvent;
     public bool m_holdingBonus;
+    // stats
     public int m_totalFlips;
     public float m_totalDistance;
+    // settings
+    public float m_volumeScale = 1;
+    public bool m_scrollBG = true;
+    public bool m_screenShake = true;
+    public bool m_hardMode = false;
     
     private int m_currentLevel;
     
@@ -39,16 +47,16 @@ public class GameManager : MonoBehaviour {
         else if (theObject != gameObject) Destroy(gameObject);
         // persist across scenes
         DontDestroyOnLoad(gameObject);
-        // fill level array
+        // set up data
+        m_resetLevelEvent = new UnityEvent();
         for (int i = 0; i < 10; i++) {
             m_levels[i] = new Level();
             if (i < 3) m_levels[i].scene = "Level" + (i+1);
         }
-        // link scene-loaded event to method
-        SceneManager.sceneLoaded += OnSceneLoaded;
-        // if starting in the editor, get the right currentLevel
         int index = SceneManager.GetActiveScene().buildIndex;
         if (index != 0) m_currentLevel = index - 1;
+        // link scene-loaded event to method
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
@@ -62,13 +70,19 @@ public class GameManager : MonoBehaviour {
         asyncOp.allowSceneActivation = true;
     }
 
-    public void Reset() {
+    public void ResetGame() {
         for (int i = 0; i < 10; i++) {
             m_levels[i].deaths = 0;
             m_levels[i].time = 9999;
             m_levels[i].completed = false;
             m_levels[i].bonus = false;
         }
+        LoadMenu();
+    }
+
+    public void ResetLevel() {
+        m_holdingBonus = false;
+        m_resetLevelEvent.Invoke();
     }
 
     public void AddDeath() {
@@ -118,7 +132,7 @@ public class GameManager : MonoBehaviour {
         return output;
     }
 
-    public int TotalBonuses() {
+    public int GetTotalBonuses() {
         int output = 0;
         foreach (Level level in m_levels) {
             if (level.bonus) output++;

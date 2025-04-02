@@ -8,17 +8,25 @@ public class LaserController : MonoBehaviour
     public float m_offset;
     public float m_telegraph;
     
+    GameManager m_gameManager;
     GameObject m_laserObj;
     GameObject m_laserTeleObj;
-    
+    Coroutine m_firingCoroutine;
     
     void Start() {
+        m_gameManager = GameManager.TheInstance;
         m_laserObj = transform.GetChild(0).gameObject;
         m_laserTeleObj = transform.GetChild(1).gameObject;
         m_laserObj.SetActive(false);
         m_laserTeleObj.SetActive(false);
+        m_gameManager.m_resetLevelEvent.AddListener(RestartFiring);
         
-        StartCoroutine(FireLaser());
+        m_firingCoroutine = StartCoroutine(FireLaser());
+    }
+
+    void RestartFiring() {
+        StopCoroutine(m_firingCoroutine);
+        m_firingCoroutine = StartCoroutine(FireLaser());
     }
 
     IEnumerator FireLaser() {

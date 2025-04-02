@@ -34,7 +34,7 @@ public class MenuController : MonoBehaviour {
             if (level.completed) {
                 texts[1].text = "Deaths: " + level.deaths;
                 texts[2].text = "Time: " +TimeSpan.FromSeconds(level.time).ToString("mm':'ss");
-                Color newColor = level.bonus ? new Color(0.55f, 0.95f, 0.4f, 0.7f) : new Color(0.17f, 0.8f, 0.9f, 0.7f);
+                Color newColor = level.bonus ? new Color(0.46f, 0.9f, 0.3f, 0.7f) : new Color(0.17f, 0.7f, 0.9f, 0.7f);
                 button.GetComponent<Image>().color = newColor;
             } else if (i == 0 || m_gameManager.m_levels[i-1].completed) {
                 if (level.deaths > 0) texts[1].text = "Deaths: " + level.deaths;
@@ -51,13 +51,8 @@ public class MenuController : MonoBehaviour {
 
         if (m_sliding) {
             if (transform.position == m_slideTarget) m_sliding = false;
-            else transform.position = Vector2.MoveTowards(transform.position, m_slideTarget, 35*Time.deltaTime);
+            else transform.position = Vector2.MoveTowards(transform.position, m_slideTarget, 40*Time.deltaTime);
         }
-    }
-
-    public void StartGame() {
-        m_gameManager.Reset();
-        SceneManager.LoadScene(m_firstScene);
     }
 
     public void Slide(bool left) {
@@ -75,5 +70,21 @@ public class MenuController : MonoBehaviour {
             // TODO: play different sound
             Debug.Log("Level is locked!");
         }
+    }
+
+    public void UpdateVolume(System.Single newVolume) {
+        m_gameManager.m_volumeScale = newVolume;
+    }
+
+    public void ToggleScroll(bool newState) {
+        m_gameManager.m_scrollBG = newState;
+    }
+
+    public void ToggleShake(bool newState) {
+        m_gameManager.m_screenShake = newState;
+    }
+
+    public void ToggleHardMode(bool newState) {
+        m_gameManager.m_hardMode = newState;
     }
 }

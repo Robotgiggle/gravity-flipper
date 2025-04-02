@@ -96,7 +96,7 @@ public class PlayerController : MonoBehaviour
 
     // flip gravity to point in the provided direction
     void FlipGravity(string dir) {
-        m_audioSource.PlayOneShot(m_gravSound, 0.06f);
+        m_audioSource.PlayOneShot(m_gravSound, 0.06f * m_gameManager.m_volumeScale);
         m_gameManager.m_totalFlips++;
         // apply iframes to prevent cheap shots from hazards when rotating
         m_invulTime = 0.1f;
@@ -129,11 +129,10 @@ public class PlayerController : MonoBehaviour
     // die, drop the bonus if you have it, and respawn at startPos
     void Die() {
         m_gameManager.AddDeath();
-        m_gameManager.m_holdingBonus = false;
-        m_bonus?.SetActive(true);
-        m_audioSource.PlayOneShot(m_deathSound, 0.25f);
+        m_audioSource.PlayOneShot(m_deathSound, 0.25f * m_gameManager.m_volumeScale);
         transform.position = m_startPos;
         ResetGravity();
+        m_gameManager.ResetLevel();
     }
 
     // set gravity to downward, used when spawning the player
