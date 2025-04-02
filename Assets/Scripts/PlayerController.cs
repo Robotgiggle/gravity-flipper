@@ -127,7 +127,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // die, drop the bonus if you have it, and reset the level
+    // die and restart the level
     void Die() {
         m_gameManager.AddDeath();
         m_audioSource.PlayOneShot(m_deathSound, 0.25f * m_gameManager.m_volumeScale);

@@ -28,7 +28,7 @@ public class UIController : MonoBehaviour {
 
     public void ResetLevel() {
         Unpause();
-        // TODO: should this count as a death?
+        m_gameManager.AddDeath();
         m_gameManager.ResetLevel();
     }
 

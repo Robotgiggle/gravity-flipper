@@ -26,6 +26,8 @@ public class LaserController : MonoBehaviour
 
     void RestartFiring() {
         StopCoroutine(m_firingCoroutine);
+        m_laserObj.SetActive(false);
+        m_laserTeleObj.SetActive(false);
         m_firingCoroutine = StartCoroutine(FireLaser());
     }
 
