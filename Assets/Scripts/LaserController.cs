@@ -24,6 +24,7 @@ public class LaserController : MonoBehaviour
         m_firingCoroutine = StartCoroutine(FireLaser());
     }
 
+    // this is used to reset the timing when the level resets
     void RestartFiring() {
         StopCoroutine(m_firingCoroutine);
         m_laserObj.SetActive(false);
@@ -32,20 +33,20 @@ public class LaserController : MonoBehaviour
     }
 
     IEnumerator FireLaser() {
-        // Offset initial firing to allow for interesting timing
+        // offset initial firing to allow for interesting timing
         yield return new WaitForSeconds(m_offset);
 
         while (true) {
-            // Activate the telegraph for a certain amount of time
+            // activate the telegraph for a certain amount of time
             m_laserTeleObj.SetActive(true);
             yield return new WaitForSeconds(m_telegraph);
             
-            // Activate laser for specified interval
+            // activate laser for specified interval
             m_laserObj.SetActive(true);
             m_laserTeleObj.SetActive(false);
             yield return new WaitForSeconds(m_uptime);
 
-            // Deactivate laser for specified interval
+            // deactivate laser for specified interval
             m_laserObj.SetActive(false);
             yield return new WaitForSeconds(m_downtime - m_telegraph);
         }

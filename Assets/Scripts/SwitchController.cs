@@ -28,6 +28,7 @@ public class SwitchController : MonoBehaviour {
         }
     }
 
+    // activate the switch, then tell the door to check all other switches
     void Activate() {
         m_audioSource.Play();
         m_renderer.sprite = m_sprites[1];
@@ -35,6 +36,7 @@ public class SwitchController : MonoBehaviour {
         m_doorCon.CheckSwitches();
     }
 
+    // if hard mode is enabled, deactive the switch
     void TryReset() {
         if (m_gameManager.m_hardMode) {
             m_renderer.sprite = m_sprites[0];

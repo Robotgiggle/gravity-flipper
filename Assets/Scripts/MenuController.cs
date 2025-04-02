@@ -32,14 +32,17 @@ public class MenuController : MonoBehaviour {
             GameObject button = m_levelButtons[i];
             TMP_Text[] texts = button.GetComponentsInChildren<TMP_Text>();
             if (level.completed) {
+                // completed levels show deaths+time and are dark blue or green
                 texts[1].text = "Deaths: " + level.deaths;
                 texts[2].text = "Time: " +TimeSpan.FromSeconds(level.time).ToString("mm':'ss");
                 Color newColor = level.bonus ? new Color(0.46f, 0.9f, 0.3f, 0.7f) : new Color(0.17f, 0.7f, 0.9f, 0.7f);
                 button.GetComponent<Image>().color = newColor;
             } else if (i == 0 || m_gameManager.m_levels[i-1].completed) {
+                // the next available level shows only deaths and is light blue
                 if (level.deaths > 0) texts[1].text = "Deaths: " + level.deaths;
                 button.GetComponent<Image>().color = new Color(0.6f, 0.9f, 1f, 0.7f);
             } else {
+                // locked levels show nothing and are gray
                 button.GetComponent<Image>().color = new Color(0.8f, 0.8f, 0.8f, 0.7f);
             }
         }
@@ -60,6 +63,7 @@ public class MenuController : MonoBehaviour {
         }
     }
 
+    // start up the slide animation, in the specified direction
     public void Slide(bool left) {
         if (!m_sliding) {
             m_sliding = true;
@@ -67,6 +71,7 @@ public class MenuController : MonoBehaviour {
         }
     }
 
+    // enter a level if it's unlocked
     public void EnterLevel(int index) {
         if (index == 0 || m_gameManager.m_levels[index-1].completed || m_gameManager.m_debugMode) {
             // TODO: play sound

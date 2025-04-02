@@ -12,6 +12,7 @@ public class BonusController : MonoBehaviour {
         if (m_gameManager.BonusCollected()) {
             m_renderer.color = new Color(0.65f, 0.65f, 0.65f, 0.8f);
         }
+        // respawn the bonus when the level resets
         m_gameManager.m_resetLevelEvent.AddListener(() => gameObject.SetActive(true));
     }
 }

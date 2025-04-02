@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     Vector3 m_startPos;
     Vector3 m_lastPos;
     float m_invulTime;
-    [SerializeField] bool[] m_grounded = new bool[4];
+    bool[] m_grounded = new bool[4];
     bool m_holdingBonus;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
