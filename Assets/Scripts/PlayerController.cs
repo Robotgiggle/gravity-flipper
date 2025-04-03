@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D m_body;
     Vector3 m_startPos;
     Vector3 m_lastPos;
+    Vector2 m_lastVel;
     float m_invulTime;
     bool[] m_grounded = new bool[4];
     bool m_holdingBonus;
@@ -46,6 +47,7 @@ public class PlayerController : MonoBehaviour
         // track distance travelled
         m_gameManager.m_totalDistance += Vector3.Distance(transform.position, m_lastPos);
         m_lastPos = transform.position;
+        m_lastVel = m_body.linearVelocity;
         // debug mode
         if (Input.GetKeyDown(KeyCode.D) && Input.GetKey(KeyCode.LeftShift))
             m_gameManager.m_debugMode = !m_gameManager.m_debugMode;
@@ -68,11 +70,12 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Hazard")) {
             if (m_invulTime <= 0) Die();
         } else {
-            ContactPoint2D point = collision.GetContact(0);
-            if (point.normal == new Vector2(0, -1)) m_grounded[0] = true;
-            else if (point.normal == new Vector2(0, 1)) m_grounded[1] = true;
-            else if (point.normal == new Vector2(1, 0)) m_grounded[2] = true;
-            else if (point.normal == new Vector2(-1, 0)) m_grounded[3] = true;
+            CheckCornerPop(collision);
+            ContactPoint2D hitPoint = collision.GetContact(0);
+            if (hitPoint.normal == new Vector2(0, -1)) m_grounded[0] = true;
+            else if (hitPoint.normal == new Vector2(0, 1)) m_grounded[1] = true;
+            else if (hitPoint.normal == new Vector2(1, 0)) m_grounded[2] = true;
+            else if (hitPoint.normal == new Vector2(-1, 0)) m_grounded[3] = true;
         }
     }
 
@@ -131,6 +134,47 @@ public class PlayerController : MonoBehaviour
             m_body.linearVelocityX = 0;
             if (m_grounded[2]) m_body.AddForceX(-10, ForceMode2D.Impulse);
             if (m_grounded[3]) m_body.AddForceX(10, ForceMode2D.Impulse);
+        }
+    }
+
+    // check if the player is right on a corner, and pop them around it if so
+    void CheckCornerPop(Collision2D coll) {
+        ContactPoint2D[] allHitPoints = new ContactPoint2D[10];
+        coll.GetContacts(allHitPoints);
+        Vector2 gravDir = Physics2D.gravity.normalized;
+
+        string groundTag;
+        if (gravDir == Vector2.up) groundTag = "Ceiling";
+        else if (gravDir == Vector2.down) groundTag = "Floor";
+        else if (gravDir == Vector2.left) groundTag = "LeftWall";
+        else if (gravDir == Vector2.right) groundTag = "RightWall";
+        else groundTag = "INVALID";
+
+        // find the 2 collision points with the ground
+        Vector2 pointA = Vector2.zero;
+        Vector2 pointB = Vector2.zero;
+        foreach (ContactPoint2D hitPoint in allHitPoints) {
+            if (hitPoint.point != Vector2.zero && hitPoint.collider.CompareTag(groundTag)) {
+                if (pointA == Vector2.zero) pointA = hitPoint.point;
+                else pointB = hitPoint.point;
+            }
+        }
+
+        // if one or both points cannot be found, player is in midair
+        if (pointA == Vector2.zero || pointB == Vector2.zero) return;
+
+        // if distance between the points is less than 0.35, player is on a corner
+        if (Vector2.Distance(pointA, pointB) < 0.35f) {
+            // subtract closer point from further point to get pop offset
+            Vector3 offset;
+            if (Vector3.Distance((Vector3)pointA, transform.position) < Vector3.Distance((Vector3)pointB, transform.position)) {
+                offset = pointA - pointB;
+            } else {
+                offset = pointB - pointA;
+            }
+            // pop the player around the corner, then reset their velocity
+            transform.position = transform.position + (offset * 1.05f);
+            m_body.linearVelocity = m_lastVel;
         }
     }
 
