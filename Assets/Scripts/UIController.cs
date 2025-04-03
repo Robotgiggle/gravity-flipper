@@ -10,7 +10,7 @@ public class UIController : MonoBehaviour {
     }
 
     void Update() {
-        if (Input.GetKeyDown(KeyCode.Escape)) {
+        if (Input.GetKeyDown(KeyCode.Tab)) {
             if (m_pauseMenu.activeSelf) Unpause();
             else Pause();
         }
