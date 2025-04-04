@@ -12,6 +12,7 @@ TagManager:
   - Hazard
   - Bonus
   - LevelButton
+  - TextPopUp
   layers:
   - Default
   - TransparentFX
