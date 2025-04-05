@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip m_gravSound;
     public AudioClip m_deathSound;
     public GameObject m_bonus;
+    public GameObject[] m_indicators = new GameObject[4];
     public float m_gravForce;
 
     GameManager m_gameManager;
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour
     Vector3 m_lastPos;
     Vector2 m_lastVel;
     float m_invulTime;
+    string[] m_directions = {"up", "right", "down", "left"};
     bool[] m_grounded = new bool[4];
     bool m_holdingBonus;
 
@@ -41,6 +43,14 @@ public class PlayerController : MonoBehaviour
             FlipGravity("left");
         } else if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) && CanFlip("right")) {
             FlipGravity("right");
+        }
+        // display flip indicators
+        foreach (string dir in m_directions) {
+            if (CanFlip(dir)) {
+                GetIndicator(dir).SetActive(true);
+            } else {
+                GetIndicator(dir).SetActive(false);
+            }
         }
         // handle iframes
         if (m_invulTime > 0) m_invulTime -= Time.deltaTime;
@@ -86,6 +96,13 @@ public class PlayerController : MonoBehaviour
         else if (collision.gameObject.CompareTag("RightWall")) m_grounded[3] = false;
     }
 
+    GameObject GetIndicator(string dir) {
+        int index = -1;
+        for (int i = 0; i < 4; i++) if (m_directions[i] == dir) index = i;
+        int shift = (int) (m_body.rotation / 90);
+        return m_indicators[(index + shift) % 4];
+    }
+
     // returns whether you're allowed to flip in the provided direction
     public bool CanFlip(string dir) {
         Vector2 gravDir = Physics2D.gravity.normalized;
@@ -120,7 +137,7 @@ public class PlayerController : MonoBehaviour
             m_body.rotation = 0;
         } else if (dir == "left") {
             Physics2D.gravity = Vector2.left * m_gravForce;
-            m_body.rotation = -90;
+            m_body.rotation = 270;
         } else if (dir == "right") {
             Physics2D.gravity = Vector2.right * m_gravForce;
             m_body.rotation = 90;
