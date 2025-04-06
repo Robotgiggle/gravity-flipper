@@ -7839,6 +7839,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33393b342bad46d48b9ea21538d8bcbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_volumeSlider: {fileID: 1764983869}
+  m_scrollToggle: {fileID: 934386838}
+  m_indicatorsToggle: {fileID: 2087012705}
+  m_hardModeToggle: {fileID: 39342011}
   m_levelButtons:
   - {fileID: 992605273}
   - {fileID: 2084510644}
@@ -7854,7 +7858,6 @@ MonoBehaviour:
   m_timeText: {fileID: 1051349347}
   m_flipsText: {fileID: 1317478816}
   m_distanceText: {fileID: 148197532}
-  m_firstScene: Level1
 --- !u!4 &1359544817
 Transform:
   m_ObjectHideFlags: 0

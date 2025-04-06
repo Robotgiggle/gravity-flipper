@@ -8,6 +8,7 @@ public class PopupTriggerController : MonoBehaviour {
     }
 
     void OnTriggerExit2D() {
+        if (m_popup == null) return;
         m_popup.SetActive(false);
     }
 }

@@ -5,12 +5,18 @@ using System;
 using TMPro;
 
 public class MenuController : MonoBehaviour {
+    [Header("Settings Page")]
+    public Slider m_volumeSlider;
+    public Toggle m_scrollToggle;
+    public Toggle m_indicatorsToggle;
+    public Toggle m_hardModeToggle;
+    [Header("Levels Page")]
     public GameObject[] m_levelButtons = new GameObject[10];
+    [Header("Stats Page")]
     public TMP_Text m_deathText;
     public TMP_Text m_timeText;
     public TMP_Text m_flipsText;
     public TMP_Text m_distanceText;
-    public string m_firstScene;
 
     GameManager m_gameManager;
     Vector3 m_slideTarget;
@@ -19,6 +25,12 @@ public class MenuController : MonoBehaviour {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
         m_gameManager = GameManager.TheInstance;
+
+        // sync settings controls to actual values
+        m_volumeSlider.value = m_gameManager.m_volumeScale;
+        m_scrollToggle.isOn = m_gameManager.m_scrollBG;
+        m_indicatorsToggle.isOn = m_gameManager.m_flipIndicators;
+        m_hardModeToggle.isOn = m_gameManager.m_hardMode;
 
         // update global stats
         m_deathText.text = "Total Deaths: " + m_gameManager.GetTotalDeaths();
