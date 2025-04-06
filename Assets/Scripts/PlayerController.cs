@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
         m_body = GetComponent<Rigidbody2D>();
         m_startPos = m_lastPos = transform.position;
         m_gameManager.m_resetLevelEvent.AddListener(Respawn);
+        if (m_gameManager.m_hardMode) m_gravForce = 12;
         Respawn();
     }
 
