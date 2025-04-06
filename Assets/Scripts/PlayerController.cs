@@ -19,7 +19,6 @@ public class PlayerController : MonoBehaviour
     float m_invulTime;
     string[] m_directions = {"up", "right", "down", "left"};
     bool[] m_grounded = new bool[4];
-    bool m_holdingBonus;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
@@ -73,6 +72,7 @@ public class PlayerController : MonoBehaviour
         } else if (m_bonus != null && collider.gameObject == m_bonus) {
             m_gameManager.m_holdingBonus = true;
             m_bonus.SetActive(false);
+            m_animator.SetBool("Bonus", true);
         }
     }
 
@@ -202,12 +202,13 @@ public class PlayerController : MonoBehaviour
         m_gameManager.ResetLevel();
     }
 
-    // set gravity to downward and reset the player's position
+    // set gravity to downward, reset the player's position, visually drop the bonus
     void Respawn() {
         Physics2D.gravity = Vector2.down * m_gravForce;
         m_body.linearVelocity = Vector2.zero;
         m_body.rotation = 0;
         for (int i = 0; i < 4; i++) m_grounded[i] = false;
+        m_animator.SetBool("Bonus", false);
         transform.position = m_startPos;
     }
 

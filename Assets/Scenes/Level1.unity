@@ -3801,8 +3801,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0, y: -436.00006}
-  m_SizeDelta: {x: 600, y: 150}
+  m_AnchoredPosition: {x: -0, y: -437}
+  m_SizeDelta: {x: 600, y: 170}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &588005801
 MonoBehaviour:
@@ -4322,6 +4322,111 @@ Transform:
   - {fileID: 1792056585}
   m_Father: {fileID: 1532035470}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1027078745
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 139412557132286454, guid: 8eb8a0704022cf94b822b7897c8c552b, type: 3}
+      propertyPath: m_Name
+      value: UICanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 1157475346184486644, guid: 8eb8a0704022cf94b822b7897c8c552b, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5604128937638413586, guid: 8eb8a0704022cf94b822b7897c8c552b, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5604128937638413586, guid: 8eb8a0704022cf94b822b7897c8c552b, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5604128937638413586, guid: 8eb8a0704022cf94b822b7897c8c552b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5604128937638413586, guid: 8eb8a0704022cf94b822b7897c8c552b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5604128937638413586, guid: 8eb8a0704022cf94b822b7897c8c552b, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5604128937638413586, guid: 8eb8a0704022cf94b822b7897c8c552b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5604128937638413586, guid: 8eb8a0704022cf94b822b7897c8c552b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 2560
+      objectReference: {fileID: 0}
+    - target: {fileID: 5604128937638413586, guid: 8eb8a0704022cf94b822b7897c8c552b, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1440
+      objectReference: {fileID: 0}
+    - target: {fileID: 5604128937638413586, guid: 8eb8a0704022cf94b822b7897c8c552b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5604128937638413586, guid: 8eb8a0704022cf94b822b7897c8c552b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5604128937638413586, guid: 8eb8a0704022cf94b822b7897c8c552b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5604128937638413586, guid: 8eb8a0704022cf94b822b7897c8c552b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5604128937638413586, guid: 8eb8a0704022cf94b822b7897c8c552b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5604128937638413586, guid: 8eb8a0704022cf94b822b7897c8c552b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5604128937638413586, guid: 8eb8a0704022cf94b822b7897c8c552b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5604128937638413586, guid: 8eb8a0704022cf94b822b7897c8c552b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5604128937638413586, guid: 8eb8a0704022cf94b822b7897c8c552b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5604128937638413586, guid: 8eb8a0704022cf94b822b7897c8c552b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5604128937638413586, guid: 8eb8a0704022cf94b822b7897c8c552b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5604128937638413586, guid: 8eb8a0704022cf94b822b7897c8c552b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5778111823427034908, guid: 8eb8a0704022cf94b822b7897c8c552b, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1920456998}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8eb8a0704022cf94b822b7897c8c552b, type: 3}
 --- !u!1 &1082294665
 GameObject:
   m_ObjectHideFlags: 0
@@ -11932,8 +12037,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Collect bonuses for an extra challenge! (You'll be rewarded for getting
-    all of them)
+  m_text: Collect bonuses for an extra challenge! You'll need to carry the bonus
+    to the exit gate to save it.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -12577,7 +12682,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 9
   m_TargetDisplay: 0
 --- !u!1001 &2102912883
 PrefabInstance:
@@ -12708,6 +12813,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1661630871}
+  - {fileID: 1027078745}
   - {fileID: 2040166135}
   - {fileID: 1231654220}
   - {fileID: 1658316025}
