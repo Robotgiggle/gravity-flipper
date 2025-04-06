@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
         }
         // display flip indicators
         foreach (string dir in m_directions) {
-            if (CanFlip(dir)) {
+            if (CanFlip(dir) && m_gameManager.m_flipIndicators) {
                 GetIndicator(dir).SetActive(true);
             } else {
                 GetIndicator(dir).SetActive(false);

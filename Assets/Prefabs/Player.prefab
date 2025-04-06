@@ -116,7 +116,7 @@ MonoBehaviour:
   - {fileID: 6744382447720143760}
   - {fileID: 5896613350734924310}
   - {fileID: 5393756266850151542}
-  m_gravForce: 6.5
+  m_gravForce: 7
 --- !u!50 &3848361090295999359
 Rigidbody2D:
   serializedVersion: 5

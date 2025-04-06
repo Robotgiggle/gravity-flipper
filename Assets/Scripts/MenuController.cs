@@ -90,8 +90,8 @@ public class MenuController : MonoBehaviour {
         m_gameManager.m_scrollBG = newState;
     }
 
-    public void ToggleShake(bool newState) {
-        m_gameManager.m_screenShake = newState;
+    public void ToggleIndicators(bool newState) {
+        m_gameManager.m_flipIndicators = newState;
     }
 
     public void ToggleHardMode(bool newState) {
