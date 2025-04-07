@@ -18,7 +18,6 @@ public class PlayerController : MonoBehaviour
     Vector3 m_startPos;
     Vector3 m_lastPos;
     Vector2 m_lastVel;
-    float m_invulTime;
     string[] m_directions = {"up", "right", "down", "left"};
     bool[] m_grounded = new bool[4];
 
@@ -54,8 +53,6 @@ public class PlayerController : MonoBehaviour
                 GetIndicator(dir).SetActive(false);
             }
         }
-        // handle iframes
-        if (m_invulTime > 0) m_invulTime -= Time.deltaTime;
         // track distance travelled
         m_gameManager.m_totalDistance += Vector3.Distance(transform.position, m_lastPos);
         m_lastPos = transform.position;
@@ -70,7 +67,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D collider) {
-        if (collider.CompareTag("Hazard") && m_invulTime <= 0) {
+        if (collider.CompareTag("Hazard")) {
             Die();
         } else if (m_bonus != null && collider.gameObject == m_bonus) {
             m_bonus.SetActive(false);
@@ -82,7 +79,7 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.CompareTag("Hazard")) {
-            if (m_invulTime <= 0) Die();
+            Die();
         } else {
             CheckCornerPop(collision);
             ContactPoint2D hitPoint = collision.GetContact(0);
@@ -130,8 +127,6 @@ public class PlayerController : MonoBehaviour
     void FlipGravity(string dir) {
         m_audioSource.PlayOneShot(m_gravSound, 0.06f * m_gameManager.m_volumeScale);
         m_gameManager.m_totalFlips++;
-        // apply iframes to prevent cheap shots from hazards when rotating
-        m_invulTime = 0.1f;
         // flip the gravity and rotate the player
         if (dir == "up") {
             Physics2D.gravity = Vector2.up * m_gravForce;
@@ -146,7 +141,7 @@ public class PlayerController : MonoBehaviour
             Physics2D.gravity = Vector2.right * m_gravForce;
             m_body.rotation = 90;
         }
-        // if the player rotates 90 degrees, kill existing momentum
+        // when turning 90 degress, cancel existing momentum
         if (dir == "left" || dir == "right") m_body.linearVelocityY = 0;
         else m_body.linearVelocityX = 0;
     }
