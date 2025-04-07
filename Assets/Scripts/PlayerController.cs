@@ -7,11 +7,13 @@ public class PlayerController : MonoBehaviour
     public AudioClip m_deathSound;
     public GameObject m_bonus;
     public GameObject[] m_indicators = new GameObject[4];
+    public Sprite m_normalSprite;
+    public Sprite m_bonusSprite;
     public float m_gravForce;
 
     GameManager m_gameManager;
     AudioSource m_audioSource;
-    Animator m_animator;
+    SpriteRenderer m_renderer;
     Rigidbody2D m_body;
     Vector3 m_startPos;
     Vector3 m_lastPos;
@@ -24,7 +26,7 @@ public class PlayerController : MonoBehaviour
     void Start() {
         m_gameManager = GameManager.TheInstance;
         m_audioSource = GetComponent<AudioSource>();
-        m_animator = GetComponent<Animator>();
+        m_renderer = GetComponent<SpriteRenderer>();
         m_body = GetComponent<Rigidbody2D>();
         m_startPos = m_lastPos = transform.position;
         m_gameManager.m_resetLevelEvent.AddListener(Respawn);
@@ -73,7 +75,7 @@ public class PlayerController : MonoBehaviour
         } else if (m_bonus != null && collider.gameObject == m_bonus) {
             m_gameManager.m_holdingBonus = true;
             m_bonus.SetActive(false);
-            m_animator.SetBool("Bonus", true);
+            m_renderer.sprite = m_bonusSprite;
         }
     }
 
@@ -143,16 +145,9 @@ public class PlayerController : MonoBehaviour
             Physics2D.gravity = Vector2.right * m_gravForce;
             m_body.rotation = 90;
         }
-        // when the player rotates parallel to the wall, shove them into it to maintain contact
-        if (dir == "left" || dir == "right") {
-            m_body.linearVelocityY = 0;
-            if (m_grounded[0]) m_body.AddForceY(10, ForceMode2D.Impulse);
-            if (m_grounded[1]) m_body.AddForceY(-10, ForceMode2D.Impulse);
-        } else {
-            m_body.linearVelocityX = 0;
-            if (m_grounded[2]) m_body.AddForceX(-10, ForceMode2D.Impulse);
-            if (m_grounded[3]) m_body.AddForceX(10, ForceMode2D.Impulse);
-        }
+        // if the player rotates 90 degrees, kill existing momentum
+        if (dir == "left" || dir == "right") m_body.linearVelocityY = 0;
+        else m_body.linearVelocityX = 0;
     }
 
     // check if the player is right on a corner, and pop them around it if so
@@ -209,7 +204,7 @@ public class PlayerController : MonoBehaviour
         m_body.linearVelocity = Vector2.zero;
         m_body.rotation = 0;
         for (int i = 0; i < 4; i++) m_grounded[i] = false;
-        m_animator.SetBool("Bonus", false);
+        m_renderer.sprite = m_normalSprite;
         transform.position = m_startPos;
     }
 
