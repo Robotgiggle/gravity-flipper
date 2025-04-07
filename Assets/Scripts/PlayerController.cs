@@ -176,8 +176,8 @@ public class PlayerController : MonoBehaviour
         // if one or both points cannot be found, player is in midair
         if (pointA == Vector2.zero || pointB == Vector2.zero) return;
 
-        // if distance between the points is less than 0.35, player is on a corner
-        if (Vector2.Distance(pointA, pointB) < 0.35f) {
+        // if distance between the points is less than 0.3, player is on a corner
+        if (Vector2.Distance(pointA, pointB) < 0.3f) {
             // subtract closer point from further point to get pop offset
             Vector3 offset;
             if (Vector3.Distance((Vector3)pointA, transform.position) < Vector3.Distance((Vector3)pointB, transform.position)) {
