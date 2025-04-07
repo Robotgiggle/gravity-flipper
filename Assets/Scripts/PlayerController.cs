@@ -73,8 +73,9 @@ public class PlayerController : MonoBehaviour
         if (collider.CompareTag("Hazard") && m_invulTime <= 0) {
             Die();
         } else if (m_bonus != null && collider.gameObject == m_bonus) {
-            m_gameManager.m_holdingBonus = true;
             m_bonus.SetActive(false);
+            if (m_gameManager.BonusCollected()) return;
+            m_gameManager.m_holdingBonus = true;
             m_renderer.sprite = m_bonusSprite;
         }
     }
