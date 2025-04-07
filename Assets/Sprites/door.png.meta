@@ -156,6 +156,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: door_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75dcdf50b1eeafd4f99f5de6d5dabf0c
+      internalID: 762153534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -172,6 +194,7 @@ TextureImporter:
     nameFileIdTable:
       door_0: -297189529
       door_1: -2140916333
+      door_2: 762153534
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
