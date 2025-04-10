@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour {
     Vector3 m_lastPos;
     Vector2 m_lastVel;
     bool[] m_grounded = new bool[4];
+    float m_flipCooldown;
 
     const int UP = 0, DOWN = 1, LEFT = 2, RIGHT = 3;
 
@@ -58,6 +59,8 @@ public class PlayerController : MonoBehaviour {
         m_gameManager.m_totalDistance += Vector3.Distance(transform.position, m_lastPos);
         m_lastPos = transform.position;
         m_lastVel = m_body.linearVelocity;
+        // decrement cooldown for 180 degree flips
+        if (m_flipCooldown > 0) m_flipCooldown -= Time.deltaTime;
         // debug mode
         if (Input.GetKeyDown(KeyCode.D) && Input.GetKey(KeyCode.LeftShift))
             m_gameManager.m_debugMode = !m_gameManager.m_debugMode;
@@ -104,15 +107,19 @@ public class PlayerController : MonoBehaviour {
         Vector2 gravDir = Physics2D.gravity.normalized;
         if (dir == UP) {
             if (gravDir == Vector2.up) return false;
+            if (gravDir == Vector2.down && m_flipCooldown > 0) return false;
             return !m_grounded[UP] && (m_grounded[DOWN] || m_grounded[LEFT] || m_grounded[RIGHT]);
         } else if (dir == DOWN) {
             if (gravDir == Vector2.down) return false;
+            if (gravDir == Vector2.up && m_flipCooldown > 0) return false;
             return !m_grounded[DOWN] && (m_grounded[UP] || m_grounded[LEFT] || m_grounded[RIGHT]);
         } else if (dir == LEFT) {
             if (gravDir == Vector2.left) return false;
+            if (gravDir == Vector2.right && m_flipCooldown > 0) return false;
             return !m_grounded[LEFT] && (m_grounded[DOWN] || m_grounded[UP] || m_grounded[RIGHT]);
         } else if (dir == RIGHT) {
             if (gravDir == Vector2.right) return false;
+            if (gravDir == Vector2.left && m_flipCooldown > 0) return false;
             return !m_grounded[RIGHT] && (m_grounded[DOWN] || m_grounded[LEFT] || m_grounded[UP]);
         }
         return false;
@@ -123,6 +130,7 @@ public class PlayerController : MonoBehaviour {
         m_audioSource.PlayOneShot(m_gravSound, 0.06f * m_gameManager.m_volumeScale);
         m_gameManager.m_totalFlips++;
         m_renderer.sprite = m_gameManager.m_holdingBonus ? m_bonusSprites[dir] : m_normalSprites[dir];
+        m_flipCooldown = 0.2f;
         // change world gravity
         if (dir == UP) {
             Physics2D.gravity = Vector2.up * m_gravForce;
