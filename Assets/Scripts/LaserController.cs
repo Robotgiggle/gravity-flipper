@@ -20,6 +20,13 @@ public class LaserController : MonoBehaviour
         m_laserObj.SetActive(false);
         m_laserTeleObj.SetActive(false);
         m_gameManager.m_resetLevelEvent.AddListener(RestartFiring);
+
+        if (m_gameManager.m_hardMode) {
+            m_uptime /= 1.3f;
+            m_downtime /= 1.3f;
+            m_offset /= 1.3f;
+            m_telegraph /= 1.3f;
+        }
         
         m_firingCoroutine = StartCoroutine(FireLaser());
     }
