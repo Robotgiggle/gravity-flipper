@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class UIController : MonoBehaviour {
+public class PauseMenuController : MonoBehaviour {
     public GameObject m_pauseMenu;
     
     GameManager m_gameManager;
@@ -10,7 +10,7 @@ public class UIController : MonoBehaviour {
     }
 
     void Update() {
-        if (Input.GetKeyDown(KeyCode.Tab)) {
+        if (Input.GetKeyDown(KeyCode.Tab) && !m_gameManager.m_inputsLocked) {
             if (m_pauseMenu.activeSelf) Unpause();
             else Pause();
         }

@@ -38,14 +38,16 @@ public class PlayerController : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         // handle gravity changes
-        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && CanFlip(UP)) {
-            FlipGravity(UP);
-        } else if ((Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) && CanFlip(DOWN)) {
-            FlipGravity(DOWN);
-        } else if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) && CanFlip(LEFT)) {
-            FlipGravity(LEFT);
-        } else if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) && CanFlip(RIGHT)) {
-            FlipGravity(RIGHT);
+        if (!m_gameManager.m_inputsLocked) {
+            if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && CanFlip(UP)) {
+                FlipGravity(UP);
+            } else if ((Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) && CanFlip(DOWN)) {
+                FlipGravity(DOWN);
+            } else if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) && CanFlip(LEFT)) {
+                FlipGravity(LEFT);
+            } else if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) && CanFlip(RIGHT)) {
+                FlipGravity(RIGHT);
+            }
         }
         // display flip indicators
         for (int i = 0; i < 4; i++) {
