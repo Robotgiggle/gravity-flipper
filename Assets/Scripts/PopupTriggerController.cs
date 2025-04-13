@@ -2,9 +2,14 @@ using UnityEngine;
 
 public class PopupTriggerController : MonoBehaviour {
     public TutorialController m_tutorialController;
-    public int index;
+    public int m_index;
+
+    bool m_activated;
 
     void OnTriggerEnter2D() {
-        m_tutorialController.ShowPopup(index);
+        if (!m_activated) {
+            m_tutorialController.ShowPopup(m_index);
+            m_activated = true;
+        }
     }
 }

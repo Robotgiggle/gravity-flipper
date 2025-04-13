@@ -532,8 +532,8 @@ Transform:
   m_GameObject: {fileID: 176274451}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.35, y: -6.92, z: 0}
-  m_LocalScale: {x: 4, y: 3, z: 1}
+  m_LocalPosition: {x: 3.85, y: -7.92, z: 0}
+  m_LocalScale: {x: 4, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 228052468}
@@ -597,7 +597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_tutorialController: {fileID: 1027078751}
-  index: 0
+  m_index: 0
 --- !u!1001 &190142645
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4533,8 +4533,8 @@ Transform:
   m_GameObject: {fileID: 754409090}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.21, y: 7.98, z: 0}
-  m_LocalScale: {x: 4.75, y: 3.5, z: 1}
+  m_LocalPosition: {x: 15.5, y: 5, z: 0}
+  m_LocalScale: {x: 14, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 228052468}
@@ -4598,7 +4598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_tutorialController: {fileID: 1027078751}
-  index: 2
+  m_index: 2
 --- !u!1001 &788845264
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4902,8 +4902,8 @@ Transform:
   m_GameObject: {fileID: 863951458}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.97, y: 0.08, z: 0}
-  m_LocalScale: {x: 4, y: 3, z: 1}
+  m_LocalPosition: {x: -9, y: 1, z: 0}
+  m_LocalScale: {x: 4.5, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 228052468}
@@ -4967,7 +4967,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_tutorialController: {fileID: 1027078751}
-  index: 3
+  m_index: 3
 --- !u!1 &1005078156
 GameObject:
   m_ObjectHideFlags: 0
@@ -5028,6 +5028,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4802756453320108466, guid: 8eb8a0704022cf94b822b7897c8c552b, type: 3}
+      propertyPath: m_darkness
+      value: 
+      objectReference: {fileID: 1042829876}
     - target: {fileID: 5604128937638413586, guid: 8eb8a0704022cf94b822b7897c8c552b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -5158,6 +5162,18 @@ MonoBehaviour:
   - {fileID: 1326290969}
   - {fileID: 813213624}
   - {fileID: 1308366973}
+  m_PMC: {fileID: 1027078752}
+--- !u!114 &1027078752 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4802756453320108466, guid: 8eb8a0704022cf94b822b7897c8c552b, type: 3}
+  m_PrefabInstance: {fileID: 1027078745}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27974980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca522c32620665341ba2126a63af0f59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1039874378
 GameObject:
   m_ObjectHideFlags: 0
@@ -5294,6 +5310,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1039874378}
   m_CullTransparentMesh: 1
+--- !u!114 &1042829876 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3157005495828027082, guid: 8eb8a0704022cf94b822b7897c8c552b, type: 3}
+  m_PrefabInstance: {fileID: 1027078745}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1056023927
 GameObject:
   m_ObjectHideFlags: 0
@@ -12989,6 +13016,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4821812823361956136, guid: 26cf190de98fadb46820fabfb7f4adba, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6502146307601869608, guid: 26cf190de98fadb46820fabfb7f4adba, type: 3}
       propertyPath: m_Name
       value: BGCanvas
@@ -13247,8 +13278,8 @@ Transform:
   m_GameObject: {fileID: 1876922316}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.16, y: -6.68, z: 0}
-  m_LocalScale: {x: 4.75, y: 3.5, z: 1}
+  m_LocalPosition: {x: 19, y: -5.5, z: 0}
+  m_LocalScale: {x: 7, y: 6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 228052468}
@@ -13266,7 +13297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_tutorialController: {fileID: 1027078751}
-  index: 1
+  m_index: 1
 --- !u!61 &1876922319
 BoxCollider2D:
   m_ObjectHideFlags: 0
