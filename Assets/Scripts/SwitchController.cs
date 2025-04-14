@@ -15,7 +15,7 @@ public class SwitchController : MonoBehaviour {
         m_audioSource = gameObject.GetComponent<AudioSource>();
         m_renderer = gameObject.GetComponent<SpriteRenderer>();
         m_doorCon = GameObject.Find("ExitDoor").GetComponent<DoorController>();
-        m_gameManager.m_resetLevelEvent.AddListener(TryReset);
+        m_gameManager.m_resetLevelEvent.AddListener(Reset);
     }
 
     // activate only if both gravity and the player are moving in the correct direction
@@ -36,13 +36,11 @@ public class SwitchController : MonoBehaviour {
         m_doorCon.CheckSwitches();
     }
 
-    // if hard mode is enabled, deactive the switch
-    void TryReset() {
-        if (m_gameManager.m_hardMode) {
-            m_renderer.sprite = m_sprites[0];
-            m_active = false;
-            m_doorCon.CheckSwitches();
-        }
+    // reset the switch
+    void Reset() {
+        m_renderer.sprite = m_sprites[0];
+        m_active = false;
+        m_doorCon.CheckSwitches();
     }
 
     // activate on click in debug mode

@@ -21,6 +21,7 @@ public class DoorController : MonoBehaviour {
         for (int i = 0; i < switches.Length; i++) {
             m_switchCons[i] = switches[i].GetComponent<SwitchController>();
         }
+        m_gameManager.m_resetLevelEvent.AddListener(Reset);
     }
 
     // when colliding with the player, move to the next level if the door is open
@@ -40,5 +41,11 @@ public class DoorController : MonoBehaviour {
         m_audioSource.PlayOneShot(m_unlockSound, m_gameManager.m_volumeScale);
         m_renderer.sprite = m_sprites[1];
         m_open = true;
+    }
+
+    // close the door when the level resets
+    void Reset() {
+        m_renderer.sprite = m_sprites[0];
+        m_open = false;
     }
 }
