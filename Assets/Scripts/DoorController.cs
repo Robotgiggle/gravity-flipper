@@ -4,7 +4,6 @@ public class DoorController : MonoBehaviour {
     public AudioClip m_unlockSound;
     public AudioClip m_teleportSound;
     public Sprite[] m_sprites = new Sprite[2];
-    public string m_nextScene;
     public bool m_open = false;
 
     GameManager m_gameManager;
