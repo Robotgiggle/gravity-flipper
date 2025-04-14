@@ -39,14 +39,14 @@ public class PlayerController : MonoBehaviour {
     void Update() {
         // handle gravity changes
         if (!m_gameManager.m_inputsLocked) {
-            if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && CanFlip(UP)) {
-                FlipGravity(UP);
-            } else if ((Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) && CanFlip(DOWN)) {
-                FlipGravity(DOWN);
-            } else if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) && CanFlip(LEFT)) {
-                FlipGravity(LEFT);
-            } else if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) && CanFlip(RIGHT)) {
-                FlipGravity(RIGHT);
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) {
+                if (CanFlip(UP)) FlipGravity(UP);
+            } else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) {
+                if (CanFlip(DOWN)) FlipGravity(DOWN);
+            } else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
+                if (CanFlip(LEFT)) FlipGravity(LEFT);
+            } else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
+                if (CanFlip(RIGHT)) FlipGravity(RIGHT);
             }
         }
         // display flip indicators
@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour {
         m_gameManager.m_totalDistance += Vector3.Distance(transform.position, m_lastPos);
         m_lastPos = transform.position;
         m_lastVel = m_body.linearVelocity;
-        // decrement cooldown for 180 degree flips
+        // decrement flip cooldown
         if (m_flipCooldown > 0) m_flipCooldown -= Time.deltaTime;
         // debug mode
         if (Input.GetKeyDown(KeyCode.D) && Input.GetKey(KeyCode.LeftShift))
@@ -108,19 +108,19 @@ public class PlayerController : MonoBehaviour {
     public bool CanFlip(int dir) {
         Vector2 gravDir = Physics2D.gravity.normalized;
         if (dir == UP) {
-            if (gravDir == Vector2.up) return false;
+            if (gravDir == Vector2.up || m_flipCooldown > 0.1f) return false;
             if (gravDir == Vector2.down && m_flipCooldown > 0) return false;
             return !m_grounded[UP] && (m_grounded[DOWN] || m_grounded[LEFT] || m_grounded[RIGHT]);
         } else if (dir == DOWN) {
-            if (gravDir == Vector2.down) return false;
+            if (gravDir == Vector2.down || m_flipCooldown > 0.1f) return false;
             if (gravDir == Vector2.up && m_flipCooldown > 0) return false;
             return !m_grounded[DOWN] && (m_grounded[UP] || m_grounded[LEFT] || m_grounded[RIGHT]);
         } else if (dir == LEFT) {
-            if (gravDir == Vector2.left) return false;
+            if (gravDir == Vector2.left || m_flipCooldown > 0.1f) return false;
             if (gravDir == Vector2.right && m_flipCooldown > 0) return false;
             return !m_grounded[LEFT] && (m_grounded[DOWN] || m_grounded[UP] || m_grounded[RIGHT]);
         } else if (dir == RIGHT) {
-            if (gravDir == Vector2.right) return false;
+            if (gravDir == Vector2.right || m_flipCooldown > 0.1f) return false;
             if (gravDir == Vector2.left && m_flipCooldown > 0) return false;
             return !m_grounded[RIGHT] && (m_grounded[DOWN] || m_grounded[LEFT] || m_grounded[UP]);
         }
