@@ -12767,7 +12767,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5604128937638413586, guid: 8eb8a0704022cf94b822b7897c8c552b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5604128937638413586, guid: 8eb8a0704022cf94b822b7897c8c552b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -12809,6 +12809,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 95088484}
+    - target: {fileID: 7542300372765634885, guid: 8eb8a0704022cf94b822b7897c8c552b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

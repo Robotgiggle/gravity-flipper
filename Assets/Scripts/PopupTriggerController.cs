@@ -1,14 +1,15 @@
 using UnityEngine;
 
 public class PopupTriggerController : MonoBehaviour {
-    public GameObject m_popup;
+    public TutorialController m_tutorialController;
+    public int m_index;
+
+    bool m_activated;
 
     void OnTriggerEnter2D() {
-        m_popup.SetActive(true);
-    }
-
-    void OnTriggerExit2D() {
-        if (m_popup == null) return;
-        m_popup.SetActive(false);
+        if (!m_activated) {
+            m_tutorialController.ShowPopup(m_index);
+            m_activated = true;
+        }
     }
 }
