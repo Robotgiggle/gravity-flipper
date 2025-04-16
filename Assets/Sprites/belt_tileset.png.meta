@@ -114,6 +114,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -214,7 +227,7 @@ TextureImporter:
         width: 18
         height: 18
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -287,7 +300,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 62b2f50924b77454c849269e02899e4a
+      spriteID: 2e18273d3b48438449bebea7846b6c7a
       internalID: 135737936
       vertices: []
       indices: 
@@ -309,7 +322,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9014e4ee3eac196479d90498348366f0
+      spriteID: c0610b06999723a46b4d8c488e522fc5
       internalID: 1052888886
       vertices: []
       indices: 
@@ -331,7 +344,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 932dc453b49def04f9d80dd1040b34bf
+      spriteID: b3a6233817f84a24bba3f4b2e59c3388
       internalID: 1279891189
       vertices: []
       indices: 
@@ -353,7 +366,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 06dbc63b77eb11a4a8c4f14c63782f47
+      spriteID: 45501b141b8a64e4081f529089bf5e15
       internalID: -598653541
       vertices: []
       indices: 
@@ -375,7 +388,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a22f4c249a136334e9fc573582cbc8f2
+      spriteID: fa20d299f09f45d4bbb678bf56603861
       internalID: 71193717
       vertices: []
       indices: 
@@ -397,7 +410,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b96e508cd1753424f86e017479062c0e
+      spriteID: bf2253d7762cbd041a4721ec5546115f
       internalID: 821871558
       vertices: []
       indices: 
@@ -419,7 +432,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: edfb732ee6cc8944ea3f2c35d3122a5f
+      spriteID: 7abe3de70401a9e4cbc3c4a1fa061c14
       internalID: 1194492499
       vertices: []
       indices: 
@@ -441,7 +454,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f4a537a9a2c2c0c4a8250ccf000f24b1
+      spriteID: dba4ade8003303640ba87b2a3b69a197
       internalID: 1263446675
       vertices: []
       indices: 
@@ -463,8 +476,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0b7b2d2609365214d815fd9badafa299
+      spriteID: d46fc9f198d92ec4bb28ceb991a7c5e4
       internalID: -397526829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: belt_tileset_16
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 0
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1909ed15fb0ca342ba5f4d8508f43ee
+      internalID: -524586135
       vertices: []
       indices: 
       edges: []
@@ -491,6 +526,7 @@ TextureImporter:
       belt_tileset_13: 1194492499
       belt_tileset_14: 1263446675
       belt_tileset_15: -397526829
+      belt_tileset_16: -524586135
       belt_tileset_2: -2550596838058216245
       belt_tileset_3: 7605469184700734700
       belt_tileset_4: -902575320228474331
