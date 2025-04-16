@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1851907802379515808}
   - component: {fileID: 8315063069180181658}
+  - component: {fileID: -7964587260070412993}
   m_Layer: 0
   m_Name: Particle
   m_TagString: Untagged
@@ -87,3 +88,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-7964587260070412993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5563199676479271578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 234b059ca5ca0964b819f23b048afb34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_motion: {x: 0, y: 0, z: 0}
+  m_spinRate: 0

@@ -485,6 +485,22 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 7244039567228510817, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7244039567228510817, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7244039567228510817, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7244039567228510817, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7612119207230122484, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
       propertyPath: m_Name
       value: LaserWall (1)
@@ -4732,6 +4748,22 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 7244039567228510817, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7244039567228510817, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7244039567228510817, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7244039567228510817, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7612119207230122484, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
       propertyPath: m_Name
       value: LaserWall (2)
@@ -5339,6 +5371,18 @@ PrefabInstance:
       propertyPath: m_telegraph
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4190629107121739838, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
+      propertyPath: m_spawnRate
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4190629107121739838, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
+      propertyPath: m_maxSpawnCount
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4190629107121739838, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
+      propertyPath: m_minSpawnCount
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6335001419973739093, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
       propertyPath: m_LocalScale.x
       value: 4.0000644
@@ -5365,6 +5409,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6399211546482918197, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
       propertyPath: m_LocalPosition.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7244039567228510817, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7244039567228510817, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7244039567228510817, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7244039567228510817, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 7612119207230122484, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
@@ -13792,6 +13852,22 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 21
       objectReference: {fileID: 0}
+    - target: {fileID: 7244039567228510817, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7244039567228510817, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 7244039567228510817, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7244039567228510817, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7612119207230122484, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
       propertyPath: m_Name
       value: LaserWall (4)
@@ -14471,6 +14547,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6399211546482918197, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
       propertyPath: m_LocalPosition.y
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7244039567228510817, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7244039567228510817, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7244039567228510817, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7244039567228510817, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7612119207230122484, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
