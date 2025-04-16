@@ -760,7 +760,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7767846508962523638, guid: dd4b2b7023920cc4db8bfa220fcf5e5e, type: 3}
       propertyPath: m_initialScale
-      value: 0.18
+      value: 0.19
       objectReference: {fileID: 0}
     - target: {fileID: 7767846508962523638, guid: dd4b2b7023920cc4db8bfa220fcf5e5e, type: 3}
       propertyPath: m_shrinkFactor
