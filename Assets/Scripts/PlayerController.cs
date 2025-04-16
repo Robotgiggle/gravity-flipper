@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour {
     public AudioClip m_gravSound;
     public AudioClip m_deathSound;
     public GameObject m_bonus;
+    public GameObject m_bonusParticles;
     public GameObject[] m_indicators = new GameObject[4];
     public Sprite[] m_normalSprites = new Sprite[4];
     public Sprite[] m_bonusSprites = new Sprite[4];
@@ -81,6 +82,7 @@ public class PlayerController : MonoBehaviour {
             m_gameManager.m_holdingBonus = true;
             int index = Array.IndexOf(m_normalSprites, m_renderer.sprite);
             m_renderer.sprite = m_bonusSprites[index];
+            m_bonusParticles.SetActive(true);
         }
     }
 
@@ -203,6 +205,7 @@ public class PlayerController : MonoBehaviour {
         m_body.rotation = 0;
         for (int i = 0; i < 4; i++) m_grounded[i] = false;
         m_renderer.sprite = m_normalSprites[1];
+        m_bonusParticles.SetActive(false);
         transform.position = m_startPos;
     }
 
