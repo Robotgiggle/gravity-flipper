@@ -34,13 +34,14 @@ public class DoorController : MonoBehaviour {
     }
 
     // open the door if all the switches are active; called whenever a switch is flipped
-    public void CheckSwitches() {
+    public bool CheckSwitches() {
         foreach (SwitchController switchCon in m_switchCons) {
-            if (switchCon.m_active == false) return;
+            if (switchCon.m_active == false) return false;
         }
         m_audioSource.PlayOneShot(m_unlockSound, m_gameManager.m_volumeScale);
         m_renderer.sprite = m_sprites[1];
         m_open = true;
+        return true;
     }
 
     // close the door when the level resets

@@ -29,11 +29,11 @@ public class SwitchController : MonoBehaviour {
     }
 
     // activate the switch, then tell the door to check all other switches
+    // only play the activation noise if this isn't the last switch
     void Activate() {
-        m_audioSource.Play();
-        m_renderer.sprite = m_sprites[1];
         m_active = true;
-        m_doorCon.CheckSwitches();
+        if (!m_doorCon.CheckSwitches()) m_audioSource.Play();
+        m_renderer.sprite = m_sprites[1];
     }
 
     // reset the switch
