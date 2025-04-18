@@ -4,6 +4,7 @@ public class ParticleFieldController : MonoBehaviour {
     [Header("Spawner Settings")]
     public GameObject m_particle;
     public float m_spawnRate;
+    public bool m_varyRate;
     public int m_minSpawnCount;
     public int m_maxSpawnCount;
     [Header("Particle Settings")]
@@ -26,7 +27,7 @@ public class ParticleFieldController : MonoBehaviour {
 
         // spawn a new light at a random position in the area
         if (m_timer > m_spawnRate) {
-            m_timer = Random.value - 0.5f;
+            m_timer = m_varyRate ? Random.value - 0.5f : 0;
 
             int toSpawn = Random.Range(m_minSpawnCount, m_maxSpawnCount + 1);
             for (int i = 0; i < toSpawn; i++) {

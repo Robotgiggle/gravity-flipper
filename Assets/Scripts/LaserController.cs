@@ -1,24 +1,21 @@
 using UnityEngine;
 using System.Collections;
 
-public class LaserController : MonoBehaviour
-{
+public class LaserController : MonoBehaviour {
+    public GameObject m_laser;
+    public GameObject m_particles;
+    public SpriteRenderer m_teleRenderer;
     public float m_uptime;
     public float m_downtime;
     public float m_offset;
     public float m_telegraph;
     
     GameManager m_gameManager;
-    GameObject m_laserObj;
-    GameObject m_laserTeleObj;
     Coroutine m_firingCoroutine;
     
     void Start() {
         m_gameManager = GameManager.TheInstance;
-        m_laserObj = transform.GetChild(0).gameObject;
-        m_laserTeleObj = transform.GetChild(1).gameObject;
-        m_laserObj.SetActive(false);
-        m_laserTeleObj.SetActive(false);
+        m_laser.SetActive(false);
         m_gameManager.m_resetLevelEvent.AddListener(RestartFiring);
 
         if (m_gameManager.m_hardMode) {
@@ -31,11 +28,18 @@ public class LaserController : MonoBehaviour
         m_firingCoroutine = StartCoroutine(FireLaser());
     }
 
+    void SetTelegraphOpacity(float val) {
+        Color col = m_teleRenderer.color;
+        col.a = val;
+        m_teleRenderer.color = col;
+    }
+
     // this is used to reset the timing when the level resets
     void RestartFiring() {
         StopCoroutine(m_firingCoroutine);
-        m_laserObj.SetActive(false);
-        m_laserTeleObj.SetActive(false);
+        m_laser.SetActive(false);
+        m_particles.SetActive(false);
+        SetTelegraphOpacity(0);
         m_firingCoroutine = StartCoroutine(FireLaser());
     }
 
@@ -44,17 +48,21 @@ public class LaserController : MonoBehaviour
         yield return new WaitForSeconds(m_offset);
 
         while (true) {
-            // activate the telegraph for a certain amount of time
-            m_laserTeleObj.SetActive(true);
-            yield return new WaitForSeconds(m_telegraph);
+            // two-phase telegraph over the specified interval
+            SetTelegraphOpacity(0.15f);
+            yield return new WaitForSeconds(m_telegraph/2);
+            SetTelegraphOpacity(0.45f);
+            yield return new WaitForSeconds(m_telegraph/2);
             
             // activate laser for specified interval
-            m_laserObj.SetActive(true);
-            m_laserTeleObj.SetActive(false);
+            SetTelegraphOpacity(0);
+            m_laser.SetActive(true);
+            m_particles.SetActive(true);
             yield return new WaitForSeconds(m_uptime);
 
             // deactivate laser for specified interval
-            m_laserObj.SetActive(false);
+            m_laser.SetActive(false);
+            m_particles.SetActive(false);
             yield return new WaitForSeconds(m_downtime - m_telegraph);
         }
     }
