@@ -21,11 +21,7 @@ public class BeltController : MonoBehaviour {
         
         Vector3 spawnPos = m_startPos;
         while (m_lightSpeed != 0) {
-            GameObject newLight = Instantiate(m_beltLight, spawnPos, Quaternion.identity);
-            newLight.transform.SetParent(transform);
-            newLight.GetComponent<SpriteRenderer>().color = new Color(1, 0.9f, 0);
-            m_activeLights.Add(newLight);
-
+            SpawnLight(spawnPos);
             spawnPos += transform.right * m_lightSpeed * 0.3f;
             if (Vector3.Distance(spawnPos, m_startPos) > m_maxDist) break;
         }
@@ -49,10 +45,15 @@ public class BeltController : MonoBehaviour {
         // spawn a new light
         if (m_timer > 0.3) {
             m_timer = 0;
-            GameObject newLight = Instantiate(m_beltLight, m_startPos, Quaternion.identity);
-            newLight.transform.SetParent(transform);
-            newLight.GetComponent<SpriteRenderer>().color = new Color(1, 0.9f, 0);
-            m_activeLights.Add(newLight);
+            SpawnLight(m_startPos);
         }
+    }
+
+    void SpawnLight(Vector3 pos) {
+        GameObject newLight = Instantiate(m_beltLight, pos, Quaternion.identity);
+        newLight.transform.SetParent(transform);
+        newLight.GetComponent<SpriteRenderer>().color = new Color(1, 0.9f, 0);
+        newLight.GetComponent<SpriteRenderer>().sortingOrder = 3;
+        m_activeLights.Add(newLight);
     }
 }
