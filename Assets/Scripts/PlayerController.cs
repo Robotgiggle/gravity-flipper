@@ -1,5 +1,5 @@
 using UnityEngine;
-using System.Collections.Generic;
+using System.Collections;
 using System;
 
 public class PlayerController : MonoBehaviour {
@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D collider) {
         if (collider.CompareTag("Hazard")) {
-            Die();
+            StartCoroutine(Die());
         } else if (m_bonus != null && collider.gameObject == m_bonus) {
             m_bonus.SetActive(false);
             if (m_gameManager.BonusCollected()) return;
@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.CompareTag("Hazard")) {
-            Die();
+            StartCoroutine(Die());
         } else {
             CheckCornerPop(collision);
             ContactPoint2D hitPoint = collision.GetContact(0);
@@ -192,9 +192,11 @@ public class PlayerController : MonoBehaviour {
     }
 
     // die and restart the level
-    void Die() {
-        m_gameManager.AddDeath();
+    IEnumerator Die() {
+        transform.position = new Vector3(100,100,0);
         m_audioSource.PlayOneShot(m_deathSound, 0.25f * m_gameManager.m_volumeScale);
+        m_gameManager.AddDeath();
+        yield return new WaitForSeconds(0.5f);
         m_gameManager.ResetLevel();
     }
 
