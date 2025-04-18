@@ -49,9 +49,9 @@ public class LaserController : MonoBehaviour {
 
         while (true) {
             // two-phase telegraph over the specified interval
-            SetTelegraphOpacity(0.15f);
+            SetTelegraphOpacity(0.13f);
             yield return new WaitForSeconds(m_telegraph/2);
-            SetTelegraphOpacity(0.45f);
+            SetTelegraphOpacity(0.43f);
             yield return new WaitForSeconds(m_telegraph/2);
             
             // activate laser for specified interval

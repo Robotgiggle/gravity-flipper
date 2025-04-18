@@ -463,15 +463,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3537067446954062951, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
       propertyPath: m_uptime
-      value: 1.5
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 3537067446954062951, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
       propertyPath: m_downtime
-      value: 1.5
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 3537067446954062951, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
       propertyPath: m_telegraph
-      value: 0.8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6335001419973739093, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
       propertyPath: m_LocalScale.x
@@ -4742,15 +4742,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3537067446954062951, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
       propertyPath: m_uptime
-      value: 1.5
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 3537067446954062951, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
       propertyPath: m_downtime
-      value: 1.5
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 3537067446954062951, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
       propertyPath: m_telegraph
-      value: 0.8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6335001419973739093, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
       propertyPath: m_LocalScale.x
@@ -5417,7 +5417,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3537067446954062951, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
       propertyPath: m_telegraph
-      value: 0.8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4190629107121739838, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
       propertyPath: m_spawnRate
@@ -13910,7 +13910,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3537067446954062951, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
       propertyPath: m_telegraph
-      value: 0.8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4747013888601463068, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
       propertyPath: m_maxSpawnCount
@@ -14615,7 +14615,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3537067446954062951, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
       propertyPath: m_telegraph
-      value: 0.8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6335001419973739093, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
       propertyPath: m_LocalScale.x
