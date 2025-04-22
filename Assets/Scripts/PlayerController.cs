@@ -62,8 +62,9 @@ public class PlayerController : MonoBehaviour {
         m_gameManager.m_totalDistance += Vector3.Distance(transform.position, m_lastPos);
         m_lastPos = transform.position;
         m_lastVel = m_body.linearVelocity;
-        // decrement flip cooldown
+        // decrement flip cooldown and reset belt-ignore status
         if (m_flipCooldown > 0) m_flipCooldown -= Time.deltaTime;
+        if (m_flipCooldown <= 0.15f) gameObject.layer = 0;
         // debug mode
         if (Input.GetKeyDown(KeyCode.D) && Input.GetKey(KeyCode.LeftShift))
             m_gameManager.m_debugMode = !m_gameManager.m_debugMode;
@@ -148,6 +149,8 @@ public class PlayerController : MonoBehaviour {
         // when turning 90 degress, cancel existing momentum
         if (dir > DOWN) m_body.linearVelocityY = 0;
         else m_body.linearVelocityX = 0;
+        // temporarily ignore belts after flipping
+        gameObject.layer = 3;
     }
 
     // check if the player is right on a corner, and pop them around it if so
