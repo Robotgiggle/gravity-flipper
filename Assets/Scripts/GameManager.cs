@@ -29,7 +29,8 @@ public class GameManager : MonoBehaviour {
     public bool m_hardMode = false;
     public bool m_debugMode = false;
     
-    private int m_currentLevel;
+    AudioSource m_bgm;
+    int m_currentLevel;
     
     // static instance access
     private static GameObject theObject;
@@ -58,6 +59,7 @@ public class GameManager : MonoBehaviour {
         }
         int index = SceneManager.GetActiveScene().buildIndex;
         if (index != 0) m_currentLevel = index - 1;
+        m_bgm = gameObject.GetComponent<AudioSource>();
         // link scene-loaded event to method
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
@@ -114,6 +116,11 @@ public class GameManager : MonoBehaviour {
         if (fromLevel) m_totalPlaytime += Time.timeSinceLevelLoad;
         StartCoroutine(LoadSceneWithDelay("Menu", delay));
         m_currentLevel = -1;
+    }
+
+    public void SetVolumeScale(float scale) {
+        m_volumeScale = scale;
+        if (m_bgm != null) m_bgm.volume = 0.3f * scale;
     }
 
     public bool BonusCollected() {

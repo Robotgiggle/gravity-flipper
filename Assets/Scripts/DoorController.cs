@@ -28,7 +28,7 @@ public class DoorController : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D coll) {
         if (m_open && coll.CompareTag("Player")) {
             coll.gameObject.SetActive(false);
-            m_audioSource.PlayOneShot(m_teleportSound, 0.85f * m_gameManager.m_volumeScale);
+            m_audioSource.PlayOneShot(m_teleportSound, 0.8f * m_gameManager.m_volumeScale);
             m_gameManager.LoadNextLevel(m_teleportSound.length);
         }
     }

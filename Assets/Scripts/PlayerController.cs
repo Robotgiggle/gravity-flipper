@@ -136,7 +136,7 @@ public class PlayerController : MonoBehaviour {
 
     // flip gravity to point in the provided direction
     void FlipGravity(int dir) {
-        m_audioSource.PlayOneShot(m_gravSound, 0.06f * m_gameManager.m_volumeScale);
+        m_audioSource.PlayOneShot(m_gravSound, 0.09f * m_gameManager.m_volumeScale);
         m_gameManager.m_totalFlips++;
         m_renderer.sprite = m_gameManager.m_holdingBonus ? m_bonusSprites[dir] : m_normalSprites[dir];
         m_flipCooldown = 0.2f;

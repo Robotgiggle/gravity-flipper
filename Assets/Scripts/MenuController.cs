@@ -95,7 +95,7 @@ public class MenuController : MonoBehaviour {
     }
 
     public void UpdateVolume(System.Single newVolume) {
-        m_gameManager.m_volumeScale = newVolume;
+        m_gameManager.SetVolumeScale(newVolume);
     }
 
     public void ToggleScroll(bool newState) {
