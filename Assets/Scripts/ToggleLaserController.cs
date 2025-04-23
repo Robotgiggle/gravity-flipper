@@ -14,8 +14,8 @@ public class ToggleLaserController : MonoBehaviour {
         m_particles.SetActive(m_initialState);
         m_active = m_initialState;
 
-        ToggleSwitchController.m_toggleEvent.AddListener(Toggle);
         m_gameManager.m_resetLevelEvent.AddListener(Reset);
+        ToggleSwitchController.m_toggleEvent.AddListener(Toggle);
     }
 
     void Toggle() {

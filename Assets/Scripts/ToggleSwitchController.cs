@@ -21,33 +21,44 @@ public class ToggleSwitchController : MonoBehaviour {
         m_audioSource = gameObject.GetComponent<AudioSource>();
         m_renderer = gameObject.GetComponent<SpriteRenderer>();
         m_gameManager.m_resetLevelEvent.AddListener(Reset);
+        m_toggleEvent.AddListener(Toggle);
     }
 
-    // activate only if both gravity and the player are moving in the correct direction
-    // needs to account for flipping while next to a switch (hitbox enters but velocity is 0)
+    // activate only if the player is moving in the correct direction and the switch is in the correct state
     void OnTriggerEnter2D(Collider2D coll) {
-        // TODO double flip
-        Vector3 gravDir = Physics2D.gravity.normalized;
         Vector3 motionDir = coll.attachedRigidbody.linearVelocity.normalized;
-        if (gravDir == transform.right && Vector3.Dot(gravDir, motionDir) != -1 && !m_active) {
-            Flip(true);
-        } else if (gravDir == -transform.right && Vector3.Dot(gravDir, motionDir) != -1 && m_active) {
-            Flip(false);
+        if (motionDir == transform.right && !m_active) {
+            m_audioSource.Play();
+            m_toggleEvent.Invoke();
+        } else if (motionDir == -transform.right && m_active) {
+            m_audioSource.Play();
+            m_toggleEvent.Invoke();
+        }
+    }
+
+    // visually flip the switch
+    void Toggle() {
+        if (m_active) {
+            m_renderer.sprite = m_sprites[0];
+            m_active = false;
+        } else {
+            m_renderer.sprite = m_sprites[1];
+            m_active = true;
         }
     }
 
     // flip the switch, and tell other objects to change state
-    void Flip(bool on) {
-        m_audioSource.Play();
-        if (on) {
-            m_renderer.sprite = m_sprites[1];
-            m_active = true;
-        } else {
-            m_renderer.sprite = m_sprites[0];
-            m_active = false;
-        }
-        m_toggleEvent.Invoke();
-    }
+    // void Flip(bool on) {
+    //     m_audioSource.Play();
+    //     if (on) {
+    //         m_renderer.sprite = m_sprites[1];
+    //         m_active = true;
+    //     } else {
+    //         m_renderer.sprite = m_sprites[0];
+    //         m_active = false;
+    //     }
+    //     m_toggleEvent.Invoke();
+    // }
 
     // reset the switch
     void Reset() {
@@ -58,8 +69,8 @@ public class ToggleSwitchController : MonoBehaviour {
     // activate on click in debug mode
     void OnMouseDown() {
         if (m_gameManager.m_debugMode) {
-            if (m_active) Flip(false);
-            else Flip(true);
+            m_audioSource.Play();
+            m_toggleEvent.Invoke();
         }
     }
 }
