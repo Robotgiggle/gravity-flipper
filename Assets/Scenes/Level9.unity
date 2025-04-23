@@ -316,11 +316,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3537067446954062951, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
       propertyPath: m_offset
-      value: 1.6
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 3537067446954062951, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
       propertyPath: m_uptime
-      value: 2.4
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 3537067446954062951, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
       propertyPath: m_downtime
@@ -15537,11 +15537,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3537067446954062951, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
       propertyPath: m_offset
-      value: 2.4
+      value: 2.8
       objectReference: {fileID: 0}
     - target: {fileID: 3537067446954062951, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
       propertyPath: m_uptime
-      value: 2.4
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 3537067446954062951, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
       propertyPath: m_downtime
@@ -16245,7 +16245,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3537067446954062951, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
       propertyPath: m_uptime
-      value: 2.4
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 3537067446954062951, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
       propertyPath: m_downtime

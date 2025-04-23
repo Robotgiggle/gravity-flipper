@@ -31,14 +31,12 @@ public class BeltController : MonoBehaviour {
         // increment spawn timer
         m_timer += Time.deltaTime;
 
-        // move existing lights
+        // remove lights once they reach the end
         for (int i = m_activeLights.Count; i > 0; i--) {
             GameObject light = m_activeLights[i-1];
             if (Vector3.Distance(light.transform.position, m_startPos) > m_maxDist) {
                 m_activeLights.RemoveAt(i-1);
                 Destroy(light);
-            } else {
-                light.transform.Translate(transform.right * m_lightSpeed * Time.deltaTime);
             }
         }
 
@@ -54,6 +52,7 @@ public class BeltController : MonoBehaviour {
         newLight.transform.SetParent(transform);
         newLight.GetComponent<SpriteRenderer>().color = new Color(1, 0.9f, 0);
         newLight.GetComponent<SpriteRenderer>().sortingOrder = 3;
+        newLight.GetComponent<ParticleController>().m_motion = transform.right * m_lightSpeed;
         m_activeLights.Add(newLight);
     }
 }
