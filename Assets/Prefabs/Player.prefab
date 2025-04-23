@@ -112,7 +112,8 @@ MonoBehaviour:
   m_deathSound: {fileID: 8300000, guid: d6301745ebad67d40be29554a826f2fc, type: 3}
   m_bonusSound: {fileID: 8300000, guid: f232352362b54b14c98439df88efb4e7, type: 3}
   m_bonus: {fileID: 0}
-  m_bonusParticles: {fileID: 8362227532970871844}
+  m_bonusAura: {fileID: 8362227532970871844}
+  m_bonusBurst: {fileID: 0}
   m_indicators:
   - {fileID: 4670884762199687042}
   - {fileID: 5896613350734924310}

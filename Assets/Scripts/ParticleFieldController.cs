@@ -39,12 +39,12 @@ public class ParticleFieldController : MonoBehaviour {
                 float spawnSpin = (Random.value > 0.5)? m_spinRate : -m_spinRate;
                 float spawnScale = Mathf.Lerp(m_initialScale - 0.02f, m_initialScale + 0.02f, Random.value);
 
-                GameObject newLight = Instantiate(m_particle, spawnPos, Quaternion.identity);
-                newLight.GetComponent<SpriteRenderer>().color = m_color;
-                newLight.GetComponent<ParticleController>().m_motion = spawnMotion;
-                newLight.GetComponent<ParticleController>().m_shrinkFactor = m_shrinkFactor;
-                newLight.GetComponent<ParticleController>().m_spinRate = spawnSpin;
-                newLight.transform.localScale = new Vector3(spawnScale, spawnScale, 1);
+                GameObject newParticle = Instantiate(m_particle, spawnPos, Quaternion.identity);
+                newParticle.GetComponent<SpriteRenderer>().color = m_color;
+                newParticle.GetComponent<ParticleController>().m_motion = spawnMotion;
+                newParticle.GetComponent<ParticleController>().m_shrinkFactor = m_shrinkFactor;
+                newParticle.GetComponent<ParticleController>().m_spinRate = spawnSpin;
+                newParticle.transform.localScale = new Vector3(spawnScale, spawnScale, 1);
             }
         }
     }

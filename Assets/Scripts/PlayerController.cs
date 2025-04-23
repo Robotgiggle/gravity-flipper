@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour {
     public AudioClip m_deathSound;
     public AudioClip m_bonusSound;
     public GameObject m_bonus;
-    public GameObject m_bonusParticles;
+    public GameObject m_bonusAura;
     public GameObject[] m_indicators = new GameObject[4];
     public Sprite[] m_normalSprites = new Sprite[4];
     public Sprite[] m_bonusSprites = new Sprite[4];
@@ -79,13 +79,14 @@ public class PlayerController : MonoBehaviour {
         if (collider.CompareTag("Hazard")) {
             StartCoroutine(Die());
         } else if (m_bonus != null && collider.gameObject == m_bonus) {
+            m_bonus.GetComponentInChildren<ParticleBurstController>().Burst();
             m_bonus.SetActive(false);
             m_audioSource.PlayOneShot(m_bonusSound, 1.1f * m_gameManager.m_volumeScale);
             if (m_gameManager.BonusCollected()) return;
             m_gameManager.m_holdingBonus = true;
             int index = Array.IndexOf(m_normalSprites, m_renderer.sprite);
             m_renderer.sprite = m_bonusSprites[index];
-            m_bonusParticles.SetActive(true);
+            m_bonusAura.SetActive(true);
         }
     }
 
@@ -212,7 +213,7 @@ public class PlayerController : MonoBehaviour {
         m_body.rotation = 0;
         for (int i = 0; i < 4; i++) m_grounded[i] = false;
         m_renderer.sprite = m_normalSprites[1];
-        m_bonusParticles.SetActive(false);
+        m_bonusAura.SetActive(false);
         transform.position = m_startPos;
     }
 
