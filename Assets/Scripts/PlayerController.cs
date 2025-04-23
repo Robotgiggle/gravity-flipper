@@ -202,7 +202,7 @@ public class PlayerController : MonoBehaviour {
     IEnumerator Die() {
         m_deathBurst.Burst();
         transform.position = new Vector3(100,100,0);
-        m_audioSource.PlayOneShot(m_deathSound, 0.25f * m_gameManager.m_volumeScale);
+        m_audioSource.PlayOneShot(m_deathSound, 0.3f * m_gameManager.m_volumeScale);
         m_gameManager.AddDeath();
         yield return new WaitForSeconds(0.5f);
         m_gameManager.ResetLevel();

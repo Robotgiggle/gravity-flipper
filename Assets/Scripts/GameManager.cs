@@ -33,22 +33,22 @@ public class GameManager : MonoBehaviour {
     int m_currentLevel;
     
     // static instance access
-    private static GameObject theObject;
+    private static GameObject m_theObject;
     public static GameManager TheInstance {
         get {
-            if (theObject == null) {
-                theObject = new GameObject();
-                theObject.name = "GameManager";
-                theObject.AddComponent<GameManager>();
+            if (m_theObject == null) {
+                m_theObject = new GameObject();
+                m_theObject.name = "GameManager";
+                m_theObject.AddComponent<GameManager>();
             }
-            return theObject.GetComponent<GameManager>();
+            return m_theObject.GetComponent<GameManager>();
         }
     }
 
     void Awake() {
         // make sure there's only ever one object
-        if (theObject == null) theObject = gameObject;
-        else if (theObject != gameObject) Destroy(gameObject);
+        if (m_theObject == null) m_theObject = gameObject;
+        else if (m_theObject != gameObject) Destroy(gameObject);
         // persist across scenes
         DontDestroyOnLoad(gameObject);
         // set up data
@@ -116,11 +116,6 @@ public class GameManager : MonoBehaviour {
         if (fromLevel) m_totalPlaytime += Time.timeSinceLevelLoad;
         StartCoroutine(LoadSceneWithDelay("Menu", delay));
         m_currentLevel = -1;
-    }
-
-    public void SetVolumeScale(float scale) {
-        m_volumeScale = scale;
-        if (m_bgm != null) m_bgm.volume = 0.3f * scale;
     }
 
     public bool BonusCollected() {

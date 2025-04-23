@@ -13,6 +13,7 @@ TagManager:
   - Bonus
   - LevelButton
   - TextPopUp
+  - Music
   layers:
   - Default
   - TransparentFX

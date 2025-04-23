@@ -19,12 +19,14 @@ public class MenuController : MonoBehaviour {
     public TMP_Text m_distanceText;
 
     GameManager m_gameManager;
+    AudioSource m_bgMusic;
     Vector3 m_slideTarget;
     bool m_sliding;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
         m_gameManager = GameManager.TheInstance;
+        m_bgMusic = GameObject.FindWithTag("Music").GetComponent<AudioSource>();
 
         // sync settings controls to actual values
         m_volumeSlider.value = m_gameManager.m_volumeScale;
@@ -95,7 +97,8 @@ public class MenuController : MonoBehaviour {
     }
 
     public void UpdateVolume(System.Single newVolume) {
-        m_gameManager.SetVolumeScale(newVolume);
+        m_gameManager.m_volumeScale = newVolume;
+        m_bgMusic.volume = newVolume;
     }
 
     public void ToggleScroll(bool newState) {
