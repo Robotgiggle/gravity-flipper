@@ -5,6 +5,7 @@ using System;
 public class PlayerController : MonoBehaviour {
     public AudioClip m_gravSound;
     public AudioClip m_deathSound;
+    public AudioClip m_bonusSound;
     public GameObject m_bonus;
     public GameObject m_bonusParticles;
     public GameObject[] m_indicators = new GameObject[4];
@@ -79,6 +80,7 @@ public class PlayerController : MonoBehaviour {
             StartCoroutine(Die());
         } else if (m_bonus != null && collider.gameObject == m_bonus) {
             m_bonus.SetActive(false);
+            m_audioSource.PlayOneShot(m_bonusSound, 1.1f * m_gameManager.m_volumeScale);
             if (m_gameManager.BonusCollected()) return;
             m_gameManager.m_holdingBonus = true;
             int index = Array.IndexOf(m_normalSprites, m_renderer.sprite);
