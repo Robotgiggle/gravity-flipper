@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour {
     public GameObject[] m_indicators = new GameObject[4];
     public Sprite[] m_normalSprites = new Sprite[4];
     public Sprite[] m_bonusSprites = new Sprite[4];
+    public ParticleBurstController m_deathBurst;
     public float m_gravForce;
 
     GameManager m_gameManager;
@@ -199,6 +200,7 @@ public class PlayerController : MonoBehaviour {
 
     // die and restart the level
     IEnumerator Die() {
+        m_deathBurst.Burst();
         transform.position = new Vector3(100,100,0);
         m_audioSource.PlayOneShot(m_deathSound, 0.25f * m_gameManager.m_volumeScale);
         m_gameManager.AddDeath();
