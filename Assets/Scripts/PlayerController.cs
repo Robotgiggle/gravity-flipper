@@ -150,9 +150,8 @@ public class PlayerController : MonoBehaviour {
         } else if (dir == RIGHT) {
             Physics2D.gravity = Vector2.right * m_gravForce;
         }
-        // when turning 90 degress, cancel existing momentum
-        if (dir > DOWN) m_body.linearVelocityY = 0;
-        else m_body.linearVelocityX = 0;
+        // cancel existing momentum
+        m_body.linearVelocity = Vector3.zero;
         // temporarily ignore belts after flipping
         gameObject.layer = 3;
     }
