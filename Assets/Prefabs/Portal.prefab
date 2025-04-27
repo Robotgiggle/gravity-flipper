@@ -102,6 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_pair: {fileID: 0}
+  m_particle: {fileID: 5563199676479271578, guid: 569c0565001afc94cb875f82195c34a7, type: 3}
 --- !u!61 &8425386596460379993
 BoxCollider2D:
   m_ObjectHideFlags: 0
