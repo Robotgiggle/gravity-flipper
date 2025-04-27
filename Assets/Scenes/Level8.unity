@@ -13499,6 +13499,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BeltCollider (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 843863627455494824, guid: 2d2285fbc4f68324bb90f24ab31faf37, type: 3}
+      propertyPath: m_TagString
+      value: RightWall
+      objectReference: {fileID: 0}
     - target: {fileID: 1608781707637297877, guid: 2d2285fbc4f68324bb90f24ab31faf37, type: 3}
       propertyPath: m_Speed
       value: -7.15
@@ -15581,6 +15585,10 @@ PrefabInstance:
     - target: {fileID: 843863627455494824, guid: 2d2285fbc4f68324bb90f24ab31faf37, type: 3}
       propertyPath: m_Name
       value: BeltCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 843863627455494824, guid: 2d2285fbc4f68324bb90f24ab31faf37, type: 3}
+      propertyPath: m_TagString
+      value: LeftWall
       objectReference: {fileID: 0}
     - target: {fileID: 1608781707637297877, guid: 2d2285fbc4f68324bb90f24ab31faf37, type: 3}
       propertyPath: m_Speed
