@@ -49,10 +49,10 @@ public class BeltController : MonoBehaviour {
 
     void SpawnLight(Vector3 pos) {
         GameObject newLight = Instantiate(m_beltLight, pos, Quaternion.identity);
-        newLight.transform.SetParent(transform);
         newLight.GetComponent<SpriteRenderer>().color = new Color(1, 0.9f, 0);
         newLight.GetComponent<SpriteRenderer>().sortingOrder = 3;
         newLight.GetComponent<ParticleController>().m_motion = transform.right * m_lightSpeed;
+        newLight.transform.localScale = new Vector3(0.15f, 0.15f, 1);
         m_activeLights.Add(newLight);
     }
 }

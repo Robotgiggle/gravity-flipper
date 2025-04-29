@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour {
     public AudioClip m_bonusSound;
     public GameObject m_bonus;
     public GameObject m_bonusAura;
+    public GameObject m_afterimage;
     public GameObject[] m_indicators = new GameObject[4];
     public Sprite[] m_normalSprites = new Sprite[4];
     public Sprite[] m_bonusSprites = new Sprite[4];
@@ -22,6 +23,7 @@ public class PlayerController : MonoBehaviour {
     Vector3 m_lastPos;
     Vector2 m_lastVel;
     bool[] m_grounded = new bool[4];
+    float m_trailCooldown;
     float m_flipCooldown;
 
     const int UP = 0, DOWN = 1, LEFT = 2, RIGHT = 3;
@@ -36,6 +38,22 @@ public class PlayerController : MonoBehaviour {
         m_gameManager.m_resetLevelEvent.AddListener(Respawn);
         if (m_gameManager.m_hardMode) m_gravForce = 12;
         Respawn();
+    }
+
+    // FixedUpdate is called once per physics update
+    void FixedUpdate() {
+        // draw motion trail
+        if (m_body.linearVelocity != Vector2.zero && m_trailCooldown <= 0) {
+            GameObject newImage = Instantiate(m_afterimage, transform.position, Quaternion.identity);
+            newImage.GetComponent<SpriteRenderer>().sprite = m_renderer.sprite;
+            newImage.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.55f);
+            newImage.GetComponent<SpriteRenderer>().sortingLayerName = "Default";
+            newImage.GetComponent<SpriteRenderer>().sortingOrder = 1;
+            newImage.GetComponent<ParticleController>().m_fadeRate = 3;
+            m_trailCooldown = 0.01f;
+        }
+        // decrement trail cooldown
+        if (m_trailCooldown > 0) m_trailCooldown -= Time.deltaTime;
     }
 
     // Update is called once per frame
