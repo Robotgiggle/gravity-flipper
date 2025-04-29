@@ -96,8 +96,11 @@ public class MenuController : MonoBehaviour {
         }
     }
 
-    public void UpdateVolume(System.Single newVolume) {
+    public void UpdateGameVolume(System.Single newVolume) {
         m_gameManager.m_volumeScale = newVolume;
+    }
+
+    public void UpdateMusicVolume(System.Single newVolume) {
         m_bgMusic.volume = newVolume;
     }
 
