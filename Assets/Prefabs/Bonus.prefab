@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.19001935, y: 0.19001935, z: 0.19001935}
+  m_LocalScale: {x: 0.19, y: 0.19, z: 0.19}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1062121341520248493}
@@ -77,15 +77,15 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -172524819
+  m_SortingLayer: -1
+  m_SortingOrder: 1
   m_Sprite: {fileID: -8200319510692720844, guid: 297ed311716554e2d9927c932cf9613d, type: 3}
-  m_Color: {r: 0.84313726, g: 1, b: 0.75, a: 1}
+  m_Color: {r: 0.37254903, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 6.72, y: 7.01}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -125,8 +125,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.10217394, y: 0}
-  m_Radius: 3.3394523
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 3.4
 --- !u!114 &-1855789463781377918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,11 +174,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3846929902202311593, guid: dd4b2b7023920cc4db8bfa220fcf5e5e, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 8.935
+      value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: 3846929902202311593, guid: dd4b2b7023920cc4db8bfa220fcf5e5e, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 9.057
+      value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: 3846929902202311593, guid: dd4b2b7023920cc4db8bfa220fcf5e5e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -210,11 +210,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3846929902202311593, guid: dd4b2b7023920cc4db8bfa220fcf5e5e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.142
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3846929902202311593, guid: dd4b2b7023920cc4db8bfa220fcf5e5e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.122
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3846929902202311593, guid: dd4b2b7023920cc4db8bfa220fcf5e5e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -250,7 +250,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7767846508962523638, guid: dd4b2b7023920cc4db8bfa220fcf5e5e, type: 3}
       propertyPath: m_spawnRate
-      value: 0.6
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 7767846508962523638, guid: dd4b2b7023920cc4db8bfa220fcf5e5e, type: 3}
       propertyPath: m_initialScale
