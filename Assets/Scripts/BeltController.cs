@@ -8,6 +8,7 @@ public class BeltController : MonoBehaviour {
 
     List<GameObject> m_activeLights;
     Vector3 m_startPos;
+    float m_sparkCooldown;
     float m_maxDist;
     float m_timer;
     
@@ -45,6 +46,27 @@ public class BeltController : MonoBehaviour {
             m_timer = 0;
             SpawnLight(m_startPos);
         }
+    }
+
+    void OnCollisionStay2D(Collision2D collision) {
+        // if moving against the belt, make sparks
+        Vector3 grav3D = (Vector3)Physics2D.gravity.normalized;
+        if (grav3D == -transform.right && m_sparkCooldown <= 0) {
+            Vector3 offset = Vector3.Project(transform.position - collision.transform.position, transform.up).normalized * 0.5f;
+            Vector3 randomize = (Random.Range(-0.55f, -0.1f) * transform.right) + (Random.Range(-0.09f, 0.09f) * transform.up);
+            Vector3 sparkPos = collision.transform.position + offset + randomize;
+
+            GameObject newSpark = Instantiate(m_beltLight, sparkPos, Quaternion.identity);
+            newSpark.GetComponent<SpriteRenderer>().color = new Color(1, 0.7f, 0);
+            newSpark.GetComponent<SpriteRenderer>().sortingLayerName = "Default";
+            newSpark.GetComponent<SpriteRenderer>().sortingOrder = 3;
+            newSpark.GetComponent<ParticleController>().m_shrinkFactor = 0.98f;
+            newSpark.GetComponent<ParticleController>().m_spinRate = 30;
+            newSpark.GetComponent<ParticleController>().m_motion = transform.right * 1.5f;
+            newSpark.transform.localScale = new Vector3(0.2f, 0.2f, 1);
+            m_sparkCooldown = 0.025f;
+        }
+        if (m_sparkCooldown > 0) m_sparkCooldown -= Time.deltaTime;
     }
 
     void SpawnLight(Vector3 pos) {
