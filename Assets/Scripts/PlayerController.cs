@@ -152,7 +152,23 @@ public class PlayerController : MonoBehaviour {
         return false;
     }
 
-    // flip gravity to point in the provided direction
+    // change gravity to the specified direction, used when passing through a portal
+    public void ChangeGravityTo(Vector3 newDir) {
+        // rotate sprite
+        int spriteNum = -1;
+        if (newDir == Vector3.up) spriteNum = 0;
+        else if (newDir == Vector3.down) spriteNum = 1;
+        else if (newDir == Vector3.left) spriteNum = 2;
+        else if (newDir == Vector3.right) spriteNum = 3;
+        m_renderer.sprite = m_gameManager.m_holdingBonus ? m_bonusSprites[spriteNum] : m_normalSprites[spriteNum];
+        // change world gravity
+        Physics2D.gravity = newDir * m_gravForce;
+        // rotate linear velocity to match new gravity
+        Quaternion rotation = Quaternion.Euler(0, 0, Vector3.SignedAngle(m_body.linearVelocity, Physics2D.gravity, Vector3.forward));
+        m_body.linearVelocity = (Vector2)(rotation * m_body.linearVelocity);
+    }
+
+    // flip gravity to point in one of four directions, used by the player when moving
     void FlipGravity(int dir) {
         m_audioSource.PlayOneShot(m_gravSound, 0.09f * m_gameManager.m_volumeScale);
         m_gameManager.m_totalFlips++;

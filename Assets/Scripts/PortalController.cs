@@ -53,9 +53,16 @@ public class PortalController : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D collider) {
         if (m_teleCooldown <= 0) {
-            Vector3 offset = (m_pair.transform.position - transform.position) + (0.7f * m_pair.transform.right);
-            collider.transform.Translate(offset);
+            // enable cooldown on output portal
             m_pairController.m_teleCooldown = 0.2f;
+            // teleport the player
+            Vector3 entryOffset = Vector3.Project(collider.transform.position - transform.position, transform.up);
+            Quaternion angleDifference = Quaternion.Euler(0, 0, 180 + Vector3.SignedAngle(transform.up, m_pair.transform.up, Vector3.forward));
+            collider.transform.position = m_pair.transform.position;
+            collider.transform.Translate(angleDifference * entryOffset);
+            collider.transform.Translate(0.7f * m_pair.transform.right);
+            // change gravity if necessary
+            collider.GetComponent<PlayerController>().ChangeGravityTo(m_pair.transform.right);
         }
     }
 }
