@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour {
         if (m_body.linearVelocity != Vector2.zero && m_trailCooldown <= 0) {
             GameObject newImage = Instantiate(m_afterimage, transform.position, Quaternion.identity);
             newImage.GetComponent<SpriteRenderer>().sprite = m_renderer.sprite;
-            newImage.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.55f);
+            newImage.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.45f);
             newImage.GetComponent<SpriteRenderer>().sortingLayerName = "Default";
             newImage.GetComponent<SpriteRenderer>().sortingOrder = 1;
             newImage.GetComponent<ParticleController>().m_fadeRate = 3;
