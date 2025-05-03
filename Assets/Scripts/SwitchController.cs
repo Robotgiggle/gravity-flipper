@@ -27,11 +27,13 @@ public class SwitchController : MonoBehaviour {
     }
 
     // activate the switch, then tell the door to check all other switches
-    // only play the activation noise if this isn't the last switch
     void Activate() {
         m_active = true;
         if (!m_doorCon.CheckSwitches()) m_audioSource.Play();
         m_renderer.sprite = m_sprites[1];
+        // trigger particle burst if it exists
+        ParticleBurstController bc = gameObject.GetComponentInChildren<ParticleBurstController>();
+        if (bc != null) bc.Burst();
     }
 
     // reset the switch

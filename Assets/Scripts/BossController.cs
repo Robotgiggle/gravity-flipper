@@ -1,0 +1,44 @@
+using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+
+public class BossController : MonoBehaviour {
+    public GameObject m_player;
+    public List<SwitchController> m_phase1Switches;
+    public List<SwitchController> m_phase2Switches;
+    public List<SwitchController> m_phase3Switches;
+
+    int m_phase = 1;
+    
+    void Start() {
+        
+    }
+
+    void Update() {
+        // check for phase transition
+        if (m_phase1Switches.All(sw => sw.m_active) && m_phase == 1) {
+            Debug.Log("moving to phase 2");
+            m_phase = 2;
+        } else if (m_phase2Switches.All(sw => sw.m_active) && m_phase == 2) {
+            Debug.Log("moving to phase 3");
+            m_phase = 3;
+        } else if (m_phase3Switches.All(sw => sw.m_active) && m_phase == 3) {
+            Debug.Log("boss defeated");
+            m_phase = 0;
+            StartCoroutine(DeathAnim());
+        }
+        // move up to next room if necessary
+        if ((m_phase == 2 && transform.position.y < 39) || (m_phase == 3 && transform.position.y < 70)) {
+            transform.Translate(0, 12 * Time.deltaTime, 0);
+        }
+        // attack the player
+        //TODO
+    }
+
+    IEnumerator DeathAnim() {
+        // TODO: particle bursts
+        yield return new WaitForSeconds(1);
+        Destroy(gameObject);
+    }
+}

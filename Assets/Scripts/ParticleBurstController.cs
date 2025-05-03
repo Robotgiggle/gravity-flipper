@@ -19,6 +19,8 @@ public class ParticleBurstController : MonoBehaviour {
 
             GameObject newParticle = Instantiate(m_particle, transform.position, spawnRot);
             newParticle.GetComponent<SpriteRenderer>().color = m_color;
+            newParticle.GetComponent<SpriteRenderer>().sortingLayerName = "Default";
+            newParticle.GetComponent<SpriteRenderer>().sortingOrder = 1;
             newParticle.GetComponent<ParticleController>().m_motion = Random.insideUnitCircle * m_burstForce;
             newParticle.GetComponent<ParticleController>().m_shrinkFactor = m_shrinkFactor;
             newParticle.transform.localScale = new Vector3(spawnScale, spawnScale, 1);

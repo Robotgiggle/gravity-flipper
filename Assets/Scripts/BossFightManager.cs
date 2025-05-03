@@ -6,14 +6,6 @@ public class BossFightManager : MonoBehaviour {
     public Transform[] m_phase2Seals;
     public GameObject m_phase3Floor;
     public Transform[] m_phase3Seals;
-    
-    void Start() {
-        
-    }
-
-    void Update() {
-        
-    }
 
     public void StartPhase(int phase) {
         Debug.Log("starting phase " + phase);
