@@ -24,10 +24,11 @@ public class BossSwitchController : SwitchController {
     }
 
     public IEnumerator Vanish() {
+        float delay = 1.2f / m_tentacleSegments.Length;
         foreach (GameObject segment in m_tentacleSegments) {
             m_deathBurst.BurstPos(segment.transform.position);
             segment.SetActive(false);
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(delay);
         }
         m_deathBurst.Burst();
         base.m_renderer.enabled = false;
