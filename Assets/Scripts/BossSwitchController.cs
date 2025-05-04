@@ -27,7 +27,7 @@ public class BossSwitchController : SwitchController {
         foreach (GameObject segment in m_tentacleSegments) {
             m_deathBurst.BurstPos(segment.transform.position);
             segment.SetActive(false);
-            yield return new WaitForSeconds(0.35f);
+            yield return new WaitForSeconds(0.3f);
         }
         m_deathBurst.Burst();
         base.m_renderer.enabled = false;

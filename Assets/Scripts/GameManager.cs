@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour {
         m_resetLevelEvent = new UnityEvent();
         for (int i = 0; i < 10; i++) {
             m_levels[i] = new Level();
-            if (i < 9) m_levels[i].scene = "Level" + (i+1);
+            m_levels[i].scene = "Level" + (i+1);
         }
         int index = SceneManager.GetActiveScene().buildIndex;
         if (index != 0) m_currentLevel = index - 1;
@@ -103,7 +103,7 @@ public class GameManager : MonoBehaviour {
         if (m_holdingBonus) m_levels[m_currentLevel].bonus = true;
         m_levels[m_currentLevel].completed = true;
         //load next level
-        if (m_currentLevel < 8) LoadLevel(m_currentLevel+1, delay);
+        if (m_currentLevel < 9) LoadLevel(m_currentLevel+1, delay);
         else LoadMenu(true, delay);
     }
 
