@@ -5,9 +5,9 @@ using System.Linq;
 
 public class BossController : MonoBehaviour {
     public GameObject m_player;
-    public List<SwitchController> m_phase1Switches;
-    public List<SwitchController> m_phase2Switches;
-    public List<SwitchController> m_phase3Switches;
+    public List<BossSwitchController> m_phase1Switches;
+    public List<BossSwitchController> m_phase2Switches;
+    public List<BossSwitchController> m_phase3Switches;
 
     int m_phase = 1;
     

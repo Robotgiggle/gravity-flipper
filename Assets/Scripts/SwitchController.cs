@@ -10,7 +10,7 @@ public class SwitchController : MonoBehaviour {
     DoorController m_doorCon;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start() {
+    protected virtual void Start() {
         m_gameManager = GameManager.TheInstance;
         m_audioSource = gameObject.GetComponent<AudioSource>();
         m_renderer = gameObject.GetComponent<SpriteRenderer>();
@@ -27,13 +27,10 @@ public class SwitchController : MonoBehaviour {
     }
 
     // activate the switch, then tell the door to check all other switches
-    void Activate() {
+    protected virtual void Activate() {
         m_active = true;
         if (!m_doorCon.CheckSwitches()) m_audioSource.Play();
         m_renderer.sprite = m_sprites[1];
-        // trigger particle burst if it exists
-        ParticleBurstController bc = gameObject.GetComponentInChildren<ParticleBurstController>();
-        if (bc != null) bc.Burst();
     }
 
     // reset the switch
