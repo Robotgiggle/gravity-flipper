@@ -6,7 +6,7 @@ public class SwitchController : MonoBehaviour {
 
     GameManager m_gameManager;
     AudioSource m_audioSource;
-    SpriteRenderer m_renderer;
+    protected SpriteRenderer m_renderer;
     DoorController m_doorCon;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -34,7 +34,7 @@ public class SwitchController : MonoBehaviour {
     }
 
     // reset the switch
-    void Reset() {
+    protected virtual void Reset() {
         m_renderer.sprite = m_sprites[0];
         m_active = false;
         m_doorCon.CheckSwitches();

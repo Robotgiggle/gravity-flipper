@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c71e3878fb515af4191cf974b269ed66
+guid: 72ac17439c2aced42ae81221064f4e5f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6438386182508226724
-    second: boss_switch_0
+      213: 3267209078268184784
+    second: tentacle_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 18
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,45 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: boss_switch_0
+      name: tentacle_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 91
-        height: 91
+        width: 53
+        height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c5750d801e146a6a0800000000000000
-      internalID: -6438386182508226724
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: boss_switch_1
-      rect:
-        serializedVersion: 2
-        x: 91
-        y: 0
-        width: 91
-        height: 91
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 93e8782eb7940c742b993ccc9ac46526
-      internalID: 203303949
+      spriteID: 0d84b15a855775d20800000000000000
+      internalID: 3267209078268184784
       vertices: []
       indices: 
       edges: []
@@ -160,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5dc80d247b5f5fe4dba753e89573de5d
+    spriteID: e32d43cdd194dff448e15c1b52f11999
     internalID: 0
     vertices: []
     indices: 
@@ -170,8 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      boss_switch_0: -6438386182508226724
-      boss_switch_1: 203303949
+      tentacle_0: 3267209078268184784
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

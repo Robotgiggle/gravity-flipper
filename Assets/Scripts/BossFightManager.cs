@@ -7,6 +7,23 @@ public class BossFightManager : MonoBehaviour {
     public GameObject m_phase3Floor;
     public Transform[] m_phase3Seals;
 
+    GameManager m_gameManager;
+
+    void Start() {
+        m_gameManager = GameManager.TheInstance;
+        m_gameManager.m_resetLevelEvent.AddListener(Reset);
+    }
+
+    void Reset() {
+        transform.position = new Vector3(0, 0, 0);
+        m_phase2Floor.SetActive(false);
+        m_phase2Seals[0].position = new Vector3(-8.5f, 19.5f, 0);
+        m_phase2Seals[1].position = new Vector3(-4.5f, 19.5f, 0);
+        m_phase3Floor.SetActive(false);
+        m_phase3Seals[0].position = new Vector3(-8.5f, 50.5f, 0);
+        m_phase3Seals[1].position = new Vector3(-4.5f, 50.5f, 0);
+    }
+
     public void StartPhase(int phase) {
         Debug.Log("starting phase " + phase);
         transform.position = new Vector3(0, (phase-1)*31, 0);
