@@ -8,6 +8,7 @@ public class BossFightManager : MonoBehaviour {
     public Transform[] m_phase3Seals;
 
     GameManager m_gameManager;
+    Coroutine m_closeRoutine;
 
     void Start() {
         m_gameManager = GameManager.TheInstance;
@@ -15,19 +16,20 @@ public class BossFightManager : MonoBehaviour {
     }
 
     void Reset() {
+        StopCoroutine(m_closeRoutine);
         transform.position = new Vector3(0, 0, 0);
         m_phase2Floor.SetActive(false);
-        m_phase2Seals[0].position = new Vector3(-8.5f, 19.5f, 0);
-        m_phase2Seals[1].position = new Vector3(-4.5f, 19.5f, 0);
+        m_phase2Seals[0].localPosition = new Vector3(-8.5f, 19.5f, 0);
+        m_phase2Seals[1].localPosition = new Vector3(4.5f, 19.5f, 0);
         m_phase3Floor.SetActive(false);
-        m_phase3Seals[0].position = new Vector3(-8.5f, 50.5f, 0);
-        m_phase3Seals[1].position = new Vector3(-4.5f, 50.5f, 0);
+        m_phase3Seals[0].localPosition = new Vector3(-8.5f, 50.5f, 0);
+        m_phase3Seals[1].localPosition = new Vector3(4.5f, 50.5f, 0);
     }
 
     public void StartPhase(int phase) {
         Debug.Log("starting phase " + phase);
         transform.position = new Vector3(0, (phase-1)*31, 0);
-        StartCoroutine(CloseSeals(phase));
+        m_closeRoutine = StartCoroutine(CloseSeals(phase));
         if (phase == 2) m_phase2Floor.SetActive(true);
         else if (phase == 3) m_phase3Floor.SetActive(true);
     }
