@@ -19,11 +19,11 @@ public class BossFightManager : MonoBehaviour {
         if (m_closeRoutine != null) StopCoroutine(m_closeRoutine);
         transform.position = new Vector3(0, 0, 0);
         m_phase2Floor.SetActive(false);
-        m_phase2Seals[0].localPosition = new Vector3(-8.5f, 19.5f, 0);
-        m_phase2Seals[1].localPosition = new Vector3(4.5f, 19.5f, 0);
+        m_phase2Seals[0].localPosition = new Vector3(-8.5f, 20.5f, 0);
+        m_phase2Seals[1].localPosition = new Vector3(4.5f, 20.5f, 0);
         m_phase3Floor.SetActive(false);
-        m_phase3Seals[0].localPosition = new Vector3(-8.5f, 50.5f, 0);
-        m_phase3Seals[1].localPosition = new Vector3(4.5f, 50.5f, 0);
+        m_phase3Seals[0].localPosition = new Vector3(-8.5f, 51.5f, 0);
+        m_phase3Seals[1].localPosition = new Vector3(4.5f, 51.5f, 0);
     }
 
     public void StartPhase(int phase) {
