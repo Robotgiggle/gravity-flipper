@@ -48,6 +48,11 @@ public class BeltController : MonoBehaviour {
         }
     }
 
+    // set momentum to zero to prevent diagonal motion when leaving the belt
+    void OnCollisionExit2D(Collision2D collision) {
+        collision.rigidbody.linearVelocity = Vector3.zero;
+    }
+
     void OnCollisionStay2D(Collision2D collision) {
         // if moving against the belt, make sparks
         Vector3 grav3D = (Vector3)Physics2D.gravity.normalized;
