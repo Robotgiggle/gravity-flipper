@@ -16,7 +16,7 @@ public class BossFightManager : MonoBehaviour {
     }
 
     void Reset() {
-        StopCoroutine(m_closeRoutine);
+        if (m_closeRoutine != null) StopCoroutine(m_closeRoutine);
         transform.position = new Vector3(0, 0, 0);
         m_phase2Floor.SetActive(false);
         m_phase2Seals[0].localPosition = new Vector3(-8.5f, 19.5f, 0);
