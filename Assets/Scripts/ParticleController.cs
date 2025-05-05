@@ -13,6 +13,7 @@ public class ParticleController : MonoBehaviour {
     }
 
     void Update() {
+        if (Time.timeScale == 0) return;
         transform.Rotate(0, 0, m_spinRate * Time.deltaTime);
         transform.Translate(m_motion * Time.deltaTime, Space.World);
         if (m_shrinkFactor != 0) {
