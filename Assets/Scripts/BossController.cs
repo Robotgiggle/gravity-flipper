@@ -10,10 +10,12 @@ public class BossController : MonoBehaviour {
     public List<BossSwitchController> m_phase3Switches;
 
     GameManager m_gameManager;
+    SpriteRenderer m_renderer;
     int m_phase = 1;
     
     void Start() {
         m_gameManager = GameManager.TheInstance;
+        m_renderer = gameObject.GetComponent<SpriteRenderer>();
         m_gameManager.m_resetLevelEvent.AddListener(Reset);
     }
 
@@ -42,13 +44,15 @@ public class BossController : MonoBehaviour {
     }
 
     void Reset() {
-        transform.position = new Vector3(0, 8, 0);
-        m_phase = 1;
+        if (m_phase == 1) transform.position = new Vector3(0, 8, 0);
+        else if (m_phase == 2) transform.position = new Vector3(0, 39, 0);
+        else transform.position = new Vector3(0, 70, 0);
+        m_renderer.enabled = true;
     }
 
     IEnumerator DeathAnim() {
         // TODO: particle bursts
         yield return new WaitForSeconds(1);
-        Destroy(gameObject);
+        m_renderer.enabled = false;
     }
 }

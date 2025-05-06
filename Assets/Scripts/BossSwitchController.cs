@@ -16,11 +16,7 @@ public class BossSwitchController : SwitchController {
     }
 
     protected override void Reset() {
-        base.Reset();
-        base.m_renderer.enabled = true;
-        foreach (GameObject segment in m_tentacleSegments) {
-            segment.SetActive(true);
-        }
+        if (m_renderer.enabled) base.Reset();
     }
 
     public IEnumerator Vanish() {

@@ -96,6 +96,8 @@ public class PlayerController : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D collider) {
         if (collider.CompareTag("Hazard")) {
             StartCoroutine(Die());
+        } else if (collider.CompareTag("Checkpoint")) {
+            m_startPos = collider.transform.position;
         } else if (m_bonus != null && collider.gameObject == m_bonus) {
             m_bonus.GetComponentInChildren<ParticleBurstController>().Burst();
             m_bonus.SetActive(false);
