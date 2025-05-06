@@ -44,6 +44,7 @@ public class PortalController : MonoBehaviour {
         // delete particles
         for (int i = m_particles.Count; i > 0; i--) {
             GameObject particle = m_particles[i-1];
+            if (particle == null) continue;
             if (Vector3.Project(particle.transform.position - transform.position, transform.right).sqrMagnitude < 0.1f) {
                 m_particles.RemoveAt(i-1);
                 Destroy(particle);

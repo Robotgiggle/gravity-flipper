@@ -20,11 +20,17 @@ public class BossController : MonoBehaviour {
     }
 
     void Update() {
+        // negative phase = "phase N has been defeated"
         if (m_phase < 0) {
             // move up to the next room
-            if ((m_phase == -1 && transform.position.y < 39) || (m_phase == -2 && transform.position.y < 70)) {
+            if ((m_phase == -1 && transform.position.y < 20) || (m_phase == -2 && transform.position.y < 51)) {
                 transform.Translate(0, 8 * Time.deltaTime, 0);
+            } else if (m_phase == -1 && transform.position.y < 39) {
+                transform.position = new Vector3(0, 39, 0);
+            } else if (m_phase == -2 && transform.position.y < 70) {
+                transform.position = new Vector3(0, 70, 0);
             }
+        // positive phase = "phase N is active"
         } else {
             // check switches
             if (m_phase1Switches.All(sw => sw.m_active) && m_phase == 1) {
