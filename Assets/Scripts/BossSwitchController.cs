@@ -5,6 +5,7 @@ public class BossSwitchController : SwitchController {
     public GameObject[] m_tentacleSegments;
     public ParticleBurstController m_switchBurst;
     public ParticleBurstController m_deathBurst;
+    public bool m_saved;
 
     protected override void Start() {
         base.Start();
@@ -16,7 +17,11 @@ public class BossSwitchController : SwitchController {
     }
 
     protected override void Reset() {
-        if (m_renderer.enabled) base.Reset();
+        if (!m_saved) {
+            base.Reset();
+            foreach (GameObject segment in m_tentacleSegments) segment.SetActive(true);
+            base.m_renderer.enabled = true;
+        }
     }
 
     public IEnumerator Vanish() {

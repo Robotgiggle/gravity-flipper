@@ -15847,6 +15847,7 @@ MonoBehaviour:
   - {fileID: 1587079733}
   - {fileID: 1445662275}
   - {fileID: 1747382566}
+  m_phase: 1
 --- !u!212 &780306626
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -48936,7 +48937,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6912b3c550ccd45499760e6cb8084895, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_switchesToSave:
+  - {fileID: 2016191033}
+  - {fileID: 1086774695}
+  - {fileID: 1719830974}
+  - {fileID: 852067423}
   m_fightManager: {fileID: 284495217}
+  m_boss: {fileID: 780306625}
   m_phase: 3
 --- !u!212 &1137116475
 SpriteRenderer:
@@ -49581,7 +49588,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 208131973530473930, guid: fb6adde8d938fbd4b875623fdf6aaace, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.0509008
+      value: 2.050938
       objectReference: {fileID: 0}
     - target: {fileID: 208131973530473930, guid: fb6adde8d938fbd4b875623fdf6aaace, type: 3}
       propertyPath: m_LocalPosition.x
@@ -49589,7 +49596,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 208131973530473930, guid: fb6adde8d938fbd4b875623fdf6aaace, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 65.5003
+      value: 65.0003
       objectReference: {fileID: 0}
     - target: {fileID: 208131973530473930, guid: fb6adde8d938fbd4b875623fdf6aaace, type: 3}
       propertyPath: m_LocalPosition.z
@@ -50036,7 +50043,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6912b3c550ccd45499760e6cb8084895, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_switchesToSave:
+  - {fileID: 890089855}
+  - {fileID: 7176001587250524866}
+  - {fileID: 2086228887}
+  - {fileID: 1730078956}
   m_fightManager: {fileID: 284495217}
+  m_boss: {fileID: 780306625}
   m_phase: 2
 --- !u!212 &1303733633
 SpriteRenderer:
