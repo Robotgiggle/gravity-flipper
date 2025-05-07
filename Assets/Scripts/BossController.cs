@@ -8,41 +8,58 @@ public class BossController : MonoBehaviour {
     public List<BossSwitchController> m_phase1Switches;
     public List<BossSwitchController> m_phase2Switches;
     public List<BossSwitchController> m_phase3Switches;
+    public Sprite[] m_eyelidSprites;
     public int m_phase = 1;
 
     GameManager m_gameManager;
-    SpriteRenderer m_renderer;
+    ParticleBurstController m_burst;
+    SpriteRenderer m_eyelidRenderer;
+    float m_animTimer;
     
     void Start() {
         m_gameManager = GameManager.TheInstance;
-        m_renderer = gameObject.GetComponent<SpriteRenderer>();
+        m_burst = gameObject.GetComponentInChildren<ParticleBurstController>();
+        m_eyelidRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
         m_gameManager.m_resetLevelEvent.AddListener(Reset);
     }
 
     void Update() {
         // negative phase = "phase N has been defeated"
         if (m_phase < 0) {
-            // move up to the next room
-            if ((m_phase == -1 && transform.position.y < 20) || (m_phase == -2 && transform.position.y < 51)) {
-                transform.Translate(0, 8 * Time.deltaTime, 0);
-            } else if (m_phase == -1 && transform.position.y < 39) {
-                transform.position = new Vector3(0, 39, 0);
-            } else if (m_phase == -2 && transform.position.y < 70) {
-                transform.position = new Vector3(0, 70, 0);
+            if (m_animTimer > 0) {
+                // wait for damage animation to finish
+                m_animTimer -= Time.deltaTime;
+            } else {
+                // move up to the next room
+                if ((m_phase == -1 && transform.position.y < 20) || (m_phase == -2 && transform.position.y < 51)) {
+                    transform.Translate(0, 8 * Time.deltaTime, 0);
+                } else if (m_phase == -1 && transform.position.y < 39) {
+                    transform.position = new Vector3(0, 39, 0);
+                } else if (m_phase == -2 && transform.position.y < 70) {
+                    transform.position = new Vector3(0, 70, 0);
+                }
             }
         // positive phase = "phase N is active"
         } else {
             // check switches
             if (m_phase1Switches.All(sw => sw.m_active) && m_phase == 1) {
                 Debug.Log("moving to phase 2");
+                m_animTimer = 0.5f;
+                m_burst.BurstOffset(new Vector3(-4.8f, -1f, 0));
+                m_eyelidRenderer.enabled = true;
                 m_phase1Switches.ForEach(sw => sw.StartCoroutine(sw.Vanish()));
                 m_phase = -1;
             } else if (m_phase2Switches.All(sw => sw.m_active) && m_phase == 2) {
                 Debug.Log("moving to phase 3");
+                m_animTimer = 0.5f;
+                m_burst.BurstOffset(new Vector3(4.8f, -1f, 0));
+                m_eyelidRenderer.sprite = m_eyelidSprites[1];
                 m_phase2Switches.ForEach(sw => sw.StartCoroutine(sw.Vanish()));
                 m_phase = -2;
             } else if (m_phase3Switches.All(sw => sw.m_active) && m_phase == 3) {
                 Debug.Log("boss defeated");
+                m_burst.Burst();
+                m_eyelidRenderer.sprite = m_eyelidSprites[2];
                 m_phase3Switches.ForEach(sw => sw.StartCoroutine(sw.Vanish()));
                 m_phase = -3;
                 StartCoroutine(DeathAnim());
@@ -54,14 +71,21 @@ public class BossController : MonoBehaviour {
 
     void Reset() {
         if (m_phase < 0) m_phase *= -1;
-        if (m_phase == 1) transform.position = new Vector3(0, 8, 0);
-        else if (m_phase == 2) transform.position = new Vector3(0, 39, 0);
-        else if (m_phase == 3) transform.position = new Vector3(0, 70, 0);
+        if (m_phase == 1) {
+            m_eyelidRenderer.enabled = false;
+            transform.position = new Vector3(0, 8, 0);
+        } else if (m_phase == 2) {
+            m_eyelidRenderer.sprite = m_eyelidSprites[0];
+            transform.position = new Vector3(0, 39, 0);
+        } else if (m_phase == 3) {
+            m_eyelidRenderer.sprite = m_eyelidSprites[1];
+            transform.position = new Vector3(0, 70, 0);
+        }
     }
 
     IEnumerator DeathAnim() {
         // TODO: particle bursts
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1.5f);
         transform.position = new Vector3(0, 100, 0);
     }
 }

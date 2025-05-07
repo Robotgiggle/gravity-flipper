@@ -25,12 +25,16 @@ public class BossSwitchController : SwitchController {
     }
 
     public IEnumerator Vanish() {
+        // wait for boss damage animation
+        yield return new WaitForSeconds(0.5f);
+        // explode the tentacle
         float delay = 1.2f / m_tentacleSegments.Length;
         foreach (GameObject segment in m_tentacleSegments) {
             m_deathBurst.BurstPos(segment.transform.position);
             segment.SetActive(false);
             yield return new WaitForSeconds(delay);
         }
+        // explode self
         m_deathBurst.Burst();
         base.m_renderer.enabled = false;
     }
