@@ -16398,8 +16398,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.65, g: 0.19822691, b: 0.4886524, a: 1}
+  m_Sprite: {fileID: -2424553518018739129, guid: c89bc04e2d465dd4892b831da1ddff81, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -16419,8 +16419,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 8, z: 0}
-  m_LocalScale: {x: 16, y: 10, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 6.4000006, y: 6.4000006, z: 6.4000006}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16462,7 +16462,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2.5, y: 1.5}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -16470,26 +16470,26 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0, y: 0.5}
-      - {x: -0.15234375, y: 0.47265625}
-      - {x: -0.29296875, y: 0.40234375}
-      - {x: -0.40234375, y: 0.29296875}
-      - {x: -0.47265625, y: 0.15234375}
-      - {x: -0.5, y: 0}
-      - {x: -0.47265625, y: -0.15234375}
-      - {x: -0.40234375, y: -0.29296875}
-      - {x: -0.29296875, y: -0.40234375}
-      - {x: -0.15234375, y: -0.47265625}
-      - {x: 0, y: -0.5}
-      - {x: 0.15234375, y: -0.47265625}
-      - {x: 0.29296875, y: -0.40234375}
-      - {x: 0.40234375, y: -0.29296875}
-      - {x: 0.47265625, y: -0.15234375}
-      - {x: 0.5, y: 0}
-      - {x: 0.47265625, y: 0.15234375}
-      - {x: 0.40234375, y: 0.29296875}
-      - {x: 0.29296875, y: 0.40234375}
-      - {x: 0.15234375, y: 0.47265625}
+    - - {x: 1.14, y: -0.26}
+      - {x: 1.21, y: -0.11}
+      - {x: 1.21, y: 0.32}
+      - {x: 1.07, y: 0.48}
+      - {x: 0.42, y: 0.71}
+      - {x: -0.42, y: 0.71}
+      - {x: -1.06, y: 0.48999998}
+      - {x: -1.21, y: 0.3}
+      - {x: -1.21, y: -0.06999999}
+      - {x: -1.14, y: -0.26}
+      - {x: -0.98, y: -0.43}
+      - {x: -0.84000003, y: -0.51}
+      - {x: -0.64, y: -0.61}
+      - {x: -0.45, y: -0.68}
+      - {x: -0.32, y: -0.70000005}
+      - {x: -0.00046242028, y: -0.72000015}
+      - {x: 0.29, y: -0.70000005}
+      - {x: 0.53999996, y: -0.65}
+      - {x: 0.73, y: -0.58000004}
+      - {x: 0.94000006, y: -0.45000002}
   m_UseDelaunayMesh: 0
 --- !u!1001 &784955630
 PrefabInstance:
