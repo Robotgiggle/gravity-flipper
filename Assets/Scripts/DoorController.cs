@@ -3,19 +3,18 @@ using UnityEngine;
 public class DoorController : MonoBehaviour {
     public AudioClip m_unlockSound;
     public AudioClip m_teleportSound;
-    public Sprite[] m_sprites = new Sprite[2];
     public bool m_open = false;
 
     GameManager m_gameManager;
     AudioSource m_audioSource;
-    SpriteRenderer m_renderer;
+    Animator m_animator;
     SwitchController[] m_switchCons;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
         m_gameManager = GameManager.TheInstance;
         m_audioSource = gameObject.GetComponent<AudioSource>();
-        m_renderer = gameObject.GetComponent<SpriteRenderer>();
+        m_animator = gameObject.GetComponent<Animator>();
         GameObject[] switches = GameObject.FindGameObjectsWithTag("Switch");
         m_switchCons = new SwitchController[switches.Length];
         for (int i = 0; i < switches.Length; i++) {
@@ -39,14 +38,14 @@ public class DoorController : MonoBehaviour {
             if (switchCon.m_active == false) return false;
         }
         m_audioSource.PlayOneShot(m_unlockSound, m_gameManager.m_volumeScale);
-        m_renderer.sprite = m_sprites[1];
+        m_animator.SetBool("open", true);
         m_open = true;
         return true;
     }
 
     // close the door when the level resets
     void Reset() {
-        m_renderer.sprite = m_sprites[0];
+        m_animator.SetBool("open", false);
         m_open = false;
     }
 }
