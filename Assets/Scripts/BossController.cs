@@ -84,8 +84,16 @@ public class BossController : MonoBehaviour {
     }
 
     IEnumerator DeathAnim() {
-        // TODO: particle bursts
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.5f);
+        m_burst.m_initialScale = 0.9f;
+        m_burst.m_color = new Color(0.52f, 0.16f, 0.39f);
+        for (int i = 0; i < 8; i++) {
+            m_burst.BurstOffset(new Vector3(Random.Range(-6f, 6f), Random.Range(-5f, 4f), 0));
+            yield return new WaitForSeconds(0.3f);
+        }
+        m_burst.m_burstForce = 4.5f;
+        m_burst.m_initialScale = 1.2f;
+        m_burst.BurstPos(new Vector3(0, 68.5f, 0));
         transform.position = new Vector3(0, 100, 0);
     }
 }
