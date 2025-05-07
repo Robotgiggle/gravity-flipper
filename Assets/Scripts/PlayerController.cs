@@ -101,7 +101,8 @@ public class PlayerController : MonoBehaviour {
         } else if (m_bonus != null && collider.gameObject == m_bonus) {
             m_bonus.GetComponentInChildren<ParticleBurstController>().Burst();
             m_bonus.SetActive(false);
-            m_audioSource.PlayOneShot(m_bonusSound, 1.1f * m_gameManager.m_volumeScale);
+            float volume = m_gameManager.BonusCollected() ? 0.6f : 1.1f;
+            m_audioSource.PlayOneShot(m_bonusSound, volume * m_gameManager.m_volumeScale);
             if (m_gameManager.BonusCollected()) return;
             m_gameManager.m_holdingBonus = true;
             int index = Array.IndexOf(m_normalSprites, m_renderer.sprite);

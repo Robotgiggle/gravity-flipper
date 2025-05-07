@@ -10,6 +10,9 @@ public class MenuController : MonoBehaviour {
     public Toggle m_scrollToggle;
     public Toggle m_indicatorsToggle;
     public Toggle m_hardModeToggle;
+    [Header("Start Page")]
+    public Image m_playerIcon;
+    public Sprite m_bonusSprite;
     [Header("Levels Page")]
     public GameObject[] m_levelButtons = new GameObject[10];
     [Header("Stats Page")]
@@ -27,6 +30,10 @@ public class MenuController : MonoBehaviour {
     void Start() {
         m_gameManager = GameManager.TheInstance;
         m_bgMusic = GameObject.FindWithTag("Music").GetComponent<AudioSource>();
+
+        // change start icon if all bonuses collected
+        if (m_gameManager.GetTotalBonuses() == 10)
+            m_playerIcon.sprite = m_bonusSprite;
 
         // sync settings controls to actual values
         m_volumeSlider.value = m_gameManager.m_volumeScale;

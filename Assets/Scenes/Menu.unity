@@ -8610,6 +8610,8 @@ MonoBehaviour:
   m_scrollToggle: {fileID: 934386838}
   m_indicatorsToggle: {fileID: 2087012705}
   m_hardModeToggle: {fileID: 39342011}
+  m_playerIcon: {fileID: 683796526}
+  m_bonusSprite: {fileID: -1190046482, guid: 56e77d4063695074187a1f4bca65ec47, type: 3}
   m_levelButtons:
   - {fileID: 992605273}
   - {fileID: 2084510644}
