@@ -48,9 +48,10 @@ public class BeltController : MonoBehaviour {
         }
     }
 
-    // set momentum to zero to prevent diagonal motion when leaving the belt
+    // set momentum to zero when leaving if gravity doesn't align with the belt
     void OnCollisionExit2D(Collision2D collision) {
-        collision.rigidbody.linearVelocity = Vector3.zero;
+        if (Physics2D.gravity.normalized != (Vector2)transform.right)
+            collision.rigidbody.linearVelocity = Vector3.zero;
     }
 
     void OnCollisionStay2D(Collision2D collision) {

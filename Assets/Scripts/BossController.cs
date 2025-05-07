@@ -56,12 +56,12 @@ public class BossController : MonoBehaviour {
         if (m_phase < 0) m_phase *= -1;
         if (m_phase == 1) transform.position = new Vector3(0, 8, 0);
         else if (m_phase == 2) transform.position = new Vector3(0, 39, 0);
-        else if (m_phase == 3) m_renderer.enabled = true;
+        else if (m_phase == 3) transform.position = new Vector3(0, 70, 0);
     }
 
     IEnumerator DeathAnim() {
         // TODO: particle bursts
         yield return new WaitForSeconds(1);
-        m_renderer.enabled = false;
+        transform.position = new Vector3(0, 100, 0);
     }
 }
