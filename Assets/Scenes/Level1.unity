@@ -3704,6 +3704,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: QuadCollider (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 7365430943393906097, guid: fb6adde8d938fbd4b875623fdf6aaace, type: 3}
+      propertyPath: m_Points.Array.data[1].x
+      value: 0.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 8962996676723185606, guid: fb6adde8d938fbd4b875623fdf6aaace, type: 3}
+      propertyPath: m_Points.Array.data[1].x
+      value: 0.49
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 6948770516399871033, guid: fb6adde8d938fbd4b875623fdf6aaace, type: 3}
@@ -12695,6 +12703,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5909513529139185777, guid: fb6adde8d938fbd4b875623fdf6aaace, type: 3}
+      propertyPath: m_Points.Array.data[0].x
+      value: -0.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 5909513529139185777, guid: fb6adde8d938fbd4b875623fdf6aaace, type: 3}
+      propertyPath: m_Points.Array.data[1].x
+      value: 0.48
+      objectReference: {fileID: 0}
     - target: {fileID: 6600785840353143204, guid: fb6adde8d938fbd4b875623fdf6aaace, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -12766,6 +12782,10 @@ PrefabInstance:
     - target: {fileID: 208131973530473930, guid: fb6adde8d938fbd4b875623fdf6aaace, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4874333523892519178, guid: fb6adde8d938fbd4b875623fdf6aaace, type: 3}
+      propertyPath: m_Points.Array.data[0].x
+      value: -0.48
       objectReference: {fileID: 0}
     - target: {fileID: 6600785840353143204, guid: fb6adde8d938fbd4b875623fdf6aaace, type: 3}
       propertyPath: m_Enabled
@@ -13168,6 +13188,10 @@ PrefabInstance:
     - target: {fileID: 6921338634005720896, guid: fb6adde8d938fbd4b875623fdf6aaace, type: 3}
       propertyPath: m_Name
       value: QuadCollider (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8962996676723185606, guid: fb6adde8d938fbd4b875623fdf6aaace, type: 3}
+      propertyPath: m_Points.Array.data[0].x
+      value: -0.49
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -14012,8 +14036,8 @@ SceneRoots:
   - {fileID: 1231654220}
   - {fileID: 1658316025}
   - {fileID: 1547192200}
-  - {fileID: 1532035470}
-  - {fileID: 110908441}
   - {fileID: 241444687}
+  - {fileID: 110908441}
   - {fileID: 228052468}
+  - {fileID: 1532035470}
   - {fileID: 1854633413}

@@ -116,12 +116,14 @@ public class PlayerController : MonoBehaviour {
             StartCoroutine(Die());
         } else {
             CheckCornerPop(collision);
-            ContactPoint2D hitPoint = collision.GetContact(0);
-            if (hitPoint.normal == new Vector2(0, -1)) m_grounded[UP] = true;
-            else if (hitPoint.normal == new Vector2(0, 1)) m_grounded[DOWN] = true;
-            else if (hitPoint.normal == new Vector2(1, 0)) m_grounded[LEFT] = true;
-            else if (hitPoint.normal == new Vector2(-1, 0)) m_grounded[RIGHT] = true;
         }
+    }
+
+    void OnCollisionStay2D(Collision2D collision) {
+        if (collision.gameObject.CompareTag("Ceiling")) m_grounded[UP] = true;
+        else if (collision.gameObject.CompareTag("Floor")) m_grounded[DOWN] = true;
+        else if (collision.gameObject.CompareTag("LeftWall")) m_grounded[LEFT] = true;
+        else if (collision.gameObject.CompareTag("RightWall")) m_grounded[RIGHT] = true;
     }
 
     void OnCollisionExit2D(Collision2D collision) {
