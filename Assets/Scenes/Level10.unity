@@ -2691,6 +2691,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: QuadCollider (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 8962996676723185606, guid: fb6adde8d938fbd4b875623fdf6aaace, type: 3}
+      propertyPath: m_Points.Array.data[0].x
+      value: -0.47
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 6948770516399871033, guid: fb6adde8d938fbd4b875623fdf6aaace, type: 3}
@@ -3080,6 +3084,10 @@ PrefabInstance:
     - target: {fileID: 6921338634005720896, guid: fb6adde8d938fbd4b875623fdf6aaace, type: 3}
       propertyPath: m_Name
       value: QuadCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 7365430943393906097, guid: fb6adde8d938fbd4b875623fdf6aaace, type: 3}
+      propertyPath: m_Points.Array.data[0].x
+      value: -0.47
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

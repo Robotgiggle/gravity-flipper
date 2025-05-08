@@ -7,6 +7,8 @@ public class BossSwitchController : SwitchController {
     public ParticleBurstController m_deathBurst;
     public bool m_saved;
 
+    Coroutine m_vanishCR;
+
     protected override void Start() {
         base.Start();
     }
@@ -18,13 +20,18 @@ public class BossSwitchController : SwitchController {
 
     protected override void Reset() {
         if (!m_saved) {
+            if (m_vanishCR != null) StopCoroutine(m_vanishCR);
             base.Reset();
             foreach (GameObject segment in m_tentacleSegments) segment.SetActive(true);
             base.m_renderer.enabled = true;
         }
     }
 
-    public IEnumerator Vanish() {
+    public void Vanish() {
+        m_vanishCR = StartCoroutine(VanishCoroutine());
+    }
+
+    public IEnumerator VanishCoroutine() {
         // wait for boss damage animation
         yield return new WaitForSeconds(0.5f);
         // explode the tentacle
