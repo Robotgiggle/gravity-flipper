@@ -6,19 +6,25 @@ public class BeltController : MonoBehaviour {
     public float m_lightSpeed;
     public bool m_vertical;
 
+    GameManager m_gameManager;
     List<GameObject> m_activeLights;
+    SurfaceEffector2D m_effector;
     Vector3 m_startPos;
     float m_sparkCooldown;
     float m_maxDist;
     float m_timer;
     
     void Start() {
+        m_gameManager = GameManager.TheInstance;
         m_activeLights = new List<GameObject>();
+        m_effector = gameObject.GetComponent<SurfaceEffector2D>();
         float offset;
         if (m_vertical) offset = GetComponent<SpriteRenderer>().bounds.size.y;
         else offset = GetComponent<SpriteRenderer>().bounds.size.x;
         m_startPos = transform.position + transform.right * (-offset/2 + 0.19f);
         m_maxDist = offset - 0.38f;
+
+        if (m_gameManager.m_hardMode) m_effector.forceScale = 0.17f;
         
         Vector3 spawnPos = m_startPos;
         while (m_lightSpeed != 0) {

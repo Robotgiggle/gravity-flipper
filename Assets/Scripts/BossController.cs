@@ -41,31 +41,26 @@ public class BossController : MonoBehaviour {
             }
         // positive phase = "phase N is active"
         } else {
-            // check switches
+            // check switches, trigger animation if necessary
             if (m_phase1Switches.All(sw => sw.m_active) && m_phase == 1) {
-                Debug.Log("moving to phase 2");
                 m_animTimer = 0.5f;
                 m_burst.BurstOffset(new Vector3(-4.8f, -1f, 0));
                 m_eyelidRenderer.enabled = true;
                 m_phase1Switches.ForEach(sw => sw.Vanish());
                 m_phase = -1;
             } else if (m_phase2Switches.All(sw => sw.m_active) && m_phase == 2) {
-                Debug.Log("moving to phase 3");
                 m_animTimer = 0.5f;
                 m_burst.BurstOffset(new Vector3(4.8f, -1f, 0));
                 m_eyelidRenderer.sprite = m_eyelidSprites[1];
                 m_phase2Switches.ForEach(sw => sw.Vanish());
                 m_phase = -2;
             } else if (m_phase3Switches.All(sw => sw.m_active) && m_phase == 3) {
-                Debug.Log("boss defeated");
                 m_burst.Burst();
                 m_eyelidRenderer.sprite = m_eyelidSprites[2];
                 m_phase3Switches.ForEach(sw => sw.Vanish());
                 m_phase = -3;
                 StartCoroutine(DeathAnim());
             }
-            // attack the player
-            //TODO
         }
     }
 

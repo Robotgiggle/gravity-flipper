@@ -8,7 +8,6 @@ public class BossFightManager : MonoBehaviour {
     public Transform[] m_phase3Seals;
 
     public void StartPhase(int phase) {
-        Debug.Log("starting phase " + phase);
         transform.position = new Vector3(0, (phase-1)*31, 0);
         StartCoroutine(CloseSeals(phase));
         if (phase == 2) m_phase2Floor.SetActive(true);

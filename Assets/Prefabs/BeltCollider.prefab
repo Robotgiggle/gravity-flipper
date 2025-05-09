@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_beltLight: {fileID: 5563199676479271578, guid: 569c0565001afc94cb875f82195c34a7, type: 3}
-  m_lightSpeed: 4
+  m_lightSpeed: 4.6
   m_vertical: 0
 --- !u!68 &5433083212166285948
 EdgeCollider2D:
@@ -160,7 +160,7 @@ SurfaceEffector2D:
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 55
-  m_Speed: 7.15
+  m_Speed: 7.45
   m_SpeedVariation: 0
   m_ForceScale: 0.1
   m_UseContactForce: 0
