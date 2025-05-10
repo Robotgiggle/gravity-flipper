@@ -51,5 +51,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Game_Design_Week_4_Project.sln"
+    "dotnet.defaultSolution": "Game_Design_Week_4_Project.sln",
+    "dotnet.preferCSharpExtension": true
 }
