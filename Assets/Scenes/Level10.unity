@@ -49759,7 +49759,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 9, y: 2}
+  m_Size: {x: 9, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &1137116474
 MonoBehaviour:
@@ -51198,7 +51198,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 9, y: 2}
+  m_Size: {x: 9, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &1303733632
 MonoBehaviour:
@@ -55154,15 +55154,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3537067446954062951, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
       propertyPath: m_offset
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3537067446954062951, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
       propertyPath: m_uptime
-      value: 2.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3537067446954062951, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
       propertyPath: m_downtime
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5495993273679935773, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
       propertyPath: m_LocalPosition.x

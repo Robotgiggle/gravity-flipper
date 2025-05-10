@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class CheckpointController : MonoBehaviour {
     public BossSwitchController[] m_switchesToSave;
@@ -11,7 +12,7 @@ public class CheckpointController : MonoBehaviour {
     void OnTriggerEnter2D() {
         if (!m_activated) {
             foreach (BossSwitchController sw in m_switchesToSave) sw.m_saved = true;
-            m_boss.m_phase = (m_boss.m_phase * -1) + 1;
+            m_boss.m_phase = m_phase;
             m_fightManager.StartPhase(m_phase);
             m_activated = true;
         }

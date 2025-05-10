@@ -14,12 +14,14 @@ public class BossController : MonoBehaviour {
     GameManager m_gameManager;
     ParticleBurstController m_burst;
     SpriteRenderer m_eyelidRenderer;
+    Collider2D m_collider;
     float m_animTimer;
     
     void Start() {
         m_gameManager = GameManager.TheInstance;
         m_burst = gameObject.GetComponentInChildren<ParticleBurstController>();
         m_eyelidRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
+        m_collider = gameObject.GetComponent<Collider2D>();
         m_gameManager.m_resetLevelEvent.AddListener(Reset);
     }
 
@@ -32,11 +34,16 @@ public class BossController : MonoBehaviour {
             } else {
                 // move up to the next room
                 if ((m_phase == -1 && transform.position.y < 20) || (m_phase == -2 && transform.position.y < 51)) {
+                    m_collider.enabled = false;
                     transform.Translate(0, 8 * Time.deltaTime, 0);
+                    while (transform.position.y - m_player.transform.position.y <= 7f)
+                        transform.Translate(0, 2 * Time.deltaTime, 0);
                 } else if (m_phase == -1 && transform.position.y < 39) {
                     transform.position = new Vector3(0, 39, 0);
+                    m_collider.enabled = true;
                 } else if (m_phase == -2 && transform.position.y < 70) {
                     transform.position = new Vector3(0, 70, 0);
+                    m_collider.enabled = true;
                 }
             }
         // positive phase = "phase N is active"
