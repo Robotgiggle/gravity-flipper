@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour {
     public bool m_hardMode = false;
     public bool m_debugMode = false;
     
-    AudioSource m_bgm;
+    MusicController m_musicController;
     int m_currentLevel;
     
     // static instance access
@@ -59,9 +59,12 @@ public class GameManager : MonoBehaviour {
         }
         int index = SceneManager.GetActiveScene().buildIndex;
         if (index != 0) m_currentLevel = index - 1;
-        m_bgm = gameObject.GetComponent<AudioSource>();
         // link scene-loaded event to method
         SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void Start() {
+        m_musicController = GameObject.FindWithTag("Music").GetComponent<MusicController>();
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
@@ -110,12 +113,15 @@ public class GameManager : MonoBehaviour {
     public void LoadLevel(int index, float delay = 0) {
         StartCoroutine(LoadSceneWithDelay(m_levels[index].scene, delay));
         m_currentLevel = index;
+        if (index == 9) m_musicController.ChangeMusicTo(2);
+        else m_musicController.ChangeMusicTo(1);
     }
 
     public void LoadMenu(bool fromLevel, float delay = 0) {
         if (fromLevel) m_totalPlaytime += Time.timeSinceLevelLoad;
         StartCoroutine(LoadSceneWithDelay("Menu", delay));
         m_currentLevel = -1;
+        m_musicController.ChangeMusicTo(0);
     }
 
     public bool BonusCollected() {
