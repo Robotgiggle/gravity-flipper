@@ -1828,8 +1828,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: f55f8984636c7c5498292b894c4165e2, type: 3}
+  m_Resource: {fileID: 8300000, guid: f55f8984636c7c5498292b894c4165e2, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1942,9 +1942,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6ca67b82fe31794e82d8ee00f809f3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_menuMusic: {fileID: 0}
+  m_menuMusic: {fileID: 8300000, guid: f55f8984636c7c5498292b894c4165e2, type: 3}
   m_levelMusic: {fileID: 8300000, guid: 08e0b8692d51ad9428a79824938f8f19, type: 3}
-  m_bossMusic: {fileID: 0}
+  m_bossMusic: {fileID: 8300000, guid: 455ea3b36667d4c4b813d988582ba862, type: 3}
 --- !u!1 &303930697
 GameObject:
   m_ObjectHideFlags: 0
@@ -8609,7 +8609,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33393b342bad46d48b9ea21538d8bcbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_volumeSlider: {fileID: 1764983869}
+  m_gameVolumeSlider: {fileID: 1764983869}
+  m_musicVolumeSlider: {fileID: 12183791}
   m_scrollToggle: {fileID: 934386838}
   m_indicatorsToggle: {fileID: 2087012705}
   m_hardModeToggle: {fileID: 39342011}

@@ -12,6 +12,7 @@ public class BossController : MonoBehaviour {
     public int m_phase = 1;
 
     GameManager m_gameManager;
+    MusicController m_musicController;
     ParticleBurstController m_burst;
     SpriteRenderer m_eyelidRenderer;
     Collider2D m_collider;
@@ -19,6 +20,7 @@ public class BossController : MonoBehaviour {
     
     void Start() {
         m_gameManager = GameManager.TheInstance;
+        m_musicController = GameObject.FindWithTag("Music")?.GetComponent<MusicController>();
         m_burst = gameObject.GetComponentInChildren<ParticleBurstController>();
         m_eyelidRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
         m_collider = gameObject.GetComponent<Collider2D>();
@@ -82,6 +84,7 @@ public class BossController : MonoBehaviour {
         } else if (m_phase == 3) {
             m_eyelidRenderer.sprite = m_eyelidSprites[1];
             transform.position = new Vector3(0, 70, 0);
+            m_musicController?.ChangeMusicTo("Boss", false);
         }
     }
 
@@ -91,6 +94,7 @@ public class BossController : MonoBehaviour {
         m_burst.m_color = new Color(0.52f, 0.16f, 0.39f);
         for (int i = 0; i < 8; i++) {
             m_burst.BurstOffset(new Vector3(Random.Range(-6f, 6f), Random.Range(-5f, 4f), 0));
+            if (i == 5) m_musicController?.ChangeMusicTo("Level", true);
             yield return new WaitForSeconds(0.3f);
         }
         m_burst.m_burstForce = 4.5f;

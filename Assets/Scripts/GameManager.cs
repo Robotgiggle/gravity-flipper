@@ -63,12 +63,12 @@ public class GameManager : MonoBehaviour {
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    void Start() {
-        m_musicController = GameObject.FindWithTag("Music").GetComponent<MusicController>();
-    }
-
     void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
         m_holdingBonus = false;
+        m_musicController = GameObject.FindWithTag("Music")?.GetComponent<MusicController>();
+        if (scene.buildIndex == 0) m_musicController?.ChangeMusicTo("Menu", false);
+        else if (scene.buildIndex == 10) m_musicController?.ChangeMusicTo("Boss", false);
+        else m_musicController?.ChangeMusicTo("Level", false);
     }
 
     IEnumerator LoadSceneWithDelay(string name, float delay) {
@@ -113,15 +113,14 @@ public class GameManager : MonoBehaviour {
     public void LoadLevel(int index, float delay = 0) {
         StartCoroutine(LoadSceneWithDelay(m_levels[index].scene, delay));
         m_currentLevel = index;
-        if (index == 9) m_musicController.ChangeMusicTo(2);
-        else m_musicController.ChangeMusicTo(1);
+        //if (index == 9) m_musicController.ChangeMusicTo(2);
+        //else m_musicController.ChangeMusicTo(1);
     }
 
     public void LoadMenu(bool fromLevel, float delay = 0) {
         if (fromLevel) m_totalPlaytime += Time.timeSinceLevelLoad;
         StartCoroutine(LoadSceneWithDelay("Menu", delay));
         m_currentLevel = -1;
-        m_musicController.ChangeMusicTo(0);
     }
 
     public bool BonusCollected() {

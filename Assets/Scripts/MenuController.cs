@@ -6,7 +6,8 @@ using TMPro;
 
 public class MenuController : MonoBehaviour {
     [Header("Settings Page")]
-    public Slider m_volumeSlider;
+    public Slider m_gameVolumeSlider;
+    public Slider m_musicVolumeSlider;
     public Toggle m_scrollToggle;
     public Toggle m_indicatorsToggle;
     public Toggle m_hardModeToggle;
@@ -22,21 +23,22 @@ public class MenuController : MonoBehaviour {
     public TMP_Text m_distanceText;
 
     GameManager m_gameManager;
-    AudioSource m_bgMusic;
+    MusicController m_musicController;
     Vector3 m_slideTarget;
     bool m_sliding;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
         m_gameManager = GameManager.TheInstance;
-        m_bgMusic = GameObject.FindWithTag("Music").GetComponent<AudioSource>();
+        m_musicController = GameObject.FindWithTag("Music").GetComponent<MusicController>();
 
         // change start icon if all bonuses collected
         if (m_gameManager.GetTotalBonuses() == 10)
             m_playerIcon.sprite = m_bonusSprite;
 
         // sync settings controls to actual values
-        m_volumeSlider.value = m_gameManager.m_volumeScale;
+        m_gameVolumeSlider.value = m_gameManager.m_volumeScale;
+        m_musicVolumeSlider.value = m_musicController.Volume;
         m_scrollToggle.isOn = m_gameManager.m_scrollBG;
         m_indicatorsToggle.isOn = m_gameManager.m_flipIndicators;
         m_hardModeToggle.isOn = m_gameManager.m_hardMode;
@@ -108,7 +110,7 @@ public class MenuController : MonoBehaviour {
     }
 
     public void UpdateMusicVolume(System.Single newVolume) {
-        m_bgMusic.volume = newVolume;
+        m_musicController.Volume = newVolume;
     }
 
     public void ToggleScroll(bool newState) {
