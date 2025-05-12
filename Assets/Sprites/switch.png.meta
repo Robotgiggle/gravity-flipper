@@ -156,6 +156,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: switch_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60cfadb09fb1c454e82d0309bb414189
+      internalID: -1172814150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -172,6 +194,7 @@ TextureImporter:
     nameFileIdTable:
       switch_0: 1369846038
       switch_1: 734886899
+      switch_2: -1172814150
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
