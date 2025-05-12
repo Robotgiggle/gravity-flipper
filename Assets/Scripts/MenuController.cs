@@ -10,7 +10,7 @@ public class MenuController : MonoBehaviour {
     public Slider m_musicVolumeSlider;
     public Toggle m_scrollToggle;
     public Toggle m_indicatorsToggle;
-    public Toggle m_hardModeToggle;
+    public Toggle m_turboModeToggle;
     [Header("Start Page")]
     public Image m_playerIcon;
     public Sprite m_bonusSprite;
@@ -41,7 +41,7 @@ public class MenuController : MonoBehaviour {
         m_musicVolumeSlider.value = m_musicController.Volume;
         m_scrollToggle.isOn = m_gameManager.m_scrollBG;
         m_indicatorsToggle.isOn = m_gameManager.m_flipIndicators;
-        m_hardModeToggle.isOn = m_gameManager.m_hardMode;
+        m_turboModeToggle.isOn = m_gameManager.m_turboMode;
 
         // update global stats
         m_deathText.text = "Total Deaths: " + m_gameManager.GetTotalDeaths();
@@ -121,7 +121,7 @@ public class MenuController : MonoBehaviour {
         m_gameManager.m_flipIndicators = newState;
     }
 
-    public void ToggleHardMode(bool newState) {
-        m_gameManager.m_hardMode = newState;
+    public void ToggleTurboMode(bool newState) {
+        m_gameManager.m_turboMode = newState;
     }
 }

@@ -18,7 +18,7 @@ public class LaserController : MonoBehaviour {
         m_laser.SetActive(false);
         m_gameManager.m_resetLevelEvent.AddListener(RestartFiring);
 
-        if (m_gameManager.m_hardMode) {
+        if (m_gameManager.m_turboMode) {
             m_uptime /= 1.3f;
             m_downtime /= 1.3f;
             m_offset /= 1.3f;

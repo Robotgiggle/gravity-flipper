@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour {
     public float m_volumeScale = 1;
     public bool m_scrollBG = true;
     public bool m_flipIndicators = true;
-    public bool m_hardMode = false;
+    public bool m_turboMode = false;
     public bool m_debugMode = false;
     
     MusicController m_musicController;

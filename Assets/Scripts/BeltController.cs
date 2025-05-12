@@ -24,7 +24,7 @@ public class BeltController : MonoBehaviour {
         m_startPos = transform.position + transform.right * (-offset/2 + 0.19f);
         m_maxDist = offset - 0.38f;
 
-        if (m_gameManager.m_hardMode) m_effector.forceScale = 0.17f;
+        if (m_gameManager.m_turboMode) m_effector.forceScale = 0.17f;
         
         Vector3 spawnPos = m_startPos;
         while (m_lightSpeed != 0) {

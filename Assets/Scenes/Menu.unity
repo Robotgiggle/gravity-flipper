@@ -592,7 +592,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1359544816}
         m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
-        m_MethodName: ToggleHardMode
+        m_MethodName: ToggleTurboMode
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2423,7 +2423,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 100.28, y: -23.8}
+  m_AnchoredPosition: {x: 112.580086, y: -23.8}
   m_SizeDelta: {x: -21.86, y: -12.48}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &389075035
@@ -3738,7 +3738,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 61.9, y: 15.5}
+  m_AnchoredPosition: {x: 74.2, y: 15.5}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &606295161
@@ -8613,7 +8613,7 @@ MonoBehaviour:
   m_musicVolumeSlider: {fileID: 12183791}
   m_scrollToggle: {fileID: 934386838}
   m_indicatorsToggle: {fileID: 2087012705}
-  m_hardModeToggle: {fileID: 39342011}
+  m_turboModeToggle: {fileID: 39342011}
   m_playerIcon: {fileID: 683796526}
   m_bonusSprite: {fileID: -1190046482, guid: 56e77d4063695074187a1f4bca65ec47, type: 3}
   m_levelButtons:
@@ -9353,7 +9353,7 @@ GameObject:
   - component: {fileID: 1483642054}
   - component: {fileID: 1483642053}
   m_Layer: 5
-  m_Name: HardControl
+  m_Name: TurboControl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9401,7 +9401,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hard Mode
+  m_text: Turbo Mode
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
