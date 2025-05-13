@@ -52,7 +52,7 @@ public class PortalController : MonoBehaviour {
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collider) {
+    void OnTriggerStay2D(Collider2D collider) {
         if (m_teleCooldown <= 0) {
             // enable cooldown on output portal
             m_pairController.m_teleCooldown = 0.2f;
