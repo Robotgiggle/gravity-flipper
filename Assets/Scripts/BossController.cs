@@ -38,8 +38,7 @@ public class BossController : MonoBehaviour {
                 if ((m_phase == -1 && transform.position.y < 20) || (m_phase == -2 && transform.position.y < 51)) {
                     m_collider.enabled = false;
                     transform.Translate(0, 8 * Time.deltaTime, 0);
-                    while (transform.position.y - m_player.transform.position.y <= 7f)
-                        transform.Translate(0, 2 * Time.deltaTime, 0);
+                    while (PlayerTooClose()) transform.Translate(0, 2 * Time.deltaTime, 0);
                 } else if (m_phase == -1 && transform.position.y < 39) {
                     transform.position = new Vector3(0, 39, 0);
                     m_collider.enabled = true;
@@ -86,6 +85,12 @@ public class BossController : MonoBehaviour {
             transform.position = new Vector3(0, 70, 0);
             m_musicController?.ChangeMusicTo("Boss", false);
         }
+    }
+
+    bool PlayerTooClose() {
+        Vector3 playerPos = m_player.transform.position;
+        return Mathf.Abs(transform.position.x - playerPos.x) <= 5 
+            && transform.position.y - playerPos.y <= 7f;
     }
 
     IEnumerator DeathAnim() {
