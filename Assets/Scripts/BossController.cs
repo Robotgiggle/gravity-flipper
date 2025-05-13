@@ -17,6 +17,7 @@ public class BossController : MonoBehaviour {
     SpriteRenderer m_eyelidRenderer;
     Collider2D m_collider;
     float m_animTimer;
+    bool m_pulseOut;
     
     void Start() {
         m_gameManager = GameManager.TheInstance;
@@ -28,6 +29,14 @@ public class BossController : MonoBehaviour {
     }
 
     void Update() {
+        // pulsate the body, this happens regardless of phase
+        if (m_pulseOut) {
+            transform.localScale += new Vector3(0.15f, 0.15f, 0) * Time.deltaTime;
+            if (transform.localScale.x >= 6.45f) m_pulseOut = false;
+        } else {
+            transform.localScale -= new Vector3(0.15f, 0.15f, 0) * Time.deltaTime;
+            if (transform.localScale.x <= 6.35f) m_pulseOut = true;
+        }
         // negative phase = "phase N has been defeated"
         if (m_phase < 0) {
             if (m_animTimer > 0) {
