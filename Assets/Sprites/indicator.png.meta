@@ -116,10 +116,10 @@ TextureImporter:
       name: indicator_0
       rect:
         serializedVersion: 2
-        x: 515
-        y: 1726
-        width: 1003
-        height: 203
+        x: 0
+        y: 0
+        width: 1252
+        height: 327
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,7 +128,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e26f7007c140f4249bdb18bcd8a9c9af
+      spriteID: ab76337f5db58ac4abdfbdecac88a8b5
       internalID: 695353906
       vertices: []
       indices: 
