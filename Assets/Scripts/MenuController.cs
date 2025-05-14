@@ -82,6 +82,7 @@ public class MenuController : MonoBehaviour {
             m_bonusButton.GetComponent<Image>().color = new Color(0.39f, 0.7f, 0.28f);
             m_bonusButton.GetComponentInChildren<TMP_Text>().color = new Color(0.2f, 0.2f, 0.2f);
             m_bonusButton.GetComponent<Button>().interactable = true;
+            m_bonusButton.SetActive(true);
         }
 
         // if you just beat the bonus level, start on the main screen with a particle effect
@@ -116,6 +117,7 @@ public class MenuController : MonoBehaviour {
                 bonusImg.color = new Color(oldB.r, oldB.g, oldB.b, (oldB.a + Time.deltaTime));
                 bonusTxt.color = new Color(oldT.r, oldT.g, oldT.b, (oldT.a + Time.deltaTime));
                 m_bonusButton.GetComponent<Button>().interactable = true;
+                m_bonusButton.SetActive(true);
             }
             if (m_mainButton.localPosition.x <= -170) m_gameManager.m_bonusLvlState = 1;
         }
