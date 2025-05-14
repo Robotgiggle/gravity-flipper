@@ -14,10 +14,11 @@ public class Level {
 }
 
 public class GameManager : MonoBehaviour {
-    public Level[] m_levels = new Level[10];
+    public Level[] m_levels = new Level[11];
     public UnityEvent m_resetLevelEvent;
     public bool m_holdingBonus;
     public bool m_inputsLocked;
+    public bool m_bonusLvlOpen;
     // stats
     public int m_totalFlips;
     public float m_totalDistance;

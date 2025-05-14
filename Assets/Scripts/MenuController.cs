@@ -15,6 +15,9 @@ public class MenuController : MonoBehaviour {
     public Image m_playerIcon;
     public Sprite m_bonusSprite;
     [Header("Levels Page")]
+    public Transform m_mainButton;
+    public Transform m_statsButton;
+    public GameObject m_bonusButton;
     public GameObject[] m_levelButtons = new GameObject[10];
     [Header("Stats Page")]
     public TMP_Text m_deathText;
@@ -70,6 +73,15 @@ public class MenuController : MonoBehaviour {
             }
         }
 
+        // update button positions for bonus level
+        if (m_gameManager.m_bonusLvlOpen) {
+            m_mainButton.localPosition = new Vector3(-170, -116, 0);
+            m_statsButton.localPosition = new Vector3(170, -116, 0);
+            m_bonusButton.GetComponent<Image>().color = new Color(0.39f, 0.7f, 0.28f);
+            m_bonusButton.GetComponentInChildren<TMP_Text>().color = new Color(0.2f, 0.2f, 0.2f);
+            m_bonusButton.GetComponent<Button>().interactable = true;
+        }
+
         // if you're exiting from a level, start on the level-select screen
         if (m_gameManager.m_totalPlaytime > 0) {
             transform.position = new Vector3(-18, 0, 0);
@@ -83,6 +95,21 @@ public class MenuController : MonoBehaviour {
         if (m_sliding) {
             if (transform.position == m_slideTarget) m_sliding = false;
             else transform.position = Vector2.MoveTowards(transform.position, m_slideTarget, 40*Time.deltaTime);
+        }
+
+        if (m_gameManager.GetTotalBonuses() == 10 && !m_gameManager.m_bonusLvlOpen) {
+            m_mainButton.Translate(Vector3.left * 0.7f * Time.deltaTime);
+            m_statsButton.Translate(Vector3.right * 0.7f * Time.deltaTime);
+            Image bonusImg = m_bonusButton.GetComponent<Image>();
+            TMP_Text bonusTxt = m_bonusButton.GetComponentInChildren<TMP_Text>();
+            if (bonusImg.color.a < 1 && m_mainButton.localPosition.x <= -145) {
+                Color oldB = bonusImg.color;
+                Color oldT = bonusTxt.color;
+                bonusImg.color = new Color(oldB.r, oldB.g, oldB.b, (oldB.a + Time.deltaTime));
+                bonusTxt.color = new Color(oldT.r, oldT.g, oldT.b, (oldT.a + Time.deltaTime));
+                m_bonusButton.GetComponent<Button>().interactable = true;
+            }
+            if (m_mainButton.localPosition.x <= -170) m_gameManager.m_bonusLvlOpen = true;
         }
     }
 
