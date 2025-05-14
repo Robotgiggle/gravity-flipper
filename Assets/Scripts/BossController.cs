@@ -103,7 +103,9 @@ public class BossController : MonoBehaviour {
     }
 
     IEnumerator DeathAnim() {
+        // wait for eye particles to finish
         yield return new WaitForSeconds(0.5f);
+        // random particle bursts across the body
         m_burst.m_initialScale = 0.9f;
         m_burst.m_color = new Color(0.52f, 0.16f, 0.39f);
         for (int i = 0; i < 8; i++) {
@@ -111,6 +113,7 @@ public class BossController : MonoBehaviour {
             if (i == 5) m_musicController?.ChangeMusicTo("Level", true);
             yield return new WaitForSeconds(0.3f);
         }
+        // larger particle burst right in the middle
         m_burst.m_burstForce = 4.5f;
         m_burst.m_initialScale = 1.2f;
         m_burst.BurstPos(new Vector3(0, 68.5f, 0));

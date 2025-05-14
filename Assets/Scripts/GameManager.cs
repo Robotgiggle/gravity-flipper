@@ -51,8 +51,10 @@ public class GameManager : MonoBehaviour {
         // make sure there's only ever one object
         if (m_theObject == null) m_theObject = gameObject;
         else if (m_theObject != gameObject) Destroy(gameObject);
+
         // persist across scenes
         DontDestroyOnLoad(gameObject);
+
         // set up data
         m_resetLevelEvent = new UnityEvent();
         for (int i = 0; i < 11; i++) {
@@ -83,7 +85,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public void ResetGame() {
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 11; i++) {
             m_levels[i].deaths = 0;
             m_levels[i].time = 9999;
             m_levels[i].completed = false;
@@ -109,7 +111,7 @@ public class GameManager : MonoBehaviour {
         // store bonus and level completion status
         if (m_holdingBonus) m_levels[m_currentLevel].bonus = true;
         m_levels[m_currentLevel].completed = true;
-        //load next level
+        // load next level, or menu if you're at the end
         if (m_currentLevel < 9) LoadLevel(m_currentLevel+1, delay);
         else LoadMenu(true, delay);
     }
@@ -145,6 +147,7 @@ public class GameManager : MonoBehaviour {
         return output;
     }
 
+    // returns the string used in the tutorial when describing how to move
     public string GetKeyDescription() {
         KeyCode[] arrows = {KeyCode.UpArrow, KeyCode.DownArrow, KeyCode.LeftArrow, KeyCode.RightArrow};
         KeyCode[] wasd = {KeyCode.W, KeyCode.S, KeyCode.A, KeyCode.D};

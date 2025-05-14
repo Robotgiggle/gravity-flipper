@@ -105,10 +105,13 @@ public class PlayerController : MonoBehaviour {
         } else if (collider.CompareTag("Checkpoint")) {
             m_startPos = collider.transform.position;
         } else if (m_bonus != null && collider.gameObject == m_bonus) {
+            // visual effects
             m_bonus.GetComponentInChildren<ParticleBurstController>().Burst();
             m_bonus.SetActive(false);
+            // play the chime sound
             float volume = m_gameManager.BonusCollected() ? 0.6f : 1.1f;
             m_audioSource.PlayOneShot(m_bonusSound, volume * m_gameManager.m_volumeScale);
+            // if you haven't already collected the bonus, start carrying it
             if (m_gameManager.BonusCollected()) return;
             m_gameManager.m_holdingBonus = true;
             int index = Array.IndexOf(m_normalSprites, m_renderer.sprite);
@@ -125,6 +128,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    // enable the grounded flags while you're touching some ground
     void OnCollisionStay2D(Collision2D collision) {
         ContactPoint2D hitPoint = collision.GetContact(0);
         if (hitPoint.normal == new Vector2(0, -1)) m_grounded[UP] = true;
@@ -133,6 +137,7 @@ public class PlayerController : MonoBehaviour {
         else if (hitPoint.normal == new Vector2(-1, 0)) m_grounded[RIGHT] = true;
     }
 
+    // disable the grounded flags when you leave that ground
     void OnCollisionExit2D(Collision2D collision) {
         if (collision.gameObject.CompareTag("Ceiling")) m_grounded[UP] = false;
         else if (collision.gameObject.CompareTag("Floor")) m_grounded[DOWN] = false;
@@ -201,7 +206,7 @@ public class PlayerController : MonoBehaviour {
         m_body.linearVelocity = Vector3.zero;
     }
 
-    // check if the player is right on a corner, and pop them around it if so
+    // check if the player is right on a corner, and if so pop them around it
     void CheckCornerPop(Collision2D coll) {
         ContactPoint2D[] allHitPoints = new ContactPoint2D[10];
         coll.GetContacts(allHitPoints);
