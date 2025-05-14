@@ -26,7 +26,7 @@ public class DoorController : MonoBehaviour {
     // when colliding with the player, move to the next level if the door is open
     void OnTriggerEnter2D(Collider2D coll) {
         if (m_open && coll.CompareTag("Player")) {
-            coll.gameObject.SetActive(false);
+            coll.gameObject.transform.position = new Vector3(100,100,0);
             m_audioSource.PlayOneShot(m_teleportSound, 0.8f * m_gameManager.m_volumeScale);
             m_gameManager.LoadNextLevel(m_teleportSound.length);
         }

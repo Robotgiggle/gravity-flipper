@@ -35,8 +35,8 @@ public class MenuController : MonoBehaviour {
         m_gameManager = GameManager.TheInstance;
         m_musicController = GameObject.FindWithTag("Music").GetComponent<MusicController>();
 
-        // change start icon if all bonuses collected
-        if (m_gameManager.GetTotalBonuses() == 10)
+        // change start icon if bonus level completed
+        if (m_gameManager.GetTotalBonuses() == 11)
             m_playerIcon.sprite = m_bonusSprite;
 
         // sync settings controls to actual values
