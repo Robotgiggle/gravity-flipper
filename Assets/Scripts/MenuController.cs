@@ -35,9 +35,11 @@ public class MenuController : MonoBehaviour {
         m_gameManager = GameManager.TheInstance;
         m_musicController = GameObject.FindWithTag("Music").GetComponent<MusicController>();
 
-        // change start icon if bonus level completed
+        // change start icon if bonus level completed or debug mode active
         if (m_gameManager.GetTotalBonuses() == 11)
             m_playerIcon.sprite = m_bonusSprite;
+        if (m_gameManager.m_debugMode)
+            m_playerIcon.transform.Find("SussySuit").gameObject.SetActive(true);
 
         // sync settings controls to actual values
         m_gameVolumeSlider.value = m_gameManager.m_volumeScale;
@@ -93,8 +95,10 @@ public class MenuController : MonoBehaviour {
     }
 
     void Update() {
-        if (Input.GetKeyDown(KeyCode.D) && Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.D) && Input.GetKey(KeyCode.LeftShift)) {
             m_gameManager.m_debugMode = !m_gameManager.m_debugMode;
+            m_playerIcon.transform.Find("SussySuit").gameObject.SetActive(m_gameManager.m_debugMode);
+        }
 
         if (m_sliding) {
             if (transform.position == m_slideTarget) m_sliding = false;

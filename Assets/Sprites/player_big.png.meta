@@ -156,6 +156,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: player_big_2
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 0
+        width: 21
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3abc487af8edfae47964975aa91ccb46
+      internalID: -854053335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -172,6 +194,7 @@ TextureImporter:
     nameFileIdTable:
       player_big_0: 8665169053466676486
       player_big_1: -1190046482
+      player_big_2: -854053335
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

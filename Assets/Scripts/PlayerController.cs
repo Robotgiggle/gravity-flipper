@@ -12,12 +12,14 @@ public class PlayerController : MonoBehaviour {
     public GameObject[] m_indicators = new GameObject[4];
     public Sprite[] m_normalSprites = new Sprite[4];
     public Sprite[] m_bonusSprites = new Sprite[4];
+    public Sprite[] m_sussySprites = new Sprite[4];
     public ParticleBurstController m_deathBurst;
     public float m_gravForce;
 
     GameManager m_gameManager;
     AudioSource m_audioSource;
     SpriteRenderer m_renderer;
+    SpriteRenderer m_susRender;
     Rigidbody2D m_body;
     Vector3 m_startPos;
     Vector3 m_lastPos;
@@ -33,6 +35,8 @@ public class PlayerController : MonoBehaviour {
         m_gameManager = GameManager.TheInstance;
         m_audioSource = GetComponent<AudioSource>();
         m_renderer = GetComponent<SpriteRenderer>();
+        m_susRender = transform.Find("SussySuit").GetComponent<SpriteRenderer>();
+        m_susRender.enabled = m_gameManager.m_debugMode;
         m_body = GetComponent<Rigidbody2D>();
         m_startPos = m_lastPos = transform.position;
         m_gameManager.m_resetLevelEvent.AddListener(Respawn);
@@ -85,8 +89,10 @@ public class PlayerController : MonoBehaviour {
         // decrement flip cooldown
         if (m_flipCooldown > 0) m_flipCooldown -= Time.deltaTime;
         // debug mode
-        if (Input.GetKeyDown(KeyCode.D) && Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.D) && Input.GetKey(KeyCode.LeftShift)) {
             m_gameManager.m_debugMode = !m_gameManager.m_debugMode;
+            m_susRender.enabled = m_gameManager.m_debugMode;
+        }
         if (Input.GetKeyDown(KeyCode.T) && m_gameManager.m_debugMode){
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             transform.position = new Vector2(mousePos.x, mousePos.y);
@@ -166,6 +172,7 @@ public class PlayerController : MonoBehaviour {
         else if (newDir == Vector3.left) spriteNum = 2;
         else if (newDir == Vector3.right) spriteNum = 3;
         m_renderer.sprite = m_gameManager.m_holdingBonus ? m_bonusSprites[spriteNum] : m_normalSprites[spriteNum];
+        m_susRender.sprite = m_sussySprites[spriteNum];
         // change world gravity
         Physics2D.gravity = newDir * m_gravForce;
         // rotate linear velocity to match new gravity
@@ -178,6 +185,7 @@ public class PlayerController : MonoBehaviour {
         m_audioSource.PlayOneShot(m_gravSound, 0.09f * m_gameManager.m_volumeScale);
         m_gameManager.m_totalFlips++;
         m_renderer.sprite = m_gameManager.m_holdingBonus ? m_bonusSprites[dir] : m_normalSprites[dir];
+        m_susRender.sprite = m_sussySprites[dir];
         m_flipCooldown = 0.2f;
         // change world gravity
         if (dir == UP) {
@@ -251,6 +259,7 @@ public class PlayerController : MonoBehaviour {
         m_body.rotation = 0;
         for (int i = 0; i < 4; i++) m_grounded[i] = false;
         m_renderer.sprite = m_normalSprites[1];
+        m_susRender.sprite = m_sussySprites[1];
         m_bonusAura.SetActive(false);
         transform.position = m_startPos;
     }
