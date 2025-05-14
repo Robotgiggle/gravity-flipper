@@ -66,6 +66,7 @@ public class GameManager : MonoBehaviour {
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
         m_holdingBonus = false;
+        m_inputsLocked = false;
         m_musicController = GameObject.FindWithTag("Music")?.GetComponent<MusicController>();
         if (scene.buildIndex == 0) m_musicController?.ChangeMusicTo("Menu", false);
         else if (scene.buildIndex == 10) m_musicController?.ChangeMusicTo("Boss", false);
