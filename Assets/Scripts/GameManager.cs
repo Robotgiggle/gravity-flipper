@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
         // set up data
         m_resetLevelEvent = new UnityEvent();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 11; i++) {
             m_levels[i] = new Level();
             m_levels[i].scene = "Level" + (i+1);
         }
@@ -113,8 +113,6 @@ public class GameManager : MonoBehaviour {
     public void LoadLevel(int index, float delay = 0) {
         StartCoroutine(LoadSceneWithDelay(m_levels[index].scene, delay));
         m_currentLevel = index;
-        //if (index == 9) m_musicController.ChangeMusicTo(2);
-        //else m_musicController.ChangeMusicTo(1);
     }
 
     public void LoadMenu(bool fromLevel, float delay = 0) {
