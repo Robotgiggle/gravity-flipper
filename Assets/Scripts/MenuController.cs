@@ -74,7 +74,7 @@ public class MenuController : MonoBehaviour {
         }
 
         // update button positions for bonus level
-        if (m_gameManager.m_bonusLvlOpen) {
+        if (m_gameManager.m_bonusLvlState > 0) {
             m_mainButton.localPosition = new Vector3(-170, -116, 0);
             m_statsButton.localPosition = new Vector3(170, -116, 0);
             m_bonusButton.GetComponent<Image>().color = new Color(0.39f, 0.7f, 0.28f);
@@ -82,8 +82,12 @@ public class MenuController : MonoBehaviour {
             m_bonusButton.GetComponent<Button>().interactable = true;
         }
 
-        // if you're exiting from a level, start on the level-select screen
-        if (m_gameManager.m_totalPlaytime > 0) {
+        // if you just beat the bonus level, start on the main screen with a particle effect
+        // otherwise, if you're exiting from a level, start on the level-select screen
+        if (m_gameManager.GetTotalBonuses() == 11 && m_gameManager.m_bonusLvlState == 1) {
+            m_playerIcon.GetComponentInChildren<ParticleBurstController>().Burst();
+            m_gameManager.m_bonusLvlState = 2;
+        } else if (m_gameManager.m_totalPlaytime > 0) {
             transform.position = new Vector3(-18, 0, 0);
         }
     }
@@ -97,7 +101,7 @@ public class MenuController : MonoBehaviour {
             else transform.position = Vector2.MoveTowards(transform.position, m_slideTarget, 40*Time.deltaTime);
         }
 
-        if (m_gameManager.GetTotalBonuses() == 10 && !m_gameManager.m_bonusLvlOpen) {
+        if (m_gameManager.GetTotalBonuses() == 10 && m_gameManager.m_bonusLvlState == 0) {
             m_mainButton.Translate(Vector3.left * 0.7f * Time.deltaTime);
             m_statsButton.Translate(Vector3.right * 0.7f * Time.deltaTime);
             Image bonusImg = m_bonusButton.GetComponent<Image>();
@@ -109,7 +113,7 @@ public class MenuController : MonoBehaviour {
                 bonusTxt.color = new Color(oldT.r, oldT.g, oldT.b, (oldT.a + Time.deltaTime));
                 m_bonusButton.GetComponent<Button>().interactable = true;
             }
-            if (m_mainButton.localPosition.x <= -170) m_gameManager.m_bonusLvlOpen = true;
+            if (m_mainButton.localPosition.x <= -170) m_gameManager.m_bonusLvlState = 1;
         }
     }
 

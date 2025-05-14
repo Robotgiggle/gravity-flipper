@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour {
     public UnityEvent m_resetLevelEvent;
     public bool m_holdingBonus;
     public bool m_inputsLocked;
-    public bool m_bonusLvlOpen;
+    public int m_bonusLvlState;
     // stats
     public int m_totalFlips;
     public float m_totalDistance;
