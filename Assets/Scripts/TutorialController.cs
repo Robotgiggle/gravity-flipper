@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class TutorialController : MonoBehaviour {
     public GameObject[] m_popups = new GameObject[4];
@@ -9,6 +10,8 @@ public class TutorialController : MonoBehaviour {
     
     void Start() {
         m_gameManager = GameManager.TheInstance;
+        TMP_Text text1 = m_popups[0].GetComponentInChildren<TMP_Text>();
+        text1.text = $"Welcome to Gravity Flipper! Use {m_gameManager.GetKeyDescription()} to change gravity, and press tab to pause.";
     }
 
     void Update() {

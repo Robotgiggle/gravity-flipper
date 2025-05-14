@@ -64,13 +64,13 @@ public class PlayerController : MonoBehaviour {
     void Update() {
         // handle gravity changes
         if (!m_gameManager.m_inputsLocked) {
-            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) {
+            if (Input.GetKey(m_gameManager.m_keyBinds[0])) {
                 if (CanFlip(UP)) FlipGravity(UP);
-            } else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) {
+            } else if (Input.GetKey(m_gameManager.m_keyBinds[1])) {
                 if (CanFlip(DOWN)) FlipGravity(DOWN);
-            } else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
+            } else if (Input.GetKey(m_gameManager.m_keyBinds[2])) {
                 if (CanFlip(LEFT)) FlipGravity(LEFT);
-            } else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
+            } else if (Input.GetKey(m_gameManager.m_keyBinds[3])) {
                 if (CanFlip(RIGHT)) FlipGravity(RIGHT);
             }
         }

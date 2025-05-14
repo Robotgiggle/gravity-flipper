@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour {
     public float m_totalDistance;
     public float m_totalPlaytime;
     // settings
+    public KeyCode[] m_keyBinds = {KeyCode.UpArrow, KeyCode.DownArrow, KeyCode.LeftArrow, KeyCode.RightArrow};
     public float m_volumeScale = 1;
     public bool m_scrollBG = true;
     public bool m_flipIndicators = true;
@@ -60,6 +61,7 @@ public class GameManager : MonoBehaviour {
         }
         int index = SceneManager.GetActiveScene().buildIndex;
         if (index != 0) m_currentLevel = index - 1;
+
         // link scene-loaded event to method
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
@@ -141,5 +143,19 @@ public class GameManager : MonoBehaviour {
             if (level.bonus) output++;
         }
         return output;
+    }
+
+    public string GetKeyDescription() {
+        KeyCode[] arrows = {KeyCode.UpArrow, KeyCode.DownArrow, KeyCode.LeftArrow, KeyCode.RightArrow};
+        KeyCode[] wasd = {KeyCode.W, KeyCode.S, KeyCode.A, KeyCode.D};
+        bool arrowMatch = true;
+        bool wasdMatch = true;
+        for (int i = 0; i < 4; i++) {
+            if (m_keyBinds[i] != arrows[i]) arrowMatch = false;
+            if (m_keyBinds[i] != wasd[i]) wasdMatch = false;
+        }
+        if (arrowMatch) return "the arrow keys";
+        else if (wasdMatch) return "WASD";
+        else return "your chosen movement keys";
     }
 }

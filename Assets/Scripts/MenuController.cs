@@ -62,7 +62,7 @@ public class MenuController : MonoBehaviour {
             if (level.completed) {
                 // completed levels show deaths+time and are dark blue or green
                 texts[1].text = "Deaths: " + level.deaths;
-                texts[2].text = "Time: " +TimeSpan.FromSeconds(level.time).ToString("mm':'ss");
+                texts[2].text = "Time: " + TimeSpan.FromSeconds(level.time).ToString("mm':'ss");
                 Color newColor = level.bonus ? new Color(0.5f, 0.9f, 0.36f, 0.7f) : new Color(0.17f, 0.7f, 0.9f, 0.7f);
                 button.GetComponent<Image>().color = newColor;
             } else if (i == 0 || m_gameManager.m_levels[i-1].completed) {
