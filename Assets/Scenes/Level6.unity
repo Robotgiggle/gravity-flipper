@@ -15583,6 +15583,10 @@ PrefabInstance:
       propertyPath: m_telegraph
       value: 0.8
       objectReference: {fileID: 0}
+    - target: {fileID: 4288480841380884565, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
+      propertyPath: m_Size.x
+      value: 0.98
+      objectReference: {fileID: 0}
     - target: {fileID: 4747013888601463068, guid: 8c003a3fd26460e4f859abf9d75a04f6, type: 3}
       propertyPath: m_maxSpawnCount
       value: 45

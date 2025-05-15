@@ -2008,9 +2008,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 284495216}
-  - component: {fileID: 284495217}
   m_Layer: 0
-  m_Name: BossFightManager
+  m_Name: Viewport
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2033,26 +2032,6 @@ Transform:
   - {fileID: 534757924}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &284495217
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 284495215}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d96fa0d5da354ca45a5562fca8221d38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_phase2Floor: {fileID: 444914748}
-  m_phase2Seals:
-  - {fileID: 256339913}
-  - {fileID: 1706593069}
-  m_phase3Floor: {fileID: 477284438}
-  m_phase3Seals:
-  - {fileID: 292162461}
-  - {fileID: 849115859}
 --- !u!1 &292162460
 GameObject:
   m_ObjectHideFlags: 0
@@ -16813,11 +16792,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 208131973530473930, guid: fb6adde8d938fbd4b875623fdf6aaace, type: 3}
       propertyPath: m_LocalScale.x
-      value: 48
+      value: 32.999825
       objectReference: {fileID: 0}
     - target: {fileID: 208131973530473930, guid: fb6adde8d938fbd4b875623fdf6aaace, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 208131973530473930, guid: fb6adde8d938fbd4b875623fdf6aaace, type: 3}
       propertyPath: m_LocalPosition.y
@@ -49786,9 +49765,14 @@ MonoBehaviour:
   - {fileID: 1086774695}
   - {fileID: 1719830974}
   - {fileID: 852067423}
-  m_fightManager: {fileID: 284495217}
+  m_seals:
+  - {fileID: 292162461}
+  - {fileID: 849115859}
+  m_viewport: {fileID: 284495216}
+  m_floor: {fileID: 477284438}
   m_boss: {fileID: 780306625}
-  m_phase: 3
+  m_leftEdge: -3
+  m_rightEdge: 4
 --- !u!212 &1137116475
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -51146,9 +51130,14 @@ MonoBehaviour:
   - {fileID: 7176001587250524866}
   - {fileID: 2086228887}
   - {fileID: 1730078956}
-  m_fightManager: {fileID: 284495217}
+  m_seals:
+  - {fileID: 256339913}
+  - {fileID: 1706593069}
+  m_viewport: {fileID: 284495216}
+  m_floor: {fileID: 444914748}
   m_boss: {fileID: 780306625}
-  m_phase: 2
+  m_leftEdge: -1.5
+  m_rightEdge: 2.5
 --- !u!212 &1303733633
 SpriteRenderer:
   m_ObjectHideFlags: 0
