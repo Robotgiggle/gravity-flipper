@@ -10,9 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2033648015092648855}
   - component: {fileID: 2182295679118839943}
+  - component: {fileID: 5160073147074208359}
   - component: {fileID: 6465648538199238890}
+  - component: {fileID: 8456394637766526016}
   m_Layer: 0
-  m_Name: Stationary Spike
+  m_Name: MovingSpike
   m_TagString: Hazard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,10 +30,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 3, z: 0.79376}
+  m_LocalScale: {x: 4, y: 3.5, z: 0.79376}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2086715287125572692}
+  - {fileID: 6770003749421029013}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2182295679118839943
@@ -78,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: -172524819
   m_SortingLayer: -1
   m_SortingOrder: 1
-  m_Sprite: {fileID: -504682348610213043, guid: bcc676a050357b9429914e80f37f3a8b, type: 3}
+  m_Sprite: {fileID: 624807743984092125, guid: bcc676a050357b9429914e80f37f3a8b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -89,6 +91,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &5160073147074208359
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7295431413327216}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2436361e485174b879a1a3ddabd096cc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!61 &6465648538199238890
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -123,7 +147,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.004902452, y: -0.19120039}
+  m_Offset: {x: 0.004999995, y: -0.07378821}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -133,9 +157,21 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.45573115, y: 0.45759925}
+  m_Size: {x: 0.45, y: 0.7024236}
   m_EdgeRadius: 0
---- !u!1001 &2996734482119651325
+--- !u!114 &8456394637766526016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7295431413327216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d76b703c7158efe469ad4e1a6beaf782, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &7534778189874545980
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -173,7 +209,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3846929902202311593, guid: dd4b2b7023920cc4db8bfa220fcf5e5e, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0.3933
+      value: 0.63
       objectReference: {fileID: 0}
     - target: {fileID: 3846929902202311593, guid: dd4b2b7023920cc4db8bfa220fcf5e5e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -205,11 +241,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3846929902202311593, guid: dd4b2b7023920cc4db8bfa220fcf5e5e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.0050001144
+      value: 0.005
       objectReference: {fileID: 0}
     - target: {fileID: 3846929902202311593, guid: dd4b2b7023920cc4db8bfa220fcf5e5e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.056666307
+      value: 0.054
       objectReference: {fileID: 0}
     - target: {fileID: 3846929902202311593, guid: dd4b2b7023920cc4db8bfa220fcf5e5e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -252,8 +288,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd4b2b7023920cc4db8bfa220fcf5e5e, type: 3}
---- !u!224 &2086715287125572692 stripped
+--- !u!224 &6770003749421029013 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3846929902202311593, guid: dd4b2b7023920cc4db8bfa220fcf5e5e, type: 3}
-  m_PrefabInstance: {fileID: 2996734482119651325}
+  m_PrefabInstance: {fileID: 7534778189874545980}
   m_PrefabAsset: {fileID: 0}
